@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+}
+.Footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 3;
+  background-color: #000000;
+  color: #c0c0c0;
+  text-align: center;
+}

@@ -1,0 +1,53 @@
+:root {
+  /*custom css variables*/
+  --mainBlue: #c59d5f;
+  --lightBlue: #009ffd;
+  --mainWhite: #f3f3f3;
+  --mainDark: #232528;
+  --mainYellow: #ffa400;
+  --navColor: hsl(205, 86%, 17%);
+}
+
+body {
+  font-family: "Aclonica", sans-serif !important; /*so that bootrsp font isnt overwritten*/
+  background: var(--maiWhite) !important;
+  color: var(--mainDark) !important;
+}
+
+.text-title {
+  font-family: "Kanit", sans-serif;
+  letter-spacing: 0.3 rem;
+  text-transform: uppercase;
+}
+
+.text-blue {
+  color: var(--mainBlue);
+}
+
+.btn-black {
+  background: #c59d5f;
+  /* text-transform: capitalize; */
+  font-size: 0.9rem !important;
+  font-weight: bolder;
+  color: hsl(211, 39%, 23%);
+  border-radius: 0 !important;
+  /* border: 0.1rem solid hsl(211, 39%, 23%) !important; */
+}
+
+.btn-black:hover {
+  background: var(--mainDark) !important;
+  color: var(--mainWhite) !important;
+}
+
+.cart-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  /* color: var(--mainYellow); */
+  color: #c59d5f;
+}
+
+.title {
+  color: hsl(211, 39%, 23%);
+  font-size: 60 px;
+  font-weight: bolder;
+}
