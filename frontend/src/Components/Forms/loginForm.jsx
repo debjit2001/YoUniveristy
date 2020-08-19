@@ -3,6 +3,7 @@ import styles from "../Forms/loginform.module.css";
 import { useHistory } from "react-router";
 import { LoginContext } from "../../context/LoginContext";
 import axios from "axios";
+import firebase from "../../firebase/config/config";
 
 const Login = () => {
   const [username, setUserName] = useState("");
@@ -13,15 +14,15 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:8000/api/login/", { username, password })
-      .then((res) => {
-        window.localStorage.setItem("username", username);
-        window.localStorage.setItem("pwd", password);
-        setIsTeacherAuth(true);
-        history.push("/teacherWelcome");
-      })
-      .catch((err) => console.log(err));
+    // axios
+    //   .post("http://localhost:8000/api/login/", { username, password })
+    //   .then((res) => {
+    //     window.localStorage.setItem("username", username);
+    //     window.localStorage.setItem("pwd", password);
+    //     setIsTeacherAuth(true);
+    //     history.push("/teacherWelcome");
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   const onChangeHandler = (e) => {
