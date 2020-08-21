@@ -11,8 +11,7 @@ const EventListPage = (props) => {
   // const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    axios.get(`${IP}/api/event`).then((res) => {
-      console.log("EventListPage -> res:", res);
+    axios.get(`${IP}/event`).then((res) => {
       setEventList(res.data);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -20,7 +19,9 @@ const EventListPage = (props) => {
 
   const _onEventClick = (eventItem) => {
     eventItem.preventDefault();
-    const eventID = eventItem.target.id;
+    const tragetID = eventItem.target.id;
+    const eventID = eventList[tragetID]._id;
+    console.log("_onEventClick -> eventID", eventID);
     props.history.push(`event/${eventID}`);
   };
 
@@ -30,7 +31,7 @@ const EventListPage = (props) => {
         eventList.map((eve, index) => (
           <div className={styles.EventInfo} key={index}>
             <img
-              src={eve.eventImg}
+              src={`${IP}/${eve.eventImage}`}
               alt="eventPic"
               id={index}
               onClick={(e) => _onEventClick(e)}
@@ -43,7 +44,7 @@ const EventListPage = (props) => {
                 theme="honeybee"
               >
                 <p id={index} onClick={(e) => _onEventClick(e)}>
-                  {eve.eventTitle}
+                  {eve.title}
                 </p>
               </Tippy>
             </div>

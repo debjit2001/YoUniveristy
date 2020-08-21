@@ -9,6 +9,7 @@
     "dev": "concurrently \"cd backend && yarn run dev\" \"cd frontend && yarn start\" "
   },
   "dependencies": {
-    "concurrently": "^5.3.0"
+    "concurrently": "^5.3.0",
+    "multer": "^1.4.2"
   }
 }

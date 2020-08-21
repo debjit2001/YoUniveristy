@@ -3,7 +3,7 @@ import styles from "../Forms/loginform.module.css";
 import { useHistory } from "react-router";
 import { LoginContext } from "../../context/LoginContext";
 import axios from "axios";
-import firebase from "../../firebase/config/config";
+// import firebase from "../../firebase/config/config";
 
 const Login = () => {
   const [username, setUserName] = useState("");

@@ -6,19 +6,24 @@ import EventCardPage from "./EventCardpage/EventCardPage";
 import { IP } from "../../../IPDetails";
 
 const EventList = (props) => {
-  const [eventList, setEventList] = useState([]);
-  useEffect(() => {
-    axios.get(`${IP}/api/event`).then((res) => {
-      setEventList(res.data);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [event, setEvent] = useState({});
+  const [eventLoaded, setEventLoaded] = useState(false);
 
-  if (eventList && eventList.length) {
-    let event = eventList[props.match.params.id];
+  useEffect(() => {
+    const _id = props.match.params.id;
+    axios.get(`${IP}/event/${_id}`).then((res) => {
+      console.log("res.data:>>", res.data);
+      setEvent(res.data);
+      setEventLoaded(true);
+    });
+  }, [event]);
+
+  if (!eventLoaded) {
+    return <Skeleton count={5} width={1000} />;
+  } else if (event) {
     return <EventCardPage event={event} />;
   } else {
-    return <Skeleton count={5} width={1000} />;
+    return <h1>No event Found</h1>;
   }
 };
 
