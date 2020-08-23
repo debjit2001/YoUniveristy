@@ -12,12 +12,15 @@ export default class FoundItemsDisplay extends React.Component {
             <div className={styles.container} key={post.id}>
               <div className={styles.card} key={post.id}>
                 <div className={styles.imgBx}>
-                  <img src={post.itemImg} alt="lost item" />
+                  <img
+                    src={`http://localhost:5000/${post.foundItemImage}`}
+                    alt="Found Item"
+                  />
                   <h6>{post.itemName}</h6>
-                  <p>{post.lostDate}</p>
+                  <p>{post.foundDate}</p>
                 </div>
                 <div className={styles.content}>
-                  <p>{post.itemDetails}</p>
+                  <p>{post.foundItemDetails}</p>
                   <p style={{ color: "#000" }}>contact to:</p>
                   <p>{post.name}</p>
                   <p>{post.email}</p>

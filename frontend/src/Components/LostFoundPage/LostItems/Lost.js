@@ -8,6 +8,7 @@ import Tippy from "@tippy.js/react";
 import "tippy.js/dist/tippy.css";
 import axios from "axios";
 import { IP } from "../../../IPDetails";
+import moment from "moment";
 import styles from "../LostFoundPage.module.css";
 
 export default class Lost extends React.Component {
@@ -17,12 +18,15 @@ export default class Lost extends React.Component {
       name: "",
       email: "",
       itemName: "",
-      lostDate: new Date(),
-      itemImg: null,
-      itemDetails: "",
+      lostDate: moment().format("YYYY-MM-DD"),
+      lostItemImage: null,
+      lostItemDetails: "",
     },
     prevLostItems: [],
   };
+
+  // today = moment().format("DD-MM-YYYY");
+  maxDate = moment().format("YYYY-MM-DD");
 
   changeHandler = (e) => {
     const { lostEntry } = { ...this.state };
@@ -34,24 +38,25 @@ export default class Lost extends React.Component {
   handleChange = (e) => {
     const lostEntry = { ...this.state.lostEntry };
     const currentState = lostEntry;
-    currentState.itemImg = e.target.files[0];
+    currentState.lostItemImage = e.target.files[0];
     this.setState({ lostEntry: currentState });
   };
   submitHandler = (e) => {
     e.preventDefault();
+    const { lostEntry } = this.state;
     const fd = new FormData();
-    fd.append("email", this.state.lostEntry.email);
-    fd.append("itemDetails", this.state.lostEntry.itemDetails);
+    fd.append("email", lostEntry.email);
+    fd.append("lostItemDetails", lostEntry.lostItemDetails);
     fd.append(
-      "itemImg",
-      this.state.lostEntry.itemImg,
-      this.state.lostEntry.itemImg.name
+      "lostItemImage",
+      lostEntry.lostItemImage
+      // lostEntry.lostItemImage.name
     );
-    fd.append("itemName", this.state.lostEntry.itemName);
-    fd.append("lostDate", this.state.lostEntry.lostDate);
-    fd.append("name", this.state.lostEntry.name);
+    fd.append("itemName", lostEntry.itemName);
+    fd.append("lostDate", lostEntry.lostDate);
+    fd.append("name", lostEntry.name);
     axios
-      .post(`${IP}/api/lost/`, fd, {
+      .post(`${IP}/lost`, fd, {
         headers: {
           "content-type": "multipart/form-data",
         },
@@ -59,17 +64,20 @@ export default class Lost extends React.Component {
       .then((response) => {
         console.log(response);
         alert("YOUR FORM IS SUCCESSFULLY SUBMITTED");
-        this.setState({
-          open: false,
-          lostEntry: {
-            name: "",
-            email: "",
-            itemName: "",
-            lostDate: new Date(),
-            itemImg: "",
-            itemDetails: "",
+        this.setState(
+          {
+            open: false,
+            lostEntry: {
+              name: "",
+              email: "",
+              itemName: "",
+              lostDate: this.maxDate,
+              lostItemImage: "",
+              lostItemDetails: "",
+            },
           },
-        });
+          () => this._fetchNewLostHandler()
+        );
       })
       .catch((error) => {
         alert(
@@ -81,9 +89,9 @@ export default class Lost extends React.Component {
             name: "",
             email: "",
             itemName: "",
-            lostDate: new Date(),
-            itemImg: "",
-            itemDetails: "",
+            lostDate: this.maxDate,
+            lostItemImage: "",
+            lostItemDetails: "",
           },
         });
 
@@ -92,20 +100,6 @@ export default class Lost extends React.Component {
         );
       });
   };
-  handleMaxDate() {
-    let today = new Date(),
-      day = today.getDate(),
-      month = today.getMonth() + 1, //January is 0
-      year = today.getFullYear();
-    if (day < 10) {
-      day = "0" + day;
-    }
-    if (month < 10) {
-      month = "0" + month;
-    }
-    today = year + "-" + month + "-" + day;
-    console.log(today);
-  }
 
   onOpenModal = () => {
     this.setState({ open: true });
@@ -118,31 +112,33 @@ export default class Lost extends React.Component {
         name: "",
         email: "",
         itemName: "",
-        lostDate: new Date(),
-        itemImg: "",
-        itemDetails: "",
+        lostDate: this.maxDate,
+        lostItemImage: "",
+        lostItemDetails: "",
       },
     });
   };
-  // max={moment().add(5, 'days').format("YYYY-MM-DD")
-  componentDidMount() {
+
+  _fetchNewLostHandler = () => {
     axios
-      .get(`${IP}/api/lost`)
+      .get(`${IP}/lost`)
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         this.setState({ prevLostItems: response.data });
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+  componentDidMount() {
+    this._fetchNewLostHandler();
   }
   render() {
     const {
       open,
-      lostEntry: { name, email, itemName, lostDate, itemDetails },
+      lostEntry: { name, email, itemName, lostDate, lostItemDetails },
       prevLostItems,
     } = this.state;
-
     return (
       <React.Fragment>
         <Tippy
@@ -200,10 +196,11 @@ export default class Lost extends React.Component {
               <input
                 type="date"
                 name="lostDate"
-                placeholder="yyyy-mm-dd"
+                placeholder="When You lost it ?"
                 value={lostDate}
                 onChange={this.changeHandler}
                 // max={this.handleMaxDate}
+                max={this.maxDate}
                 required
               />
             </div>
@@ -212,9 +209,9 @@ export default class Lost extends React.Component {
               <input
                 type="file"
                 id="img"
-                name="itemImg"
+                name="lostItemImage"
                 onChange={this.handleChange}
-                accept="image/*"
+                accept="image/jpeg,image/png"
                 required
               />
             </div>
@@ -225,8 +222,8 @@ export default class Lost extends React.Component {
                 rows="2"
                 cols="25"
                 placeholder="Type lost item details"
-                name="itemDetails"
-                value={itemDetails}
+                name="lostItemDetails"
+                value={lostItemDetails}
                 onChange={this.changeHandler}
                 required
               ></textarea>

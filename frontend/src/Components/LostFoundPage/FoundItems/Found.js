@@ -7,21 +7,26 @@ import Tippy from "@tippy.js/react";
 import "tippy.js/dist/tippy.css";
 import FoundItemsDisplay from "./FoundItemsDisplay";
 import axios from "axios";
+import moment from "moment";
 import { IP } from "../../../IPDetails";
 import styles from "../LostFoundPage.module.css";
-export default class Found extends React.Component {
+
+export default class Lost extends React.Component {
   state = {
     open: false,
     foundEntry: {
       name: "",
       email: "",
       itemName: "",
-      foundDate: new Date(),
-      itemImg: null,
-      itemDetails: "",
+      foundDate: moment().format("YYYY-MM-DD"),
+      foundItemImage: null,
+      foundItemDetails: "",
     },
     prevFoundItems: [],
   };
+
+  // today = moment().format("DD-MM-YYYY");
+  maxDate = moment().format("YYYY-MM-DD");
 
   changeHandler = (e) => {
     const { foundEntry } = { ...this.state };
@@ -33,34 +38,25 @@ export default class Found extends React.Component {
   handleChange = (e) => {
     const foundEntry = { ...this.state.foundEntry };
     const currentState = foundEntry;
-    currentState.itemImg = e.target.files[0];
+    currentState.foundItemImage = e.target.files[0];
     this.setState({ foundEntry: currentState });
   };
-  handleChange = (e) => {
-    const foundEntry = { ...this.state.foundEntry };
-    const currentState = foundEntry;
-    currentState.itemImg = e.target.files[0];
-    this.setState({ foundEntry: currentState });
-  };
-
   submitHandler = (e) => {
     e.preventDefault();
+    const { foundEntry } = this.state;
     const fd = new FormData();
-    fd.append("email", this.state.foundEntry.email);
-    fd.append("foundDate", this.state.foundEntry.foundDate);
-    fd.append("itemDetails", this.state.foundEntry.itemDetails);
+    fd.append("email", foundEntry.email);
+    fd.append("foundItemDetails", foundEntry.foundItemDetails);
     fd.append(
-      "itemImg",
-      this.state.foundEntry.itemImg,
-      this.state.foundEntry.itemImg.name
+      "foundItemImage",
+      foundEntry.foundItemImage
+      // foundEntry.foundItemImage.name
     );
-    fd.append("itemName", this.state.foundEntry.itemName);
-    fd.append("name", this.state.foundEntry.name);
-    // fd.forEach((value, key) => {
-    //   console.log(key + value);
-    // });
+    fd.append("itemName", foundEntry.itemName);
+    fd.append("foundDate", foundEntry.foundDate);
+    fd.append("name", foundEntry.name);
     axios
-      .post(`${IP}/api/found/`, fd, {
+      .post(`${IP}/found`, fd, {
         headers: {
           "content-type": "multipart/form-data",
         },
@@ -68,17 +64,20 @@ export default class Found extends React.Component {
       .then((response) => {
         console.log(response);
         alert("YOUR FORM IS SUCCESSFULLY SUBMITTED");
-        this.setState({
-          open: false,
-          foundEntry: {
-            name: "",
-            email: "",
-            itemName: "",
-            foundDate: new Date(),
-            itemImg: "",
-            itemDetails: "",
+        this.setState(
+          {
+            open: false,
+            foundEntry: {
+              name: "",
+              email: "",
+              itemName: "",
+              foundDate: this.maxDate,
+              foundItemImage: "",
+              foundItemDetails: "",
+            },
           },
-        });
+          () => this._fetchNewFoundHandler()
+        );
       })
       .catch((error) => {
         alert(
@@ -90,14 +89,14 @@ export default class Found extends React.Component {
             name: "",
             email: "",
             itemName: "",
-            foundDate: new Date(),
-            itemImg: "",
-            itemDetails: "",
+            foundDate: this.maxDate,
+            foundItemImage: "",
+            foundItemDetails: "",
           },
         });
 
         alert(
-          "there was some technical error , we couldnt post ur found form, please try after some time"
+          "there was some technical error , we couldnt post ur lost form, please try after some time"
         );
       });
   };
@@ -113,44 +112,48 @@ export default class Found extends React.Component {
         name: "",
         email: "",
         itemName: "",
-        foundDate: new Date(),
-        itemImg: "",
-        itemDetails: "",
+        foundDate: this.maxDate,
+        foundItemImage: "",
+        foundItemDetails: "",
       },
     });
   };
-  componentDidMount() {
+
+  _fetchNewFoundHandler = () => {
     axios
-      .get(`${IP}/api/found`)
+      .get(`${IP}/found`)
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         this.setState({ prevFoundItems: response.data });
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+  componentDidMount() {
+    this._fetchNewFoundHandler();
   }
   render() {
     const {
       open,
-      foundEntry: { name, email, itemName, foundDate, itemDetails },
+      foundEntry: { name, email, itemName, foundDate, foundItemDetails },
       prevFoundItems,
     } = this.state;
     return (
       <React.Fragment>
         <Tippy
-          content="Found Form click here"
+          content="Lost Form click here"
           delay={200}
           placement="bottom"
           theme="honeybee"
         >
           <Button onClick={this.onOpenModal} variant="primary" size="lg" block>
-            FOUND FORM
+            LOST FORM
           </Button>
         </Tippy>
         <Modal open={open} onClose={this.onCloseModal} center>
           <form onSubmit={(e) => this.submitHandler(e)}>
-            <h2 style={{ textAlign: "center", color: "#D2691E" }}> FOUND</h2>
+            <h2 style={{ textAlign: "center", color: "#D2691E" }}> LOST</h2>
 
             <div className="name" style={{ padding: "4px" }}>
               <label htmlFor="name">Name :* </label>
@@ -176,7 +179,8 @@ export default class Found extends React.Component {
             </div>
 
             <div className="name" style={{ padding: "4px" }}>
-              <label htmlFor="ItemName">Item Name :* </label>
+              <label htmlFor="ItemName">Item Name :*(within 20 letters) </label>
+
               <input
                 type="text"
                 name="itemName"
@@ -188,43 +192,45 @@ export default class Found extends React.Component {
             </div>
 
             <div style={{ padding: "4px" }} className="dateFound">
-              <label htmlFor="birthday">Found date :*</label>
+              <label htmlFor="birthday">Lost date :*</label>
               <input
                 type="date"
                 name="foundDate"
-                placeholder="yyyy-mm-dd"
+                placeholder="When You lost it ?"
                 value={foundDate}
                 onChange={this.changeHandler}
+                // max={this.handleMaxDate}
+                max={this.maxDate}
                 required
               />
             </div>
             <div style={{ padding: "4px" }} className="details">
-              <label htmlFor="img">Found item image : *</label>
+              <label htmlFor="img">Lost item image :*</label>
               <input
                 type="file"
                 id="img"
-                name="itemImg"
+                name="foundItemImage"
                 onChange={this.handleChange}
-                accept="image/*"
+                accept="image/jpeg,image/png"
                 required
               />
             </div>
             <div style={{ padding: "4px" }} className="details">
-              <label>Found item details :* </label>
+              <label>Lost item details :*(in brief) </label>
               <br />
               <textarea
                 rows="2"
                 cols="25"
-                placeholder="Type found item details"
-                name="itemDetails"
-                value={itemDetails}
+                placeholder="Type lost item details"
+                name="foundItemDetails"
+                value={foundItemDetails}
                 onChange={this.changeHandler}
                 required
               ></textarea>
             </div>
 
             <Button type="submit">SUBMIT</Button>
-            <Link to="/found">
+            <Link to="/lost">
               <Button
                 style={{
                   backgroundColor: "grey",
@@ -239,7 +245,7 @@ export default class Found extends React.Component {
           </form>
         </Modal>
         <h2 style={{ textAlign: "center" }} className={styles.heading}>
-          FOUND ITEMS HERE...
+          LOST ITEMS HERE...
         </h2>
         <br />
         <FoundItemsDisplay
