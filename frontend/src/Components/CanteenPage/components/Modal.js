@@ -1,57 +1,49 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { ProductConsumer } from "../context";
+import { ProductContext } from "../../../context/CanteenContext";
 import { ButtonContainer } from "./Button";
-
 import { Link } from "react-router-dom";
 
-export default class Modal extends Component {
-  render() {
+const Modal = () => {
+  const { modalOpen, closeModal, modalProduct } = useContext(ProductContext);
+  if (!modalOpen) {
+    return null;
+  } else {
     return (
-      <ProductConsumer>
-        {(value) => {
-          const { modalOpen, closeModal } = value;
-          const { imgUrl, title, price } = value.modalProduct;
-
-          //conditionalrendering
-          if (!modalOpen) {
-            return null;
-          } else {
-            return (
-              <ModalContainer>
-                <div className="container">
-                  <div className="row">
-                    <div
-                      id="modal"
-                      className="col-8 mx-auto col-md-6 col-lg-4 text-center text-capitalize p-5"
-                    >
-                      <h5>food item added to cart</h5>
-                      <img src={imgUrl} className="img-fluid" alt="product" />
-                      <h5>{title}</h5>
-                      <h5 className="text-muted">price : ₹ {price}</h5>
-                      <Link to="/canteen">
-                        <ButtonContainer onClick={() => closeModal()}>
-                          back to items page
-                        </ButtonContainer>
-                      </Link>
-                      {/* <Link to='/Cart'> */}
-                      <Link to="/canteenCart">
-                        <ButtonContainer onClick={() => closeModal()}>
-                          Go to cart
-                        </ButtonContainer>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </ModalContainer>
-            );
-          }
-        }}
-      </ProductConsumer>
+      <ModalContainer>
+        <div className="container">
+          <div className="row">
+            <div
+              id="modal"
+              className="col-8 mx-auto col-md-6 col-lg-4 text-center text-capitalize p-5"
+            >
+              <h5>food item added to cart</h5>
+              <img
+                src={`http://localhost:5000/${modalProduct.imgUrl}`}
+                className="img-fluid"
+                alt="product"
+              />
+              <h5>{modalProduct.title}</h5>
+              <h5 className="text-muted">price : ₹ {modalProduct.price}</h5>
+              <Link to="/canteen">
+                <ButtonContainer onClick={() => closeModal()}>
+                  back to items page
+                </ButtonContainer>
+              </Link>
+              <Link to="/canteenCart">
+                <ButtonContainer onClick={() => closeModal()}>
+                  Go to cart
+                </ButtonContainer>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </ModalContainer>
     );
   }
-}
+};
 
+export default Modal;
 const ModalContainer = styled.div`
   position: fixed;
   top: 0;

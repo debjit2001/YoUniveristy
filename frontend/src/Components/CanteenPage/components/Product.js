@@ -1,92 +1,96 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { ProductConsumer } from "../context";
+import { ProductContext } from "../../../context/CanteenContext";
 import Tippy from "@tippy.js/react";
 import PropTypes from "prop-types";
 
-export default class Product extends Component {
-  render() {
-    const { id, title, imgUrl, price, count, inCart } = this.props.product;
-
-    return (
-      //ProductWrapper is a styled component(go down this js file to know more) not related to context
-      <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
-        <div className="card">
-          <ProductConsumer>
-            {(value) => (
-              <div
-                // className="img-container p-5"
-                className="img-container"
-                onClick={() => value.handleDetail(id)}
-              >
-                <Link to="/canteenItemDetails">
-                  <Tippy
-                    content="click here for details"
-                    delay={100}
-                    placement="right-start"
-                    theme="honeybee"
-                  >
-                    <img
-                      src={imgUrl}
-                      alt="product"
-                      className="card-img-top"
-                      width="70%"
-                      height="100px"
-                    />
-                  </Tippy>
-                </Link>
-                <button
-                  className="card-btn"
-                  disabled={inCart ? true : false}
-                  onClick={() => {
-                    value.addToCart(id);
-                    value.openModal(id);
-                  }}
+const Product = ({ product }) => {
+  // console.log("Product -> price", price);
+  const {
+    handleDetail,
+    addToCart,
+    openModal,
+    decrement,
+    increment,
+  } = useContext(ProductContext);
+  const { _id, price, inCart, count, imgUrl, title } = product;
+  return (
+    //ProductWrapper is a styled component(go down this js file to know more) not related to context
+    <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
+      <div className="card">
+        <div
+          // className="img-container p-5"
+          className="img-container"
+          onClick={() => handleDetail(_id)}
+        >
+          <Link to="/canteenItemDetails">
+            <Tippy
+              content="click here for details"
+              delay={100}
+              placement="right-start"
+              theme="honeybee"
+            >
+              <img
+                src={`http://localhost:5000/${imgUrl}`}
+                alt="product"
+                className="card-img-top"
+                width="70%"
+                height="100px"
+              />
+            </Tippy>
+          </Link>
+          <button
+            className="card-btn"
+            disabled={inCart ? true : false}
+            onClick={() => {
+              addToCart(_id);
+              openModal(_id);
+            }}
+          >
+            {inCart ? (
+              // <p className="text-capitalize mb=0" disabled>
+              // {" "}
+              <div>
+                <span
+                  className="btn btn-black mx-1"
+                  onClick={() => decrement(_id)}
                 >
-                  {inCart ? (
-                    // <p className="text-capitalize mb=0" disabled>
-                    // {" "}
-                    <div>
-                      <span
-                        className="btn btn-black mx-1"
-                        onClick={() => value.decrement(id)}
-                      >
-                        -
-                      </span>
-                      <span className="btn btn-black mx-1">{count}</span>
-                      <span
-                        className="btn btn-black mx-1"
-                        onClick={() => value.increment(id)}
-                      >
-                        +
-                      </span>
-                    </div>
-                  ) : (
-                    // </p>
-                    <i className="fas fa-cart-plus" />
-                  )}
-                </button>
+                  -
+                </span>
+                <span className="btn btn-black mx-1">{count}</span>
+                <span
+                  className="btn btn-black mx-1"
+                  onClick={() => increment(_id)}
+                >
+                  +
+                </span>
               </div>
+            ) : (
+              // </p>
+              <i className="fas fa-cart-plus" />
             )}
-          </ProductConsumer>
-          {/*cart footer*/}
-          <div className="card-footer d-flex justify-content-between">
-            <p className="align-self-center mb-0">{title}</p>
-            <h5 className="text-blue font-italic mb-0">
-              <span className="mr-1">₹</span>
-              {price}
-            </h5>
-          </div>
+          </button>
         </div>
-      </ProductWrapper>
-    );
-  }
-}
+
+        {/*cart footer*/}
+        <div className="card-footer d-flex justify-content-between">
+          <p className="align-self-center mb-0">{title}</p>
+          <h5 className="text-blue font-italic mb-0">
+            <span className="mr-1">₹</span>
+            {price}
+          </h5>
+        </div>
+      </div>
+    </ProductWrapper>
+  );
+};
+
+export default Product;
 
 Product.propTypes = {
   product: PropTypes.shape({
-    id: PropTypes.number,
+    _id: PropTypes.string,
     imgUrl: PropTypes.string,
     title: PropTypes.string,
     price: PropTypes.number,
@@ -119,7 +123,7 @@ const ProductWrapper = styled.div`
 
 &:hover{
     .card{
-        border:0.04 rem solid rgba(0,0,0,0.2);
+        border:0.04 rem sol_id rgba(0,0,0,0.2);
         box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.2);
 
     }

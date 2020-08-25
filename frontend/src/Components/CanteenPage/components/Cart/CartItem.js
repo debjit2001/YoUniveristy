@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ProductContext } from "../../../../context//CanteenContext";
 
 export default function CartItem({ item, value }) {
-  const { id, title, imgUrl, price, total, count } = item;
-  const { increment, decrement, removeItem } = value;
+  const { _id, title, imgUrl, price, total, count } = item;
+  const { increment, decrement, removeItem } = useContext(ProductContext);
   return (
     <div className="row my-2 text-capitalize text-center">
       <div className="col-10 mx-auto col-lg-2">
         <img
-          src={imgUrl}
+          src={`http://localhost:5000/${imgUrl}`}
           style={{ width: "5rem", height: "5rem" }}
           className="img-fluid"
           alt="product"
@@ -30,7 +31,7 @@ export default function CartItem({ item, value }) {
                 color: "#000000",
                 border: "0.1rem solid hsl(211, 39%, 23%)",
               }}
-              onClick={() => decrement(id)}
+              onClick={() => decrement(_id)}
             >
               -
             </span>
@@ -42,7 +43,7 @@ export default function CartItem({ item, value }) {
                 color: "#000000",
                 border: "0.1rem solid hsl(211, 39%, 23%)",
               }}
-              onClick={() => increment(id)}
+              onClick={() => increment(_id)}
             >
               +
             </span>
@@ -50,7 +51,7 @@ export default function CartItem({ item, value }) {
         </div>
       </div>
       <div className="col-10 mx-auto col-lg-2">
-        <div className="cart-icon" onClick={() => removeItem(id)}>
+        <div className="cart-icon" onClick={() => removeItem(_id)}>
           <i className="fas fa-trash"></i>
         </div>
       </div>

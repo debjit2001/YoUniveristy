@@ -18,10 +18,12 @@ app.use("/uploads", express.static("uploads")); //for making the upload folder s
 const eventRoute = require("./routes/EventRoutes");
 const lostRoute = require("./routes/LostRoutes");
 const foundRoute = require("./routes/FoundRoutes");
+const canteenRoute = require("./routes/CanteenRoutes");
 ///Route middleWare
 app.use("/event", eventRoute);
 app.use("/lost", lostRoute);
 app.use("/found", foundRoute);
+app.use("/canteen", canteenRoute);
 
 app.get("/", (req, res) => {
   res.send("<h1>Hello World</h1>");

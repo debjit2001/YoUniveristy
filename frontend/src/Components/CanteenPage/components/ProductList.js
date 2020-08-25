@@ -1,46 +1,42 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import Product from "./Product";
-import { ProductConsumer } from "../context";
+import { ProductContext } from "../../../context/CanteenContext";
 import { Link } from "react-router-dom";
 import { ButtonContainer } from "./Button";
 import "../CanteenPage.css";
 
-export default class ProductList extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <Link to="/canteenCart" className="ml-auto">
-          <ButtonContainer>
-            <span className="mr-2">
-              <i className="fas fa-cart-plus" />
-            </span>
-            My Cart
-          </ButtonContainer>
-        </Link>
-        <br />
+const ProductList = () => {
+  const { storeProducts } = useContext(ProductContext);
+  return (
+    <>
+      <Link to="/canteenCart" className="ml-auto">
         <ButtonContainer>
           <span className="mr-2">
-            <i className="far fa-laugh-beam" />
+            <i className="fas fa-cart-plus" />
           </span>
-          log in
+          My Cart
         </ButtonContainer>
-        {/* bhsj */}
-        <div className="py-5">
-          <div className="container">
-            <h2 className="title">Food Items</h2>
+      </Link>
+      <br />
+      <ButtonContainer>
+        <span className="mr-2">
+          <i className="far fa-laugh-beam" />
+        </span>
+        log in
+      </ButtonContainer>
+      <div className="py-5">
+        <div className="container">
+          <h2 className="title">Food Items</h2>
 
-            <div className="row">
-              <ProductConsumer>
-                {(value) => {
-                  return value.products.map((product) => {
-                    return <Product key={product.id} product={product} />;
-                  });
-                }}
-              </ProductConsumer>
-            </div>
+          <div className="row">
+            {storeProducts.map((product) => (
+              <Product key={product._id} product={product} />
+            ))}
           </div>
         </div>
-      </React.Fragment>
-    );
-  }
-}
+      </div>
+    </>
+  );
+};
+
+export default ProductList;

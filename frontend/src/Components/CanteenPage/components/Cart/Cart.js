@@ -1,34 +1,27 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import CartColumns from "./CartColumns";
 import EmptyCart from "./EmptyCart";
-import { ProductConsumer } from "../../context";
+import { ProductContext } from "../../../../context/CanteenContext";
 import CartList from "./CartList";
 import CartTotals from "./CartTotals";
 
-export default class Cart extends Component {
-  render() {
-    return (
-      <section>
-        <ProductConsumer>
-          {(value) => {
-            const { cart } = value;
-            if (cart.length > 0) {
-              return (
-                <React.Fragment>
-                  <h2 className="title">Your Cart</h2>
-                  <CartColumns />
-                  <CartList value={value} />
-                  <CartTotals value={value} />
-                </React.Fragment>
-              );
-            } else {
-              return <EmptyCart />;
-            }
-          }}
-        </ProductConsumer>
+const Cart = () => {
+  const { cart } = useContext(ProductContext);
 
-        {/* <EmptyCart/> */}
-      </section>
-    );
-  }
-}
+  return (
+    <section>
+      {cart.length > 0 ? (
+        <React.Fragment>
+          <h2 className="title">Your Cart</h2>
+          <CartColumns />
+          <CartList value={cart} />
+          <CartTotals value={cart} />
+        </React.Fragment>
+      ) : (
+        <EmptyCart />
+      )}
+    </section>
+  );
+};
+
+export default Cart;

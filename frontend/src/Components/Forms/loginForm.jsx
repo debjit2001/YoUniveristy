@@ -14,6 +14,7 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    setIsTeacherAuth(true);
     // axios
     //   .post("http://localhost:8000/api/login/", { username, password })
     //   .then((res) => {
