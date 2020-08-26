@@ -1,19 +1,17 @@
 .imgContainer {
-  border: 2px;
-  border-style: outset;
-  margin: 2em 10%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  min-width: 20%;
-  min-width: 50%;
-  max-width: 100%;
-}
-.textContainer {
-  border: 2px;
-  margin: 2em 10%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 80%;
+  z-index: 1;
+  /* overflow: scroll; */
 }
 
-img {
-  max-width: 100%;
+.imgContainer img {
+  height: 98vh;
+  width: 103vw;
+  opacity: 0.5;
 }
 
 /*dark mode*/

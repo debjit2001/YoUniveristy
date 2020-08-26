@@ -1,60 +1,78 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import styles from "./Navbar.module.css";
-import { Link } from "react-router-dom";
-class Navbar extends Component {
-  state = {
-    isOpen: false,
-  };
+// import { Link } from "react-router-dom";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+} from "reactstrap";
 
-  handleClick = () => {
-    console.log("Navbar -> handleClick -> handleClick");
-    const { isOpen } = this.state;
-    console.log("Navbar -> handleClick -> isOpen", isOpen);
+const NavigationBar = () => {
+  const [collapsed, setCollapsed] = useState(true);
 
-    this.setState({
-      isOpen: !isOpen,
-    });
+  const toggleNavbar = () => {
+    setCollapsed(!collapsed);
   };
-  render() {
-    let { isOpen } = this.state;
-    let className = isOpen ? styles.Menushow : styles.Menuhidden;
-    return (
-      <div className={styles.Navbar}>
-        <div className={styles.homeBtn}>
-          <Link to="/">
-            <i className="fa fa-home" aria-hidden="true"></i>
-          </Link>
-        </div>
-        <div className={styles.pageLink}>
-          <div className={styles.Event}>
-            <Link to="/event">Events</Link>
-          </div>
-          <div className={styles.Lost}>
-            <Link to="/lostfound">Lost and found</Link>
-          </div>
-          <div className={styles.Attendance}>
-            <Link to="/attendance">Attendance</Link>
-          </div>
-          <div className={styles.Canteen}>
-            <Link to="/canteen">Canteen</Link>
-          </div>
-        </div>
-        <label htmlFor="check" className={styles.menuHandler}>
-          <i
-            className="fa fa-bars"
-            aria-hidden="true"
-            onClick={() => this.handleClick()}
-          ></i>
-        </label>
-        <div className={className} onClick={this.handleClick}>
-          <Link to="/">home</Link>
-          <Link to="/event">Events</Link>
-          <Link to="/lostfound">Lost and found</Link>
-          <Link to="/attendance">Attendance</Link>
-          <Link to="/canteen">Canteen</Link>
-        </div>
-      </div>
-    );
-  }
-}
-export default Navbar;
+  const navLinkStyle = { color: "#fff", fontSize: 20 };
+
+  return (
+    <div>
+      <Navbar color="white" light>
+        <NavbarBrand
+          href="/"
+          className="mr-auto"
+          style={{ marginLeft: 0, float: "left" }}
+        >
+          <img
+            src="/assets/img/makaut-logo-1024x256_final.png"
+            className={styles.headerImg}
+            alt="uniLogo"
+          />
+        </NavbarBrand>
+        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+        <Collapse isOpen={!collapsed} navbar>
+          <Nav
+            style={{
+              display: "block",
+              flexBasis: "100%",
+              flexGrow: 1,
+              backgroundColor: "#020031",
+              color: "#fff",
+              width: "100vw",
+              alignContent: "center",
+              marginLeft: "-20px",
+              marginBottom: "-8px",
+              marginTop: "8px",
+            }}
+          >
+            <NavItem>
+              <NavLink className={styles.navLink} href="/event">
+                Event
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className={styles.navLink} href="/lostFound">
+                Lost and Found
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className={styles.navLink} href="/attendance">
+                Attendance
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className={styles.navLink} href="/canteen">
+                Canteen
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </div>
+  );
+};
+export default NavigationBar;

@@ -1,106 +1,13 @@
-body {
-  scroll-padding-top: 21%;
+.headerImg {
+  height: 60px;
+  width: 250px;
 }
 
-.Navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  /* background-color: #32cd32; */
-  background-color: #3cc078;
-  line-height: 60px;
+.navLink {
+  color: #fff;
   font-size: 20px;
-  font-weight: 600;
-  text-transform: uppercase;
-  width: 100%;
-  z-index: 99999;
 }
 
-a {
-  text-decoration: none;
-  color: #ffff;
-  /* border-radius: 3px; */
-  cursor: pointer;
-}
-
-a:hover {
-  text-decoration: none;
-  color: #fdfffc;
-  font-weight: 800;
-}
-
-.homeBtn {
-  width: 10%;
-  padding-left: 0;
-  margin: 0 0 0 5px;
-  text-align: left;
-  font-size: 40px;
-}
-.pageLink {
-  display: flex;
-  justify-content: space-between;
-  flex-grow: 1;
-  margin: 0 3%;
-}
-.Canteen {
-  text-align: center;
-}
-.Menushow,
-.Menuhidden {
-  display: none;
-  /* position: absolute; */
-}
-.menuHandler {
-  display: none;
-  margin-left: 10px;
-  cursor: pointer;
-  color: #ffff;
-}
-@media only screen and (max-width: 685px) {
-  .Navbar {
-    width: 100%;
-  }
-  .homeBtn {
-    display: none;
-  }
-  .pageLink {
-    display: none;
-  }
-  .menuHandler {
-    display: block;
-  }
-  .Menuhidden {
-    background-color: #7c9dbd;
-    display: block;
-    position: fixed;
-    height: 100vh;
-    left: -100%;
-    width: 100%;
-    top: 60px;
-    transition: all 0.5s;
-  }
-  .Menuhidden a {
-    display: block;
-  }
-  .Menushow {
-    background-color: #05386b;
-    display: block;
-    position: fixed;
-    height: 100vh;
-    left: 0;
-    width: 100%;
-    top: 60px;
-    transition: all 0.5s;
-  }
-  .Menushow a {
-    display: block;
-  }
-  .Menushow a:focus {
-    color: rgb(0, 150, 0);
-    outline: none;
-    font-weight: bolder;
-  }
+.navLink:hover {
+  color: #f6783a;
 }
