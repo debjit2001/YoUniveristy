@@ -17,7 +17,6 @@ const NavigationBar = () => {
   const toggleNavbar = () => {
     setCollapsed(!collapsed);
   };
-  const navLinkStyle = { color: "#fff", fontSize: 20 };
 
   return (
     <div>
