@@ -15,7 +15,6 @@ const EventListPage = (props) => {
       setIsLoading(false);
       setEventList(res.data);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const _onEventClick = (eventItem) => {

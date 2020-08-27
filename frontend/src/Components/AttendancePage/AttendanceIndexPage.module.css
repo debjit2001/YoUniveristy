@@ -10,7 +10,6 @@
   text-align: center;
   color: hsl(205, 86%, 17%);
   padding: 20px;
-  /* font-weight: bolder; */
   font-family: "Bangers", cursive;
   font-size: 1.5rem;
 }
@@ -22,7 +21,6 @@
   top: 50%;
   left: 50%;
   width: 65%;
-  box-shadow: darkslategray;
   transform: translate(-50%, -50%);
   background: #f2f2f2;
   border-radius: 5px;
@@ -47,8 +45,9 @@
   border-radius: 0.5rem;
 }
 .btn:hover {
-  color: #fff;
-  background: #c59d5f;
+  color: #f6783a;
+  background: #020031;
+  border: 2px solid #f6783a;
 }
 
 @media screen and (max-width: 600px) {

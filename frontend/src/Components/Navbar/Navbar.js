@@ -33,7 +33,7 @@ const NavigationBar = () => {
           />
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-        <Collapse isOpen={!collapsed} navbar>
+        <Collapse isOpen={!collapsed} navbar style={{ zIndex: 9999 }}>
           <Nav
             style={{
               display: "block",

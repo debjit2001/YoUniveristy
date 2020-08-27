@@ -16,7 +16,7 @@ const EventList = (props) => {
       setEvent(res.data);
       setEventLoaded(true);
     });
-  }, [event]);
+  }, []);
 
   if (!eventLoaded) {
     return <Skeleton count={5} width={1000} />;

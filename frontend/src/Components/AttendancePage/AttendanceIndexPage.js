@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./StudentAttendancePage.module.css";
+import styles from "./AttendanceIndexPage.module.css";
 import { Link } from "react-router-dom";
 import { button } from "react-bootstrap";
 import { useContext } from "react";

@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import styles from "./StudentAttendancePage.module.css";
+import styles from "./AttendanceIndexPage.module.css";
 import { Link } from "react-router-dom";
 
 export const StudentSemester = () => {
-  // state = {
-  //   stream: "CSE",
-  //   semester: null,
-  // };
-
   const [stream, setStream] = useState("CSE");
   const [semester, setSemester] = useState(null);
+
   const buttonStyleOdd = {
     backgroundColor: "#9ddcdc",
     borderRadius: "5rem",
