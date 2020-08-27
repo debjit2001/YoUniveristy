@@ -19,15 +19,7 @@ const HomePage = () => {
 
   return (
     <div>
-      {/* <DarkMode /> */}
-      <div className={styles.imgContainer}>
-        {renderSpinner()}
-        <img
-          src="/assets/img/muzammil-soorma-9MByoiBNN1c-unsplash.jpg"
-          alt="collegePic"
-          onLoad={() => handleImageLoaded()}
-        />
-      </div>
+      <h3>HomePage</h3>
     </div>
   );
 };
