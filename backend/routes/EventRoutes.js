@@ -56,16 +56,37 @@ router.get("/", async (req, res) => {
   }
 });
 
-//fetch single event
-router.get("/:id", async (req, res) => {
-  try {
-    const event = await Events.findById(req.params.id);
-    res.json(event);
-  } catch (err) {
-    res.status(500).json({
-      msg: err.message,
+//desc:fetch single event by id
+//METHOD:GET
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+  Events.findOne({ _id: id })
+    .exec()
+    .then((searchedEvent) => {
+      if (searchedEvent) {
+        console.log(`Event Found with id : ${id}`, searchedEvent);
+        res.status(200).json({
+          message: `Event Found with id : ${id}`,
+          searchedEvent: searchedEvent,
+        });
+      } else {
+        console.log(`No event Found with id : ${id}`);
+        res.status(404).json({
+          message: `No event Found with id : ${id}`,
+          searchedEvent: null,
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(
+        `Error occured while searching for event with id:${id}`,
+        error
+      );
+      res.status(500).json({
+        message: `Error occured while searching for event with id:${id}`,
+        searchedEvent: null,
+      });
     });
-  }
 });
 
 module.exports = router;
