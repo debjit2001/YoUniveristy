@@ -45,17 +45,22 @@ router.post("/", upload.single("eventImage"), async (req, res) => {
 });
 
 //fetch all the events
-router.get("/", async (req, res) => {
-  try {
-    const events = await Events.find();
-    res.json(events);
-  } catch (err) {
-    res.status(500).json({
-      msg: err.message,
+router.get("/", (req, res) => {
+  Events.find()
+    .exec()
+    .then((events) => {
+      if (events.length) {
+        console.log("Events Found!!!");
+        res.status(200).json({ events: events });
+      } else {
+        console.log("No events found");
+        res.status(404).json({ events: [] });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ events: [] });
     });
-  }
 });
-
 //desc:fetch single event by id
 //METHOD:GET
 router.get("/:id", (req, res) => {
