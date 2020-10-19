@@ -13,7 +13,7 @@ const EventList = (props) => {
     const _id = props.match.params.id;
     axios.get(`${IP}/event/${_id}`).then((res) => {
       console.log("res.data:>>", res.data);
-      setEvent(res.data);
+      setEvent(res.data.searchedEvent);
       setEventLoaded(true);
     });
   }, []);

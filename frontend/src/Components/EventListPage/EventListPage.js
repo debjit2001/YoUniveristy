@@ -13,7 +13,7 @@ const EventListPage = (props) => {
   useEffect(() => {
     axios.get(`${IP}/event`).then((res) => {
       setIsLoading(false);
-      setEventList(res.data);
+      setEventList(res.data.events);
     });
   }, []);
 
