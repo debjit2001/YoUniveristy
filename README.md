@@ -1,1 +1,1 @@
-# Smart-University-Mern
+# YoUniversity
