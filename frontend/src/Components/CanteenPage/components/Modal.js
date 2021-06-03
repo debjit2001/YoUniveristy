@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { ProductContext } from "../../../context/CanteenContext";
+import { ProductContext } from "../../../global/CanteenContext";
 import { ButtonContainer } from "./Button";
 import { Link } from "react-router-dom";
 

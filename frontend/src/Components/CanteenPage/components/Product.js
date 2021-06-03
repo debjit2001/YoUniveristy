@@ -1,22 +1,17 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { ProductContext } from "../../../context/CanteenContext";
+import { ProductContext } from "../../../global/CanteenContext";
 import Tippy from "@tippy.js/react";
 import PropTypes from "prop-types";
 
 const Product = ({ product }) => {
   // console.log("Product -> price", price);
-  const {
-    handleDetail,
-    addToCart,
-    openModal,
-    decrement,
-    increment,
-  } = useContext(ProductContext);
+  const { handleDetail, addToCart, openModal, decrement, increment } =
+    useContext(ProductContext);
   const { _id, price, inCart, count, imgUrl, title } = product;
   return (
-    //ProductWrapper is a styled component(go down this js file to know more) not related to context
+    //ProductWrapper is a styled component(go down this js file to know more) not related to global
     <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
       <div className="card">
         <div

@@ -3,12 +3,11 @@ import styles from "./AttendanceIndexPage.module.css";
 import { Link } from "react-router-dom";
 import { button } from "react-bootstrap";
 import { useContext } from "react";
-import { LoginContext } from "../../context/LoginContext";
+import { LoginContext } from "../../global/LoginContext";
 
 const Attendance = () => {
-  const { isTeacherAuth, setIsTeacherAuth, teacherID, pwd } = useContext(
-    LoginContext
-  );
+  const { isTeacherAuth, setIsTeacherAuth, teacherID, pwd } =
+    useContext(LoginContext);
 
   if (teacherID && pwd) {
     setIsTeacherAuth(true);

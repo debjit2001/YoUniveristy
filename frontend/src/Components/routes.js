@@ -22,7 +22,7 @@ import Cart from "./CanteenPage/components/Cart/Cart";
 import Modal from "./CanteenPage/components/Modal";
 import Default from "./Default";
 import Login from "./Forms/loginForm";
-import { LoginContext } from "../context/LoginContext";
+import { LoginContext } from "../global/LoginContext";
 import Teacher from "./AttendancePage/Teacher/TeacherWelcomeScreen";
 
 const BaseRouter = (props) => {
