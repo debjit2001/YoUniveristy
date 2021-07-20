@@ -142,13 +142,13 @@ export default class Lost extends React.Component {
     return (
       <React.Fragment>
         <Tippy
-          content="Lost Form click here"
+          content="Found Form click here"
           delay={200}
           placement="bottom"
           theme="honeybee"
         >
           <Button onClick={this.onOpenModal} variant="primary" size="lg" block>
-            LOST FORM
+            FOUND FORM
           </Button>
         </Tippy>
         <Modal open={open} onClose={this.onCloseModal} center>
