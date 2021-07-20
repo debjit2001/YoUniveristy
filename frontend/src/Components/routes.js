@@ -13,8 +13,8 @@ import EventDetails from "./EventListPage/EventDetails/EventDetails";
 import LostFoundPage from "./LostFoundPage/LostFoundPage";
 import Lost from "./LostFoundPage/LostItems/Lost";
 import Found from "./LostFoundPage/FoundItems/Found";
-import AttendancePage from "./AttendancePage/StudentAttendanceDetails.js";
-import Attendance from "./AttendancePage/Attendance";
+import AttendancePage from "./AttendancePage/StudentAttendanceDetails";
+import Attendance from "./AttendancePage/AttendanceIndexPage";
 import StudentSemester from "./AttendancePage/StudentSemester";
 import ProductList from "./CanteenPage/components/ProductList";
 import Details from "./CanteenPage/components/Details";
@@ -22,7 +22,7 @@ import Cart from "./CanteenPage/components/Cart/Cart";
 import Modal from "./CanteenPage/components/Modal";
 import Default from "./Default";
 import Login from "./Forms/loginForm";
-import { LoginContext } from "../context/LoginContext";
+import { LoginContext } from "../global/LoginContext";
 import Teacher from "./AttendancePage/Teacher/TeacherWelcomeScreen";
 
 const BaseRouter = (props) => {

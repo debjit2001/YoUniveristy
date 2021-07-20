@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./EventCardPage.module.css";
 import { Spinner } from "react-bootstrap";
 import { useState } from "react";
-const EventCardPage = (props) => {
+const EventCardPage = ({ event }) => {
   const [isLoading, setIsLoading] = useState(true);
   const renderSpinner = () => {
     if (isLoading) {
@@ -14,7 +14,6 @@ const EventCardPage = (props) => {
     setIsLoading(false);
   };
 
-  const { event } = props;
   const spinner = renderSpinner();
   return (
     <div className={styles.EventCardContainer}>

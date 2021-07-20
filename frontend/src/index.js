@@ -4,9 +4,9 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./Containers/App";
 import * as serviceWorker from "./serviceWorker";
-import { ProductProvider } from "./context/CanteenContext";
+import { ProductProvider } from "./global/CanteenContext";
 
-import { LoginProvider } from "./context/LoginContext";
+import { LoginProvider } from "./global/LoginContext";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -20,12 +20,8 @@ const NavigationBar = () => {
 
   return (
     <div>
-      <Navbar color="white" light>
-        <NavbarBrand
-          href="/"
-          className="mr-auto"
-          style={{ marginLeft: 0, float: "left" }}
-        >
+      <Navbar color="white" light className={styles.navbar}>
+        <NavbarBrand href="/" className="mr-auto">
           <img
             src="/assets/img/makaut-logo-1024x256_final.png"
             className={styles.headerImg}
@@ -33,21 +29,8 @@ const NavigationBar = () => {
           />
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-        <Collapse isOpen={!collapsed} navbar>
-          <Nav
-            style={{
-              display: "block",
-              flexBasis: "100%",
-              flexGrow: 1,
-              backgroundColor: "#020031",
-              color: "#fff",
-              width: "100vw",
-              alignContent: "center",
-              marginLeft: "-20px",
-              marginBottom: "-8px",
-              marginTop: "8px",
-            }}
-          >
+        <Collapse isOpen={!collapsed} navbar style={{ zIndex: 9999 }}>
+          <Nav className={styles.navDropDown}>
             <NavItem>
               <NavLink className={styles.navLink} href="/event">
                 Event

@@ -30,7 +30,7 @@ const upload = multer({
 });
 
 //route for posting form
-router.post("/", upload.single("foundItemImage"), async (req, res) => {
+router.post("/", upload.single("foundItemImage"), (req, res) => {
   const foundItem = new Found({
     name: req.body.name,
     email: req.body.email,
@@ -39,12 +39,6 @@ router.post("/", upload.single("foundItemImage"), async (req, res) => {
     foundItemImage: req.file.path,
     foundItemDetails: req.body.foundItemDetails,
   });
-  try {
-    const found = await foundItem.save();
-    res.send(found);
-  } catch (err) {
-    res.status(400).send(err);
-  }
 });
 
 //fetch all the events

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../../../../context//CanteenContext";
+import { ProductContext } from "../../../../global//CanteenContext";
 
 export default function CartItem({ item, value }) {
   const { _id, title, imgUrl, price, total, count } = item;

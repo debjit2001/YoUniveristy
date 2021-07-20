@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import styles from "../Forms/loginform.module.css";
 import { useHistory } from "react-router";
-import { LoginContext } from "../../context/LoginContext";
+import { LoginContext } from "../../global/LoginContext";
 import axios from "axios";
 // import firebase from "../../firebase/config/config";
 

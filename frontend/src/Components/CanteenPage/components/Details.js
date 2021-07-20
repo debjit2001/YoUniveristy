@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../../../context/CanteenContext";
+import { ProductContext } from "../../../global/CanteenContext";
 import { Link } from "react-router-dom";
 import { ButtonContainer } from "./Button";
 

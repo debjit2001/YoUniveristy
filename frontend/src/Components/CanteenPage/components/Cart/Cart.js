@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import CartColumns from "./CartColumns";
 import EmptyCart from "./EmptyCart";
-import { ProductContext } from "../../../../context/CanteenContext";
+import { ProductContext } from "../../../../global/CanteenContext";
 import CartList from "./CartList";
 import CartTotals from "./CartTotals";
 

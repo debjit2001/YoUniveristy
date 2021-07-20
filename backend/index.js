@@ -4,6 +4,10 @@ const connectDB = require("./config/db");
 
 const app = express();
 
+//morgan config
+const morgan = require("morgan");
+app.use(morgan("dev"));
+
 //connecting to mongoDb
 connectDB();
 
