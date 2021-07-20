@@ -15,7 +15,7 @@ const Cart = () => {
           <h2 className="title">Your Cart</h2>
           <CartColumns />
           <CartList value={cart} />
-          <CartTotals value={cart} />
+          <CartTotals />
         </React.Fragment>
       ) : (
         <EmptyCart />

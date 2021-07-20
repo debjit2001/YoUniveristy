@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ProductContext } from "../../../../global/CanteenContext";
 
-export default function CartTotals({ value }) {
-  const { cartSubTotal, cartTax, cartTotal, clearCart, placeOrder } = value;
+export default function CartTotals() {
+  const { cartSubTotal, cartTax, cartTotal, clearCart, placeOrder } =
+    useContext(ProductContext);
 
   return (
     <React.Fragment>

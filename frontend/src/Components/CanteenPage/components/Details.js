@@ -5,7 +5,7 @@ import { ButtonContainer } from "./Button";
 
 const Details = () => {
   const { detailProduct, addToCart, openModal } = useContext(ProductContext);
-  console.log("Details -> detailProduct", typeof detailProduct);
+  console.log("Details -> detailProduct", detailProduct);
 
   return (
     <div className="container py-2">
@@ -25,28 +25,22 @@ const Details = () => {
         </div>
         {/*product text*/}
         <div className="col-10 mx-auto col-md-6 my-2 ">
-          {/* <h1>{title}</h1> */}
           <h4 className="text-blue">
             <strong>
               price: <span>₹</span>
               {detailProduct.price}
             </strong>
           </h4>
-          {/* <p className="text-capitalize font-weight-bold mt-3 mb-0">
-                    some info about the food item:
-                  </p> */}
           <p className="text-muted lead">{detailProduct.itemDetails}</p>
-          {/*buttons*/}
           <div>
             <Link to="/canteen">
               <ButtonContainer>Back to Product List</ButtonContainer>
             </Link>
-            {/* <Link to="/canteenCart"> */}
             <ButtonContainer
               disabled={detailProduct.inCart ? true : false}
               onClick={() => {
-                addToCart(detailProduct.id);
-                openModal(detailProduct.id);
+                addToCart(detailProduct._id);
+                openModal(detailProduct._id);
               }}
             >
               {detailProduct.inCart

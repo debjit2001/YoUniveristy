@@ -113,14 +113,6 @@ export const ProductProvider = ({ children }) => {
       product.total = product.count * product.price;
       setCart([...tempCart]);
       addTotals();
-      // setState(
-      //   () => {
-      //     return { cart: [...tempCart] };
-      //   },
-      //   () => {
-      //     addTotals();
-      //   }
-      // );
     }
   };
   const removeItem = (id) => {
@@ -135,17 +127,6 @@ export const ProductProvider = ({ children }) => {
     setCart([...tempCart]);
     setStoreProducts([...tempProducts]);
     addTotals();
-    // setState(
-    //   () => {
-    //     return {
-    //       cart: [...tempCart],
-    //       storeProducts: [...tempProducts],
-    //     };
-    //   },
-    //   () => {
-    //     addTotals();
-    //   }
-    // );
   };
   const placeOrder = () => {
     // function pick(obj, keys) {
@@ -194,20 +175,13 @@ export const ProductProvider = ({ children }) => {
     //   }
     // );
   };
+
   const clearCart = () => {
-    setCart([]);
-    // setProducts();
-    addTotals();
-    // setState(
-    //   () => {
-    //     return { cart: [] };
-    //   },
-    //   () => {
-    //     setProducts();
-    //     addTotals();
-    //   }
-    // );
+    cart.forEach((cartProduct, index) => {
+      removeItem(cartProduct._id);
+    });
   };
+
   const addTotals = () => {
     let subTotal = 0;
     cart.map((item) => (subTotal += item.total));
@@ -217,20 +191,11 @@ export const ProductProvider = ({ children }) => {
     setCartSubTotal(subTotal);
     setCartTax(tax);
     setCartTotal(total);
-
-    // setState(() => {
-    //   return {
-    //     cartSubTotal: subTotal,
-    //     cartTax: tax,
-    //     cartTotal: total,
-    //   };
-    // });
   };
 
   return (
     <ProductContext.Provider
       value={{
-        // storeProducts: storeProducts,
         cart: cart,
         detailProduct: detailProduct,
         modalOpen: modalOpen,
@@ -239,7 +204,6 @@ export const ProductProvider = ({ children }) => {
         cartTax: cartTax,
         cartTotal: cartTotal,
         storeProducts: storeProducts,
-        // setStoreProducts: setStoreProducts,
         setCart: setCart,
         setDetailProduct: setDetailProduct,
         setModalOpen: setModalOpen,
