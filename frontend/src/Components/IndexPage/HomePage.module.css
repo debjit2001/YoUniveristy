@@ -76,3 +76,12 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.wrapper {
+  width: 100%;
+}
+
+.ladingImage {
+  width: 100%;
+  height: 100vh;
+}

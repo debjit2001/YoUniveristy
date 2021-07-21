@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import styles from "./HomePage.module.css";
 // import DarkMode from "./DarkMode";
@@ -6,20 +6,21 @@ import styles from "./HomePage.module.css";
 const HomePage = () => {
   const [loading, setLoading] = useState(true);
 
-  const renderSpinner = () => {
-    if (loading) {
-      return <Spinner animation="grow" role="status" />;
-    }
-    return null;
-  };
-
-  const handleImageLoaded = () => {
+  useEffect(() => {
     setLoading(false);
-  };
+  }, []);
 
   return (
-    <div>
-      <h3>HomePage</h3>
+    <div className={styles.wrapper}>
+      {loading ? (
+        <Spinner animation="grow" role="status" />
+      ) : (
+        <img
+          src="/assets/img/landing-image-large.jpg"
+          alt="Landing page photo"
+          className={styles.ladingImage}
+        />
+      )}
     </div>
   );
 };
