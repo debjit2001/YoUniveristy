@@ -1,13 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import "react-responsive-modal/styles.css";
-import LostItemsDisplay from "./LostItemsDisplay";
 import Tippy from "@tippy.js/react";
 import "tippy.js/dist/tippy.css";
 import axios from "axios";
+import { Spinner } from "reactstrap";
 import { IP } from "../../../IPDetails";
 import styles from "../LostFoundPage.module.css";
 import Form from "../Form";
+import ItemCard from "../ItemCard";
 
 const Lost = () => {
   const [open, setOpen] = useState(false);
@@ -88,7 +89,21 @@ const Lost = () => {
         LOST ITEMS HERE...
       </h2>
       <br />
-      <LostItemsDisplay lostItems={prevLostItems} />
+      {Object.keys(prevLostItems).length ? (
+        prevLostItems.map((post, index) => (
+          <ItemCard
+            key={index}
+            imgURL={post.lostItemImage}
+            itemName={post.itemName}
+            date={post.lostDate}
+            itemDetails={post.lostIemDetails}
+            authorName={post.name}
+            authorEmail={post.email}
+          />
+        ))
+      ) : (
+        <Spinner role="grow" />
+      )}
     </Fragment>
   );
 };
