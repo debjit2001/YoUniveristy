@@ -6,7 +6,6 @@ import Tippy from "@tippy.js/react";
 import PropTypes from "prop-types";
 
 const Product = ({ product }) => {
-  // console.log("Product -> price", price);
   const { handleDetail, addToCart, openModal, decrement, increment } =
     useContext(ProductContext);
   const { _id, price, inCart, count, imgUrl, title } = product;
