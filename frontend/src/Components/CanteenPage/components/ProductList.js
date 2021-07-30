@@ -18,12 +18,12 @@ const ProductList = () => {
         </ButtonContainer>
       </Link>
       <br />
-      <ButtonContainer>
+      {/* <ButtonContainer>
         <span className="mr-2">
           <i className="far fa-laugh-beam" />
         </span>
         log in
-      </ButtonContainer>
+      </ButtonContainer> */}
       <div className="py-5">
         <div className="container">
           <h2 className="title">Food Items</h2>
