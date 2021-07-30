@@ -73,7 +73,7 @@ const Lost = () => {
   }, [formData]);
 
   return (
-    <Fragment>
+    <div className={styles.wrapper}>
       <Tippy
         content="Lost Form click here"
         delay={200}
@@ -104,7 +104,7 @@ const Lost = () => {
       ) : (
         <Spinner role="grow" />
       )}
-    </Fragment>
+    </div>
   );
 };
 

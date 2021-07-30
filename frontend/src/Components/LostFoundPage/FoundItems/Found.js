@@ -3,11 +3,12 @@ import { Button } from "react-bootstrap";
 import "react-responsive-modal/styles.css";
 import Tippy from "@tippy.js/react";
 import "tippy.js/dist/tippy.css";
-import FoundItemsDisplay from "./FoundItemsDisplay";
 import axios from "axios";
+import { Spinner } from "reactstrap";
 import { IP } from "../../../IPDetails";
 import styles from "../LostFoundPage.module.css";
 import Form from "../Form";
+import ItemCard from "../ItemCard";
 
 const Found = () => {
   const [open, setOpen] = useState(false);
@@ -65,6 +66,7 @@ const Found = () => {
         console.log(error);
       });
   };
+
   useEffect(() => {
     _fetchNewFoundHandler();
   }, []);
@@ -76,7 +78,7 @@ const Found = () => {
   }, [formData]);
 
   return (
-    <React.Fragment>
+    <div className={styles.wrapper}>
       <Tippy
         content="Found Form click here"
         delay={200}
@@ -89,11 +91,34 @@ const Found = () => {
       </Tippy>
       <Form open={open} onCloseModal={onCloseModal} setFormData={setFormData} />
       <h2 style={{ textAlign: "center" }} className={styles.heading}>
-        FOUND ITEMS HERE...
+        {Object.keys(prevFoundItems).length
+          ? "LIST OF FOUND ITEMS"
+          : "Fetching The Items..."}
       </h2>
-      <br />
-      <FoundItemsDisplay prevFoundItems={prevFoundItems} />
-    </React.Fragment>
+      <div
+        className={
+          Object.keys(prevFoundItems).length
+            ? styles.itemList
+            : styles.emptyList
+        }
+      >
+        {Object.keys(prevFoundItems).length ? (
+          prevFoundItems.map((post, index) => (
+            <ItemCard
+              key={index}
+              imgURL={post.foundItemImage}
+              itemName={post.itemName}
+              date={post.foundDate}
+              itemDetails={post.foundItemDetails}
+              authorName={post.name}
+              authorEmail={post.email}
+            />
+          ))
+        ) : (
+          <Spinner role="grow" />
+        )}
+      </div>
+    </div>
   );
 };
 
