@@ -76,4 +76,28 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const product = await CanteenProduct.findById(req.params.id);
+    if (product) {
+      CanteenProduct.updateOne(
+        { _id: req.params.id },
+        req.body,
+        (err, data) => {
+          if (err) res.status(500).json({ msg: "Can't update" });
+          if (data) res.status(200).json({ msg: "Update successful", data });
+        }
+      );
+    } else {
+      res.status(400).json({
+        msg: "No product found",
+      });
+    }
+  } catch (err) {
+    console.log(
+      "🚀 ~ file: CanteenRoutes.js ~ line 84 ~ router.put ~ err",
+      err
+    );
+  }
+});
 module.exports = router;
