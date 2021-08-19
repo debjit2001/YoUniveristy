@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,6 +26,12 @@ import { LoginContext } from "../global/LoginContext";
 import Teacher from "./AttendancePage/Teacher/TeacherWelcomeScreen";
 
 const BaseRouter = (props) => {
+  useEffect(() => {
+    let pathName = window.location.pathname.replace("/", "").toUpperCase();
+    document.title = `${pathName} ${
+      pathName.length ? "-" : ""
+    } Smart University App`;
+  }, []);
   return (
     <Router>
       <NavBar />
