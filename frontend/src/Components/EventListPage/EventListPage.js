@@ -10,6 +10,8 @@ const EventListPage = (props) => {
   const [eventList, setEventList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     axios.get(`${IP}/event`).then((res) => {
       setIsLoading(false);
@@ -25,8 +27,16 @@ const EventListPage = (props) => {
     props.history.push(`event/${eventID}`);
   };
 
+  //create event create handler method
+  const modalClickHandler = () => {
+    console.log("Modal Open? :>>", isModalOpen);
+  };
+
   return (
     <div className={styles.EventContainer}>
+      <button className={styles.createEventButton}>
+        <img src="/assets/icons/plus.svg" alt="create" />
+      </button>
       {!isLoading ? (
         eventList && eventList.length ? (
           eventList.map((eve, index) => (
