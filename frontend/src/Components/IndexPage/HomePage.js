@@ -17,7 +17,7 @@ const HomePage = () => {
       ) : (
         <img
           src="/assets/img/landing-image-large.jpg"
-          alt="Landing page photo"
+          alt="YoUniversity"
           className={styles.ladingImage}
         />
       )}
