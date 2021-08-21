@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "./EventListPage.module.css";
 import { Spinner } from "reactstrap";
 import Tippy from "@tippy.js/react";
+
 import { IP } from "../../IPDetails";
-import { useState, useEffect } from "react";
+
+import styles from "./EventListPage.module.css";
+import EventCreateForm from "./EventCreateForm";
 
 const EventListPage = (props) => {
   const [eventList, setEventList] = useState([]);
@@ -30,13 +32,20 @@ const EventListPage = (props) => {
   //create event create handler method
   const modalClickHandler = () => {
     console.log("Modal Open? :>>", isModalOpen);
+    setIsModalOpen(!isModalOpen);
   };
 
   return (
     <div className={styles.EventContainer}>
-      <button className={styles.createEventButton}>
-        <img src="/assets/icons/plus.svg" alt="create" />
+      <button className={styles.createEventButton} onClick={modalClickHandler}>
+        <img
+          src={`/assets/icons/${isModalOpen ? "close" : "plus"}.svg`}
+          alt="create"
+        />
       </button>
+      {isModalOpen && (
+        <EventCreateForm open={isModalOpen} onCloseModal={modalClickHandler} />
+      )}
       {!isLoading ? (
         eventList && eventList.length ? (
           eventList.map((eve, index) => (
