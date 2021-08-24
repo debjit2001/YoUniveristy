@@ -41,7 +41,6 @@ router.post("/", upload.single("lostItemImage"), (req, res) => {
     !lostItemDetails ||
     req.file === undefined
   ) {
-    console.log("Invalid request,Please fill in all the fields");
     res.status(400).json({ newLostEntry: null });
   } else {
     const newLostItem = new Lost({
@@ -56,11 +55,9 @@ router.post("/", upload.single("lostItemImage"), (req, res) => {
     newLostItem
       .save()
       .then((newEntry) => {
-        console.log("newEntry----->", newEntry);
         res.status(200).json({ newLostEntry: newEntry });
       })
       .catch((err) => {
-        console.log("ERROR!", err);
         res.status(500).json({ newLostEntry: null });
       });
   }
@@ -73,15 +70,12 @@ router.get("/", (req, res) => {
     .exec()
     .then((lostItems) => {
       if (lostItems && lostItems.length) {
-        console.log("-----Lost Entries found-----", lostItems);
         res.status(200).json({ lostItems: lostItems });
       } else {
-        console.log("-----Lost Entries found-----", lostItems);
         res.status(404).json({ lostItems: lostItems });
       }
     })
     .catch((err) => {
-      console.log("Error detected", err);
       res.status(500).json({ lostItems: [] });
     });
 });
@@ -93,15 +87,12 @@ router.get("/:id", (req, res) => {
   Lost.findOne({ _id: id })
     .then((searchedLostEntry) => {
       if (searchedLostEntry) {
-        console.log(`Lost item found with id:${id}`, searchedLostEntry);
         res.status(200).json({ searchdItem: searchedLostEntry });
       } else {
-        console.log(`No item found with id:${id}`);
         res.status(404).json({ searchedItem: null });
       }
     })
     .catch((err) => {
-      console.log("Error!", err);
       res.status(500).json({ searchedItem: null });
     });
 });

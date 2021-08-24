@@ -1,26 +1,30 @@
 import React, { useState, createRef } from "react";
 
+import axios from "axios";
 import { Modal } from "react-responsive-modal";
 
 import styles from "./styles.module.css";
 
-const EventCreateForm = ({ open, onCloseModal }) => {
+import { IP } from "../../../IPDetails";
+
+const EventCreateForm = ({ open, onCloseModal, setEventCreationFlag }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [eventImage, setEventImage] = useState({});
+
   const fileInputRef = createRef();
+
   const _onChangeHandler = (e) => {
     const { name, value } = e.target;
 
     switch (name) {
       case "title":
-        setTitle(value.trim());
+        setTitle(value);
         break;
       case "description":
-        setDescription(value.trim());
+        setDescription(value);
         break;
       case "eventImage":
-        console.log(e.target);
         setEventImage(e.target.files[0]);
         break;
       default:
@@ -30,6 +34,35 @@ const EventCreateForm = ({ open, onCloseModal }) => {
 
   const _onClickHandler = () => {
     fileInputRef.current.click();
+  };
+
+  const submitBtnHandler = async () => {
+    const newEvent = new FormData();
+    newEvent.append("title", title);
+    newEvent.append("desc", description);
+    newEvent.append("eventImage", eventImage);
+
+    try {
+      const response = await axios.post(`${IP}/event/`, newEvent, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      });
+      if (response) {
+        console.log(
+          "🚀 ~ file: index.jsx ~ line 46 ~ submitBtnHandler ~ response",
+          response
+        );
+        setEventCreationFlag(true);
+        onCloseModal();
+      }
+    } catch (error) {
+      console.log(
+        "🚀 ~ file: index.jsx ~ line 53 ~ submitBtnHandler ~ error",
+        error
+      );
+      console.error("Oops!Something went wrong");
+    }
   };
 
   return (
@@ -49,6 +82,7 @@ const EventCreateForm = ({ open, onCloseModal }) => {
             className={styles.inputBox}
             onChange={_onChangeHandler}
             placeholder="Enter the title..."
+            required
           />
         </div>
         <div className={styles.inputDiv}>
@@ -60,6 +94,7 @@ const EventCreateForm = ({ open, onCloseModal }) => {
             className={styles.inputBox}
             onChange={_onChangeHandler}
             placeholder="Give a brief description..."
+            required
           />
         </div>
         <div className={styles.inputDiv}>
@@ -72,14 +107,15 @@ const EventCreateForm = ({ open, onCloseModal }) => {
           <input
             type="file"
             name="eventImage"
-            // value={eventImage}
             accept="image/*"
             ref={fileInputRef}
             className={`${styles.inputBox} ${styles.fileInput}`}
             onChange={_onChangeHandler}
           />
         </div>
-        <button className={styles.submitButton}>Create Event</button>
+        <button className={styles.submitButton} onClick={submitBtnHandler}>
+          Create Event
+        </button>
       </div>
     </Modal>
   );

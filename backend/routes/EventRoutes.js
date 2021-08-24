@@ -34,10 +34,10 @@ const upload = multer({
 
 //posting events
 router.post("/", upload.single("eventImage"), async (req, res) => {
-  console.log(req.file);
+  const { title, desc } = req.body;
   const event = new Events({
-    title: req.body.title,
-    desc: req.body.desc,
+    title,
+    desc,
     eventImage: req.file.path,
   });
   try {
@@ -54,10 +54,8 @@ router.get("/", (req, res) => {
     .exec()
     .then((events) => {
       if (events.length) {
-        console.log("Events Found!!!");
         res.status(200).json({ events: events });
       } else {
-        console.log("No events found");
         res.status(404).json({ events: [] });
       }
     })
@@ -73,13 +71,11 @@ router.get("/:id", (req, res) => {
     .exec()
     .then((searchedEvent) => {
       if (searchedEvent) {
-        console.log(`Event Found with id : ${id}`, searchedEvent);
         res.status(200).json({
           message: `Event Found with id : ${id}`,
           searchedEvent: searchedEvent,
         });
       } else {
-        console.log(`No event Found with id : ${id}`);
         res.status(404).json({
           message: `No event Found with id : ${id}`,
           searchedEvent: null,
@@ -87,10 +83,6 @@ router.get("/:id", (req, res) => {
       }
     })
     .catch((error) => {
-      console.log(
-        `Error occured while searching for event with id:${id}`,
-        error
-      );
       res.status(500).json({
         message: `Error occured while searching for event with id:${id}`,
         searchedEvent: null,

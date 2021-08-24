@@ -34,7 +34,6 @@ const upload = multer({
 
 //posting products
 router.post("/", upload.single("imgUrl"), async (req, res) => {
-  console.log(req.file);
   const product = new CanteenProduct({
     title: req.body.title,
     price: req.body.price,
@@ -55,7 +54,6 @@ router.post("/", upload.single("imgUrl"), async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const products = await CanteenProduct.find();
-    console.log("products", products);
     res.json(products);
   } catch (err) {
     res.status(500).json({

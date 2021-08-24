@@ -14,12 +14,22 @@ const EventListPage = (props) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
+  const [isEventCreated, setIsEventCreated] = useState(false);
+
+  const fetchEvent = () => {
     axios.get(`${IP}/event`).then((res) => {
       setIsLoading(false);
       setEventList(res.data.events);
     });
+  };
+
+  useEffect(() => {
+    fetchEvent();
   }, []);
+
+  useEffect(() => {
+    isEventCreated && fetchEvent();
+  }, [isEventCreated]);
 
   const _onEventClick = (eventItem) => {
     eventItem.preventDefault();
@@ -31,20 +41,17 @@ const EventListPage = (props) => {
 
   //create event create handler method
   const modalClickHandler = () => {
-    console.log("Modal Open? :>>", isModalOpen);
     setIsModalOpen(!isModalOpen);
   };
 
   return (
     <div className={styles.EventContainer}>
-      <button className={styles.createEventButton} onClick={modalClickHandler}>
-        <img
-          src={`/assets/icons/${isModalOpen ? "close" : "plus"}.svg`}
-          alt="create"
-        />
-      </button>
       {isModalOpen && (
-        <EventCreateForm open={isModalOpen} onCloseModal={modalClickHandler} />
+        <EventCreateForm
+          open={isModalOpen}
+          onCloseModal={modalClickHandler}
+          setEventCreationFlag={setIsEventCreated}
+        />
       )}
       {!isLoading ? (
         eventList && eventList.length ? (
@@ -86,6 +93,12 @@ const EventListPage = (props) => {
       ) : (
         <Spinner role="grow" />
       )}
+      <button className={styles.createEventButton} onClick={modalClickHandler}>
+        <img
+          src={`/assets/icons/${isModalOpen ? "close" : "plus"}.svg`}
+          alt="create"
+        />
+      </button>
     </div>
   );
 };
