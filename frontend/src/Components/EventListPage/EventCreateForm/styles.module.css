@@ -1,7 +1,83 @@
+.Modal {
+  border-radius: 0.5rem;
+  width: 90vw;
+}
+
 .formContainer {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
-  padding: 1.5rem;
+  padding: 2rem 0.5rem 0.5rem 0.5rem;
+}
+
+.inputDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.inputDiv label {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.inputBox {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #000;
+  font-size: 1.25rem;
+}
+
+.inputDiv input:focus {
+  border-bottom: 2px solid #000;
+}
+
+.fileInputButton {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #3faf43;
+  border: none;
+  outline: none;
+  padding: 0.5rem 0;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.fileInputButton p {
+  padding: 0;
+  margin: 0;
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileName {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.submitButton {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  background-color: #060621;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.submitButton:hover {
+  color: #f6783a;
 }

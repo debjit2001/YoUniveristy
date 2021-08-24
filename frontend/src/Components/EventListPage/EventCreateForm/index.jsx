@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
 
 import { Modal } from "react-responsive-modal";
 
@@ -8,7 +8,7 @@ const EventCreateForm = ({ open, onCloseModal }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [eventImage, setEventImage] = useState({});
-
+  const fileInputRef = createRef();
   const _onChangeHandler = (e) => {
     const { name, value } = e.target;
 
@@ -21,14 +21,24 @@ const EventCreateForm = ({ open, onCloseModal }) => {
         break;
       case "eventImage":
         console.log(e.target);
+        setEventImage(e.target.files[0]);
         break;
       default:
         break;
     }
   };
 
+  const _onClickHandler = () => {
+    fileInputRef.current.click();
+  };
+
   return (
-    <Modal open={open} onClose={onCloseModal} center>
+    <Modal
+      open={open}
+      onClose={onCloseModal}
+      classNames={{ modal: styles.Modal }}
+      center
+    >
       <div className={styles.formContainer}>
         <div className={styles.inputDiv}>
           <label htmlFor="title">Title</label>
@@ -38,6 +48,7 @@ const EventCreateForm = ({ open, onCloseModal }) => {
             value={title}
             className={styles.inputBox}
             onChange={_onChangeHandler}
+            placeholder="Enter the title..."
           />
         </div>
         <div className={styles.inputDiv}>
@@ -48,18 +59,27 @@ const EventCreateForm = ({ open, onCloseModal }) => {
             value={description}
             className={styles.inputBox}
             onChange={_onChangeHandler}
+            placeholder="Give a brief description..."
           />
         </div>
         <div className={styles.inputDiv}>
           <label htmlFor="eventImage">Upload Image</label>
+          <button className={styles.fileInputButton} onClick={_onClickHandler}>
+            <p>Attach Image</p>
+            <img src="/assets/icons/attachment.svg" alt="attach file" />
+          </button>
+          <p className={styles.fileName}>{eventImage?.name}</p>
           <input
-            type="text"
+            type="file"
             name="eventImage"
-            value={eventImage}
-            className={styles.inputBox}
+            // value={eventImage}
+            accept="image/*"
+            ref={fileInputRef}
+            className={`${styles.inputBox} ${styles.fileInput}`}
             onChange={_onChangeHandler}
           />
         </div>
+        <button className={styles.submitButton}>Create Event</button>
       </div>
     </Modal>
   );
