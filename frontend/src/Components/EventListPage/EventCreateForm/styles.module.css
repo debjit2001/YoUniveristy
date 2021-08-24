@@ -82,3 +82,21 @@
 .submitButton:hover {
   color: #f6783a;
 }
+
+@media only screen and (min-width: 600px) and (max-width: 700px) {
+  .Modal {
+    width: 75vw;
+  }
+}
+
+@media only screen and (min-width: 701px) {
+  .Modal {
+    width: 55vw;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .Modal {
+    width: 30vw;
+  }
+}
