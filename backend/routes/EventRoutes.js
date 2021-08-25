@@ -10,6 +10,7 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
+
 const fileFilter = (req, file, cb) => {
   //reject
   if (
@@ -34,17 +35,32 @@ const upload = multer({
 
 //posting events
 router.post("/", upload.single("eventImage"), async (req, res) => {
-  console.log(req.file);
-  const event = new Events({
-    title: req.body.title,
-    desc: req.body.desc,
-    eventImage: req.file.path,
-  });
-  try {
-    const newEvent = await event.save();
-    res.send(newEvent);
-  } catch (err) {
-    res.status(400).send(err);
+  const { title, desc } = req.body;
+
+  if (!title || !desc) {
+    res.status(400).json({
+      message: "Invalid Request",
+      error: "Missing Field(s)",
+    });
+  } else {
+    const event = new Events({
+      title,
+      desc,
+      eventImage: req?.file?.path || null,
+    });
+
+    try {
+      const newEvent = await event.save();
+      res.status(200).json({
+        message: "Event Created Successfully",
+        event: newEvent,
+      });
+    } catch (err) {
+      res.status(500).json({
+        message: "Something Went Wrong",
+        error: err.message,
+      });
+    }
   }
 });
 
@@ -54,10 +70,8 @@ router.get("/", (req, res) => {
     .exec()
     .then((events) => {
       if (events.length) {
-        console.log("Events Found!!!");
         res.status(200).json({ events: events });
       } else {
-        console.log("No events found");
         res.status(404).json({ events: [] });
       }
     })
@@ -65,6 +79,7 @@ router.get("/", (req, res) => {
       res.status(500).json({ events: [] });
     });
 });
+
 //desc:fetch single event by id
 //METHOD:GET
 router.get("/:id", (req, res) => {
@@ -73,13 +88,11 @@ router.get("/:id", (req, res) => {
     .exec()
     .then((searchedEvent) => {
       if (searchedEvent) {
-        console.log(`Event Found with id : ${id}`, searchedEvent);
         res.status(200).json({
           message: `Event Found with id : ${id}`,
           searchedEvent: searchedEvent,
         });
       } else {
-        console.log(`No event Found with id : ${id}`);
         res.status(404).json({
           message: `No event Found with id : ${id}`,
           searchedEvent: null,
@@ -87,10 +100,6 @@ router.get("/:id", (req, res) => {
       }
     })
     .catch((error) => {
-      console.log(
-        `Error occured while searching for event with id:${id}`,
-        error
-      );
       res.status(500).json({
         message: `Error occured while searching for event with id:${id}`,
         searchedEvent: null,

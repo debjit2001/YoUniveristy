@@ -16,7 +16,7 @@ const EventList = (props) => {
       setEvent(res.data.searchedEvent);
       setEventLoaded(true);
     });
-  }, []);
+  }, [props.match.params.id]);
 
   if (!eventLoaded) {
     return <Skeleton count={5} width={1000} />;

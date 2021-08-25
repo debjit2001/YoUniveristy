@@ -1,21 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "./EventListPage.module.css";
 import { Spinner } from "reactstrap";
 import Tippy from "@tippy.js/react";
+
 import { IP } from "../../IPDetails";
-import { useState, useEffect } from "react";
+
+import styles from "./EventListPage.module.css";
+
+import EventCreateForm from "./EventCreateForm";
+import SuccessToast from "../Toast/Success";
+import EventCreateFailure from "../Toast/EventCreateFailure";
 
 const EventListPage = (props) => {
   const [eventList, setEventList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [isEventCreated, setIsEventCreated] = useState(false);
+  const [isEventCreationFailed, setIsEventCreationFailed] = useState({
+    status: false,
+    message: "",
+  });
+
+  const fetchEvent = () => {
     axios.get(`${IP}/event`).then((res) => {
       setIsLoading(false);
       setEventList(res.data.events);
     });
+  };
+
+  useEffect(() => {
+    fetchEvent();
   }, []);
+
+  useEffect(() => {
+    isEventCreated && fetchEvent();
+  }, [isEventCreated]);
 
   const _onEventClick = (eventItem) => {
     eventItem.preventDefault();
@@ -25,8 +46,25 @@ const EventListPage = (props) => {
     props.history.push(`event/${eventID}`);
   };
 
+  //create event create handler method
+  const modalClickHandler = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <div className={styles.EventContainer}>
+      {isEventCreated && <SuccessToast />}
+      {isEventCreationFailed.status && (
+        <EventCreateFailure error={isEventCreationFailed.message} />
+      )}
+      {isModalOpen && (
+        <EventCreateForm
+          open={isModalOpen}
+          onCloseModal={modalClickHandler}
+          setEventCreationFlag={setIsEventCreated}
+          setIsEventCreationFailed={setIsEventCreationFailed}
+        />
+      )}
       {!isLoading ? (
         eventList && eventList.length ? (
           eventList.map((eve, index) => (
@@ -67,6 +105,12 @@ const EventListPage = (props) => {
       ) : (
         <Spinner role="grow" />
       )}
+      <button className={styles.createEventButton} onClick={modalClickHandler}>
+        <img
+          src={`/assets/icons/${isModalOpen ? "close" : "plus"}.svg`}
+          alt="create"
+        />
+      </button>
     </div>
   );
 };

@@ -42,7 +42,6 @@ router.post("/", upload.single("foundItemImage"), (req, res) => {
     !foundItemDetails ||
     req.file === undefined
   ) {
-    console.log("Invalid request,Please fill in all the fields");
     res.status(400).json({ newFoundEntry: null });
   } else {
     const newFoundItem = new Found({
@@ -57,11 +56,9 @@ router.post("/", upload.single("foundItemImage"), (req, res) => {
     newFoundItem
       .save()
       .then((newEntry) => {
-        console.log("newEntry----->", newEntry);
         res.status(200).json({ newFoundEntry: newEntry });
       })
       .catch((err) => {
-        console.log("ERROR!", err);
         res.status(500).json({ newFoundEntry: null });
       });
   }
