@@ -1,15 +1,24 @@
-import React from "react";
-import styles from "./EventCardPage.module.css";
+import React, { useState, useEffect } from "react";
+
 import { Spinner } from "react-bootstrap";
-import { useState } from "react";
+
+import styles from "./EventCardPage.module.css";
+
 const EventCardPage = ({ event }) => {
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    document.title = `Event - ${event.title}`;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const renderSpinner = () => {
     if (isLoading) {
       return <Spinner animation="grow" role="status" />;
     }
     return null;
   };
+
   const handleImageLoaded = () => {
     setIsLoading(false);
   };

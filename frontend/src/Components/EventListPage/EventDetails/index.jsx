@@ -5,7 +5,7 @@ import Skeleton from "react-loading-skeleton";
 import EventCardPage from "./EventCardpage/EventCardPage";
 import { IP } from "../../../IPDetails";
 
-const EventList = (props) => {
+const EventDetails = (props) => {
   const [event, setEvent] = useState({});
   const [eventLoaded, setEventLoaded] = useState(false);
 
@@ -27,4 +27,4 @@ const EventList = (props) => {
   }
 };
 
-export default EventList;
+export default EventDetails;

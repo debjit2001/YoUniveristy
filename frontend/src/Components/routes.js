@@ -9,7 +9,7 @@ import {
 import NavBar from "./Navbar/Navbar";
 import HomePage from "./IndexPage/HomePage";
 import EventListPage from "./EventListPage/EventListPage";
-import EventDetails from "./EventListPage/EventDetails/EventDetails";
+import EventDetails from "./EventListPage/EventDetails/index";
 import LostFoundPage from "./LostFoundPage/LostFoundPage";
 import Lost from "./LostFoundPage/LostItems/Lost";
 import Found from "./LostFoundPage/FoundItems/Found";
@@ -32,6 +32,7 @@ const BaseRouter = (props) => {
       pathName.length ? "-" : ""
     } Smart University App`;
   }, []);
+
   return (
     <Router>
       <NavBar />
