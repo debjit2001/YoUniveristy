@@ -7,7 +7,12 @@ import styles from "./styles.module.css";
 
 import { IP } from "../../../IPDetails";
 
-const EventCreateForm = ({ open, onCloseModal, setEventCreationFlag }) => {
+const EventCreateForm = ({
+  open,
+  onCloseModal,
+  setEventCreationFlag,
+  setIsEventCreationFailed,
+}) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [eventImage, setEventImage] = useState({});
@@ -48,20 +53,17 @@ const EventCreateForm = ({ open, onCloseModal, setEventCreationFlag }) => {
           "content-type": "multipart/form-data",
         },
       });
-      if (response) {
-        console.log(
-          "🚀 ~ file: index.jsx ~ line 46 ~ submitBtnHandler ~ response",
-          response
-        );
+
+      if (!response.hasOwnProperty("error")) {
         setEventCreationFlag(true);
         onCloseModal();
       }
-    } catch (error) {
-      console.log(
-        "🚀 ~ file: index.jsx ~ line 53 ~ submitBtnHandler ~ error",
-        error
-      );
-      console.error("Oops!Something went wrong");
+    } catch (err) {
+      setIsEventCreationFailed({
+        status: true,
+        message: `${err.response.data.message}: ${err.response.data.error}`,
+      });
+      onCloseModal();
     }
   };
 

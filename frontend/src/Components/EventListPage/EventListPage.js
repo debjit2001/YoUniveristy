@@ -6,7 +6,10 @@ import Tippy from "@tippy.js/react";
 import { IP } from "../../IPDetails";
 
 import styles from "./EventListPage.module.css";
+
 import EventCreateForm from "./EventCreateForm";
+import SuccessToast from "../Toast/Success";
+import EventCreateFailure from "../Toast/EventCreateFailure";
 
 const EventListPage = (props) => {
   const [eventList, setEventList] = useState([]);
@@ -15,6 +18,10 @@ const EventListPage = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [isEventCreated, setIsEventCreated] = useState(false);
+  const [isEventCreationFailed, setIsEventCreationFailed] = useState({
+    status: false,
+    message: "",
+  });
 
   const fetchEvent = () => {
     axios.get(`${IP}/event`).then((res) => {
@@ -46,11 +53,16 @@ const EventListPage = (props) => {
 
   return (
     <div className={styles.EventContainer}>
+      {isEventCreated && <SuccessToast />}
+      {isEventCreationFailed.status && (
+        <EventCreateFailure error={isEventCreationFailed.message} />
+      )}
       {isModalOpen && (
         <EventCreateForm
           open={isModalOpen}
           onCloseModal={modalClickHandler}
           setEventCreationFlag={setIsEventCreated}
+          setIsEventCreationFailed={setIsEventCreationFailed}
         />
       )}
       {!isLoading ? (
