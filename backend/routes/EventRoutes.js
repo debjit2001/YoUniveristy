@@ -10,6 +10,7 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
+
 const fileFilter = (req, file, cb) => {
   //reject
   if (
@@ -35,16 +36,31 @@ const upload = multer({
 //posting events
 router.post("/", upload.single("eventImage"), async (req, res) => {
   const { title, desc } = req.body;
-  const event = new Events({
-    title,
-    desc,
-    eventImage: req.file.path,
-  });
-  try {
-    const newEvent = await event.save();
-    res.send(newEvent);
-  } catch (err) {
-    res.status(400).send(err);
+
+  if (!title || !desc) {
+    res.status(400).json({
+      message: "Invalid Request",
+      error: "Missing Field(s)",
+    });
+  } else {
+    const event = new Events({
+      title,
+      desc,
+      eventImage: req?.file?.path || null,
+    });
+
+    try {
+      const newEvent = await event.save();
+      res.status(200).json({
+        message: "Event Created Successfully",
+        event: newEvent,
+      });
+    } catch (err) {
+      res.status(500).json({
+        message: "Something Went Wrong",
+        error: err.message,
+      });
+    }
   }
 });
 
@@ -63,6 +79,7 @@ router.get("/", (req, res) => {
       res.status(500).json({ events: [] });
     });
 });
+
 //desc:fetch single event by id
 //METHOD:GET
 router.get("/:id", (req, res) => {
