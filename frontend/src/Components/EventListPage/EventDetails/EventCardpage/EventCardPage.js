@@ -24,17 +24,21 @@ const EventCardPage = ({ event }) => {
   };
 
   const spinner = renderSpinner();
+
   return (
     <div className={styles.EventCardContainer}>
       <div className={styles.imgContainer}>
         {spinner}
         <img
           src={`http://localhost:5000/${event.eventImage}`}
-          alt="EventImage"
+          alt={`${event.title}`}
           onLoad={() => handleImageLoaded()}
         />
       </div>
-      <div className={styles.EventDetailsContainer}>{event.desc}</div>
+      <div className={styles.detailsContainer}>
+        <h2 className={styles.eventTitle}>{event.title}</h2>
+        <div className={styles.eventDescription}>{event.desc}</div>
+      </div>
     </div>
   );
 };
