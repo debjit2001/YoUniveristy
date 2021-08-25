@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Spinner } from "reactstrap";
-import Tippy from "@tippy.js/react";
 
 import { IP } from "../../IPDetails";
 
@@ -10,6 +9,7 @@ import styles from "./EventListPage.module.css";
 import EventCreateForm from "./EventCreateForm";
 import SuccessToast from "../Toast/Success";
 import EventCreateFailure from "../Toast/EventCreateFailure";
+import EventCard from "./EventCard";
 
 const EventListPage = (props) => {
   const [eventList, setEventList] = useState([]);
@@ -68,30 +68,7 @@ const EventListPage = (props) => {
       {!isLoading ? (
         eventList && eventList.length ? (
           eventList.map((eve, index) => (
-            <div className={styles.EventInfo} key={index}>
-              <img
-                src={
-                  eve.eventImage
-                    ? `${IP}/${eve.eventImage}`
-                    : "/assets/icons/no-image.svg"
-                }
-                alt="eventPic"
-                id={index}
-                onClick={(e) => _onEventClick(e)}
-              />{" "}
-              <div>
-                <Tippy
-                  content="click here for details"
-                  delay={200}
-                  placement="bottom"
-                  theme="honeybee"
-                >
-                  <p id={index} onClick={(e) => _onEventClick(e)}>
-                    {eve.title}
-                  </p>
-                </Tippy>
-              </div>
-            </div>
+            <EventCard eve={eve} index={index} _onEventClick={_onEventClick} />
           ))
         ) : (
           <div
