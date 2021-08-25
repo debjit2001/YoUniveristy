@@ -70,7 +70,11 @@ const EventListPage = (props) => {
           eventList.map((eve, index) => (
             <div className={styles.EventInfo} key={index}>
               <img
-                src={`${IP}/${eve.eventImage}`}
+                src={
+                  eve.eventImage
+                    ? `${IP}/${eve.eventImage}`
+                    : "/assets/icons/no-image.svg"
+                }
                 alt="eventPic"
                 id={index}
                 onClick={(e) => _onEventClick(e)}
