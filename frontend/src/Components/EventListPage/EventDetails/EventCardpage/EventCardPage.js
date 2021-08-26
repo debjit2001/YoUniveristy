@@ -30,7 +30,7 @@ const EventCardPage = ({ event }) => {
       <div className={styles.imgContainer}>
         {spinner}
         <img
-          src={`http://localhost:5000/${event.eventImage}`}
+          src={event.eventImage || "/assets/icons/no-image.svg"}
           alt={`${event.title}`}
           onLoad={() => handleImageLoaded()}
         />
