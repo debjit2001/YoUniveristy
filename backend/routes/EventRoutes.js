@@ -33,16 +33,63 @@ const upload = multer({
   fileFilter: fileFilter,
 });
 
+//validation method
+const validateRequest = (title, description) => {
+  console.log(`Request Body:>>${title.length} and ${description}`);
+  if (!title || !description) {
+    return {
+      status: 400,
+      error: {
+        message: "Invalid Request",
+        error: "Missing Field(s)",
+      },
+    };
+  } else {
+    if (!title.length || !description.length) {
+      return {
+        status: 400,
+        error: {
+          message: "Invalid Request",
+          error: "Empty value,Please provide valid input",
+        },
+      };
+    } else if (title.length > 50) {
+      return {
+        status: 400,
+        error: {
+          message: "Out of length",
+          error: "Too long title field value",
+        },
+      };
+    } else if (description.length < 10) {
+      return {
+        status: 400,
+        error: {
+          message: "Description too short ",
+          error: "Description length should be between 20 to 1000 characters",
+        },
+      };
+    } else if (description.length > 1000) {
+      return {
+        status: 400,
+        error: {
+          message: "Description too long",
+          error: "Description length should be between 20 to 1000 characters",
+        },
+      };
+    } else {
+      return null;
+    }
+  }
+};
+
 //posting events
 router.post("/", upload.single("eventImage"), async (req, res) => {
   const { title, desc } = req.body;
 
-  if (!title || !desc) {
-    res.status(400).json({
-      message: "Invalid Request",
-      error: "Missing Field(s)",
-    });
-  } else {
+  const validationResponse = validateRequest(title, desc);
+
+  if (!validationResponse) {
     const event = new Events({
       title,
       desc,
@@ -61,6 +108,10 @@ router.post("/", upload.single("eventImage"), async (req, res) => {
         error: err.message,
       });
     }
+  } else {
+    res.status(validationResponse.status).json({
+      ...validationResponse.error,
+    });
   }
 });
 
