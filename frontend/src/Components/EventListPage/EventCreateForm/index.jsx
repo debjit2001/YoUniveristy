@@ -6,6 +6,7 @@ import { Modal } from "react-responsive-modal";
 import styles from "./styles.module.css";
 
 import { IP } from "../../../IPDetails";
+import Loading from "../../Loading";
 
 const EventCreateForm = ({
   open,
@@ -16,6 +17,7 @@ const EventCreateForm = ({
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [eventImage, setEventImage] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const fileInputRef = createRef();
 
@@ -42,6 +44,7 @@ const EventCreateForm = ({
   };
 
   const submitBtnHandler = async () => {
+    setIsLoading(true);
     const newEvent = new FormData();
     newEvent.append("title", title);
     newEvent.append("desc", description);
@@ -53,18 +56,23 @@ const EventCreateForm = ({
           "content-type": "multipart/form-data",
         },
       });
-
+      setIsLoading(false);
       if (!response.hasOwnProperty("error")) {
         setEventCreationFlag(true);
         onCloseModal();
       }
     } catch (err) {
+      setIsLoading(false);
       setIsEventCreationFailed({
         status: true,
         message: `${err.response.data.message}: ${err.response.data.error}`,
       });
       onCloseModal();
     }
+  };
+
+  const closeEventCrateForm = () => {
+    console.log("Close button Clicked");
   };
 
   return (
@@ -74,6 +82,16 @@ const EventCreateForm = ({
       classNames={{ modal: styles.Modal }}
       center
     >
+      {isLoading && (
+        <Modal
+          open={isLoading}
+          classNames={{ modal: styles.LoaderModal }}
+          onClose={closeEventCrateForm}
+          center
+        >
+          <Loading loading={isLoading} />
+        </Modal>
+      )}
       <div className={styles.formContainer}>
         <div className={styles.inputDiv}>
           <label htmlFor="title">Title</label>
@@ -85,6 +103,7 @@ const EventCreateForm = ({
             onChange={_onChangeHandler}
             placeholder="Enter the title..."
             required
+            disabled={isLoading}
           />
         </div>
         <div className={styles.inputDiv}>
@@ -97,11 +116,16 @@ const EventCreateForm = ({
             onChange={_onChangeHandler}
             placeholder="Give a brief description..."
             required
+            disabled={isLoading}
           />
         </div>
         <div className={styles.inputDiv}>
           <label htmlFor="eventImage">Upload Image</label>
-          <button className={styles.fileInputButton} onClick={_onClickHandler}>
+          <button
+            className={styles.fileInputButton}
+            onClick={_onClickHandler}
+            disabled={isLoading}
+          >
             <p>Attach Image</p>
             <img src="/assets/icons/attachment.svg" alt="attach file" />
           </button>
@@ -113,9 +137,14 @@ const EventCreateForm = ({
             ref={fileInputRef}
             className={`${styles.inputBox} ${styles.fileInput}`}
             onChange={_onChangeHandler}
+            disabled={isLoading}
           />
         </div>
-        <button className={styles.submitButton} onClick={submitBtnHandler}>
+        <button
+          className={styles.submitButton}
+          onClick={submitBtnHandler}
+          disabled={isLoading}
+        >
           Create Event
         </button>
       </div>

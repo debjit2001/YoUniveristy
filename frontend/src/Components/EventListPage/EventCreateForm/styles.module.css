@@ -3,6 +3,12 @@
   width: 90vw;
 }
 
+.LoaderModal {
+  backdrop-filter: blur(8px);
+  width: 100vw;
+  height: 60%;
+}
+
 .formContainer {
   width: 100%;
   display: flex;

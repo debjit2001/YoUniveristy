@@ -68,7 +68,12 @@ const EventListPage = (props) => {
       {!isLoading ? (
         eventList && eventList.length ? (
           eventList.map((eve, index) => (
-            <EventCard eve={eve} index={index} _onEventClick={_onEventClick} />
+            <EventCard
+              eve={eve}
+              index={index}
+              _onEventClick={_onEventClick}
+              key={index}
+            />
           ))
         ) : (
           <div
