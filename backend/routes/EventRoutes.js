@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Events = require("../models/Event");
 const multer = require("multer");
+const cloudinary = require("../utils/cloudinary");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -35,7 +36,6 @@ const upload = multer({
 
 //validation method
 const validateRequest = (title, description) => {
-  console.log(`Request Body:>>${title.length} and ${description}`);
   if (!title || !description) {
     return {
       status: 400,
@@ -90,10 +90,18 @@ router.post("/", upload.single("eventImage"), async (req, res) => {
   const validationResponse = validateRequest(title, desc);
 
   if (!validationResponse) {
+    let imageUploadResponse = null;
+
+    if (req.file) {
+      imageUploadResponse = await cloudinary.uploader.upload(req.file.path);
+
+      imageUploadResponse = imageUploadResponse.secure_url;
+    }
+
     const event = new Events({
       title,
       desc,
-      eventImage: req?.file?.path || null,
+      eventImage: imageUploadResponse,
     });
 
     try {
