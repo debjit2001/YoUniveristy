@@ -12,6 +12,7 @@ const EventCreateFailure = ({ error }) => {
       draggable: true,
       progress: undefined,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <ToastContainer

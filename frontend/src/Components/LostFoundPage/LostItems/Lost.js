@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import "react-responsive-modal/styles.css";
 import Tippy from "@tippy.js/react";
@@ -70,6 +70,7 @@ const Lost = () => {
     if (formData !== null && Object.keys(formData).length) {
       submitHandler();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData]);
 
   return (

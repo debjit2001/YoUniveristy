@@ -1,16 +1,15 @@
 import React, { useState, useContext } from "react";
 import styles from "../Forms/loginform.module.css";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 import { LoginContext } from "../../global/LoginContext";
-import axios from "axios";
-// import firebase from "../../firebase/config/config";
+// import axios from "axios";
 
 const Login = () => {
   const [username, setUserName] = useState("");
   const [password, setPwd] = useState("");
 
   const { setIsTeacherAuth } = useContext(LoginContext);
-  const history = useHistory();
+  // const history = useHistory();
 
   const onSubmit = (e) => {
     e.preventDefault();

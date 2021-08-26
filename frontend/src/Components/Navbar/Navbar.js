@@ -15,7 +15,7 @@ const NavigationBar = () => {
   const [collapsed, setCollapsed] = useState(true);
   const [viewPortWidth, setViewPortWidth] = useState(window.innerWidth);
 
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  // const [isSmallScreen, setIsSmallScreen] = useState(false);
   const toggleNavbar = () => {
     setCollapsed(!collapsed);
   };
