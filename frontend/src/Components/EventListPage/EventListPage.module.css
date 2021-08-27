@@ -87,6 +87,14 @@
   left: 37%;
 }
 
+.NoEventPoster {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
 @media only screen and (min-device-width: 551px) and (max-device-width: 700px) {
   .EventInfo {
     width: 350px;

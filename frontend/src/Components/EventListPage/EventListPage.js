@@ -76,20 +76,16 @@ const EventListPage = (props) => {
             />
           ))
         ) : (
-          <div
-            style={{
-              fontWeight: "bold",
-              fontSize: 20,
-              margin: "10px auto 10px auto",
-            }}
-          >
+          <div className={styles.NoEventPoster}>
             <i className="fas fa-frown"></i>{" "}
             <p style={{ display: "inline" }}>No Events to display</p>{" "}
             <i className="fas fa-frown"></i>
           </div>
         )
       ) : (
-        <Spinner role="grow" />
+        <span className={styles.NoEventPoster}>
+          <Spinner role="grow" />
+        </span>
       )}
       <button className={styles.createEventButton} onClick={modalClickHandler}>
         <img

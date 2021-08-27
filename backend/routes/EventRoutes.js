@@ -128,11 +128,7 @@ router.get("/", (req, res) => {
   Events.find()
     .exec()
     .then((events) => {
-      if (events.length) {
-        res.status(200).json({ events: events });
-      } else {
-        res.status(404).json({ events: [] });
-      }
+      res.status(200).json({ events: events });
     })
     .catch((err) => {
       res.status(500).json({ events: [] });
