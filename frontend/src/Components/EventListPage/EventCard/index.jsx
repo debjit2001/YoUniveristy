@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Tippy from "@tippy.js/react";
+import Loader from "react-loader-spinner";
 
 import styles from "../EventListPage.module.css";
 
 const EventCard = ({ eve, index, _onEventClick }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setIsLoaded(true);
+  };
+
   return (
     <div className={styles.EventInfo}>
       <img
@@ -12,7 +19,13 @@ const EventCard = ({ eve, index, _onEventClick }) => {
         alt="eventPic"
         id={index}
         onClick={(e) => _onEventClick(e)}
-      />{" "}
+        onLoad={handleImageLoad}
+      />
+      {!isLoaded && (
+        <span className={styles.Loader}>
+          <Loader type="Hearts" color="#4CAF50" height={100} width={100} />
+        </span>
+      )}
       <div>
         <Tippy
           content="click here for details"

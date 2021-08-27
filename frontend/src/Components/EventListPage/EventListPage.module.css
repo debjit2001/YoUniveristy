@@ -38,6 +38,7 @@
 
 .EventInfo {
   /* display: flexbox; */
+  position: relative;
   float: left;
   margin: auto;
   width: 100px;
@@ -78,6 +79,12 @@
   background-color: #060621;
   font-weight: bold;
   border-radius: 10px;
+}
+
+.Loader {
+  position: absolute;
+  top: 25%;
+  left: 37%;
 }
 
 @media only screen and (min-device-width: 551px) and (max-device-width: 700px) {
