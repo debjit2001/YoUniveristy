@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./AttendanceIndexPage.module.css";
+import styles from "./IndexPage/styles.module.css";
 import { Link } from "react-router-dom";
 
 export const StudentSemester = () => {

@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 export const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
-  const [isTeacherAuth, setIsTeacherAuth] = useState(true);
+  const [isTeacherAuth, setIsTeacherAuth] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
   const [teacherID, setTeacherID] = useState(
     window.localStorage.getItem("username")
