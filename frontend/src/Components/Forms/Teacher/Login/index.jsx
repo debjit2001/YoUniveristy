@@ -31,51 +31,48 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div className={styles.h3Container}>
-        <h3>Log In</h3>
-      </div>
-      <form onSubmit={_onSubmitHandler}>
-        <div className={styles.formContainer}>
-          <div className={styles.formControl}>
-            <i className="fa fa-user" aria-hidden="true"></i>
-            <input
-              name="username"
-              id="username"
-              value={username}
-              className={styles.userName}
-              type="text"
-              placeholder=" Teacher ID"
-              autoFocus
-              required
-              onChange={(e) => onChangeHandler(e)}
-            />
-            <hr /> <br />
-            <i className="fa fa-lock" aria-hidden="true"></i>
-            <input
-              name="password"
-              id="password"
-              value={password}
-              className={styles.pwd}
-              type="password"
-              placeholder="enter your password"
-              autoComplete="off"
-              required
-              onChange={(e) => onChangeHandler(e)}
-            />
-            <hr />
-            <br />
-            <button type="submit" className={styles.submitBtn}>
-              Log in
-            </button>
+    <div className={styles.container}>
+      <div className={styles.heading}>Welcome! Login</div>
+      <form onSubmit={_onSubmitHandler} className={styles.loginForm}>
+        <div className={styles.formContent}>
+          <div className={styles.inputSection}>
+            <div className={styles.inputDiv}>
+              <i className="fa fa-user" aria-hidden="true"></i>
+              <input
+                name="username"
+                id="username"
+                value={username}
+                type="text"
+                placeholder=" Teacher ID"
+                autoFocus
+                required
+                onChange={(e) => onChangeHandler(e)}
+              />
+            </div>
+            <div className={styles.inputDiv}>
+              <i className="fa fa-lock" aria-hidden="true"></i>
+              <input
+                name="password"
+                id="password"
+                value={password}
+                type="password"
+                placeholder="enter your password"
+                autoComplete="off"
+                required
+                onChange={(e) => onChangeHandler(e)}
+              />
+            </div>
           </div>
-          <div className={styles.resetPassword}>
-            <a href="/">
-              <span>Forget Password?</span>
-            </a>
-          </div>
+          <button type="submit" className={styles.submitBtn}>
+            Log in
+          </button>
         </div>
       </form>
+      <div className={styles.resetPassword}>
+        <a href="/">
+          <span>Forget Password?</span>
+        </a>
+      </div>
     </div>
   );
 };

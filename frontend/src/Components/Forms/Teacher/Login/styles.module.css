@@ -1,186 +1,159 @@
-.h3Container {
-  position: absolute;
-  top: 21%;
-  left: 35%;
-  text-align: center;
-  background-color: #32a852;
-  color: #fff;
-  width: 50%;
-  box-shadow: 8px 15px 42px 0px rgba(0, 0, 0, 0.75);
-  z-index: 0;
-  max-width: 559px;
-}
+/*Heading font*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-.h3Container h3 {
-  columns: #000000;
-  width: 100%;
-  font-size: 30px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  font-family: "Roboto Mono", monospace;
-  box-decoration-break: slice;
-  margin: 0;
-}
-
-.formContainer {
-  position: absolute;
-  left: 35%;
-  top: 30%;
-  text-align: center;
-  background-color: #ffffff;
-  width: 50%;
-  border: 4px;
-  box-shadow: 8px 15px 42px 0px rgba(0, 0, 0, 0.75);
-  z-index: 0;
-  max-width: 559px;
-  font-size: 1.2em;
-}
-
-/* .formContainer hr {
-  color: #000000;
-  height: 10px;
-} */
-
-.formControl hr {
-  width: 54%;
-  margin-top: 0;
-  margin-bottom: 0;
-  border: solid 1px black;
-}
-.socialMediaLogin {
+.container {
   display: flex;
-  flex-flow: row;
+  flex-direction: column;
   justify-content: center;
-}
-.socialMediaIcon {
-  width: 10%;
-  margin: 10% 20px;
-  outline: none;
-  border: none;
+  align-items: center;
+  height: calc(100vh - 103.6px);
+  max-width: 100vw;
+  background-color: #eee;
 }
 
-.socialMediaIcon:focus {
-  outline: none;
-  border: none;
-}
-.socialMediaIcon a {
-  outline: none;
-  border: none;
-}
-.socialMediaIcon a :focus {
-  outline: none;
-  border: none;
-  box-shadow: 2px 2px 4px #000000;
-}
-.userName {
-  text-align: left;
+.heading {
   width: 100%;
-  outline: none;
-  border: none;
-  margin-top: 4%;
-  /* margin-bottom: 5%; */
-  margin-left: 5px;
-  color: #000000;
-  width: 50%;
-  /* height: 20px; */
-  font-size: 21px;
-  height: 40px;
-}
-.userName:focus {
-  outline: none;
-  /* border-bottom: 1px solid #000000; */
-}
-.pwd {
-  text-align: left;
-  width: 100%;
-  outline: none;
-  border: none;
-  margin-top: 4%;
-  /* margin-bottom: 5%; */
-  margin-left: 5px;
-  color: #000000;
-  width: 50%;
-  /* height: 20px; */
-  font-size: 21px;
-  height: 40px;
-}
-.pwd:focus {
-  outline: none;
-  /* border-bottom: 1px solid #000000; */
-}
-.submitBtn {
-  font-size: 20px;
+  padding: 20px 0;
   background-color: #32a852;
-  /* color: 000; */
-  /* color: #32a852; */
   color: #fff;
-  border-radius: 10px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  box-shadow: 0px 2px 12px 0px #222;
+}
+
+.loginForm {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.formContent {
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.25rem;
+  padding: 0.5rem 0;
+}
+
+.inputSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+}
+
+.inputDiv input {
+  flex: 1;
+  outline: none;
+  border: none;
+  margin-left: 5px;
+  color: #000000;
+  font-size: 21px;
+  height: 40px;
+  border-bottom: 2px solid #000;
+}
+.inputDiv input:focus {
+  outline: none;
+}
+
+.submitBtn {
+  max-width: 100%;
+  width: 90%;
+  margin: 1rem 0;
+  padding: 0.25rem 0;
+  font-size: 1.5rem;
+  background-color: #32a852;
+  color: #fff;
+  border-radius: 0.25rem;
   border: none;
   outline: none;
-  width: 55%;
-  height: 35px;
-  margin: 7% 0 0 0;
+  box-shadow: 0px 2px 10px 0px #333;
 }
 .submitBtn:hover {
   outline: none;
-  background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
 }
+
 .submitBtn:focus {
   outline: none;
-  background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+  box-shadow: 0px 2px 10px 0px #333 inset;
 }
 
 .resetPassword {
-  position: absolute;
-  top: 102%;
-  text-align: center;
   background-color: #32a852;
   color: #fff;
   width: 100%;
-  line-height: 80px;
-  box-shadow: 8px 15px 42px 0px rgba(0, 0, 0, 0.75);
-  z-index: 0;
-  max-width: 559px;
-  font-size: 1.2em;
+  padding: 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0.125rem;
+  margin-top: 0.5rem;
+  box-shadow: 0px -2px 12px 0px #222;
 }
+
 .resetPassword:hover:active {
   color: #ffffff;
   outline: none;
 }
+
+.resetPassword a {
+  text-decoration: underline;
+  color: #fff;
+}
+
 .resetPassword a:hover:active:focus {
+  color: #fff;
   outline: none;
 }
-@media only screen and (max-width: 399px) {
-  .h3Container {
-    top: 20%;
-    left: 10%;
+
+@media only screen and (min-width: 550px) {
+  .heading {
     width: 80%;
   }
-  .formContainer {
-    left: 10%;
+
+  .loginForm {
+    width: 80%;
+  }
+  .resetPassword {
     width: 80%;
   }
 }
 
-@media only screen and (min-width: 400px) {
-  .h3Container {
-    top: 20%;
-    left: 15%;
-    width: 70%;
+@media only screen and (min-width: 900px) {
+  .heading {
+    width: 60%;
   }
-  .formContainer {
-    left: 15%;
-    width: 70%;
+
+  .loginForm {
+    width: 60%;
+  }
+  .resetPassword {
+    width: 60%;
   }
 }
 
-@media only screen and (min-width: 700px) {
-  .h3Container {
-    left: 33%;
-    width: 50%;
+@media only screen and (min-width: 1024px) {
+  .heading {
+    width: 40%;
   }
-  .formContainer {
-    left: 33%;
-    width: 50%;
+
+  .loginForm {
+    width: 40%;
+  }
+  .resetPassword {
+    width: 40%;
   }
 }
