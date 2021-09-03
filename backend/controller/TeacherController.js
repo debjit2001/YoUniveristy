@@ -1,6 +1,7 @@
 const _ = require("lodash");
 
 const Teacher = require("../models/Teacher");
+const { search } = require("../routes/TeacherRoute");
 
 //helper methods
 const helperMethods = require("../utils/TeacherHelper");
@@ -16,7 +17,7 @@ exports.register_teacher = async (req, res) => {
   });
 
   if (validationResponse === true) {
-    const searchResponse = await helperMethods.searchTeacher(username, email);
+    const searchResponse = await helperMethods.search_teacher(username, email);
     if (searchResponse) {
       res.status(400).json({
         message: `Teacher already exists with the name: ${username} and email:${email}`,
@@ -33,12 +34,8 @@ exports.register_teacher = async (req, res) => {
       });
       try {
         const teacherRegistrationResponse = await newTeacher.save();
-        console.log(
-          "🚀 ~ file: TeacherController.js ~ line 36 ~ exports.register_teacher= ~ teacherRegistrationResponse",
-          teacherRegistrationResponse
-        );
         if (teacherRegistrationResponse) {
-          const sanitizedUser = helperMethods.sanitizeFunction(
+          const sanitizedUser = helperMethods.sanitize_function(
             teacherRegistrationResponse
           );
           res.status(200).json({
@@ -52,10 +49,6 @@ exports.register_teacher = async (req, res) => {
           });
         }
       } catch (error) {
-        console.log(
-          "🚀 ~ file: TeacherController.js ~ line 56 ~ exports.register_teacher= ~ error",
-          error
-        );
         res.status(404).json({
           message: "Something went wrong!",
           info: error,
@@ -72,7 +65,9 @@ exports.register_teacher = async (req, res) => {
 
 exports.get_teacher_details = async function (req, res) {
   const { username } = req.body;
-  const searchResponse = await helperMethods.searchTeacher(username);
+  let searchResponse = await helperMethods.search_teacher(username);
+  const teacherData = helperMethods.sanitize_function(searchResponse.body.info);
+  searchResponse.body = { ...searchResponse.body, info: teacherData };
   res.status(searchResponse.status).json({
     ...searchResponse.body,
   });

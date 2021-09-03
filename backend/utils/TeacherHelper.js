@@ -10,7 +10,7 @@ exports.validate_user_input = (userData) => {
   else return true;
 };
 
-exports.searchTeacher = async (username, email = "") => {
+exports.search_teacher = async (username, email = "") => {
   let searchResult;
   if (email.length) {
     searchResult = await Teacher.findOne({ username, email });
@@ -36,6 +36,9 @@ exports.searchTeacher = async (username, email = "") => {
       };
 };
 
-exports.sanitizeFunction = (teacherModel) => {
-  return _.omit(teacherModel, "password", "registration_id");
+exports.sanitize_function = (teacherModel) => {
+  const newTeacherData = { ...teacherModel._doc };
+  delete newTeacherData.password;
+  delete newTeacherData.registration_id;
+  return newTeacherData;
 };
