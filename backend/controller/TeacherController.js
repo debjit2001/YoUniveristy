@@ -6,6 +6,10 @@ const { search } = require("../routes/TeacherRoute");
 //helper methods
 const helperMethods = require("../utils/TeacherHelper");
 
+/***
+ * DESC:Controller for registration of teacher
+ * ARGS: username,email,password,registration_id
+ */
 exports.register_teacher = async (req, res) => {
   const { username, email, password, registration_id } = req.body;
 
