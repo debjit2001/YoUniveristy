@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./welcomeScreen.module.css";
+import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
 
 const Teacher = () => {
@@ -9,6 +9,7 @@ const Teacher = () => {
   const streams = ["CSE", "ECE", "EE", "ME", "CSBS", "EEE"];
   const sem = [1, 3, 5, 7];
   const subjects = ["ORGANISATION(CS-301)", "DS(303)"];
+
   const buttonStyleOdd = {
     backgroundColor: "#9ddcdc",
     borderRadius: "5rem",

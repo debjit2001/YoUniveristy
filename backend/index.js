@@ -23,12 +23,13 @@ const eventRoute = require("./routes/EventRoutes");
 const lostRoute = require("./routes/LostRoutes");
 const foundRoute = require("./routes/FoundRoutes");
 const canteenRoute = require("./routes/CanteenRoutes");
+const teacherRoute = require("./routes/TeacherRoute");
 ///Route middleWare
 app.use("/event", eventRoute);
 app.use("/lost", lostRoute);
 app.use("/found", foundRoute);
 app.use("/canteen", canteenRoute);
-
+app.use("/teacher", teacherRoute);
 app.get("/", (req, res) => {
   res.send("<h1>Hello World</h1>");
 });

@@ -13,17 +13,18 @@ import EventDetails from "./EventListPage/EventDetails/index";
 import LostFoundPage from "./LostFoundPage/LostFoundPage";
 import Lost from "./LostFoundPage/LostItems/Lost";
 import Found from "./LostFoundPage/FoundItems/Found";
-import AttendancePage from "./AttendancePage/StudentAttendanceDetails";
-import Attendance from "./AttendancePage/AttendanceIndexPage";
+import AttendancePage from "./AttendancePage/AttendanceDetails/index";
+import Attendance from "./AttendancePage/IndexPage/index";
 import StudentSemester from "./AttendancePage/StudentSemester";
 import ProductList from "./CanteenPage/components/ProductList";
 import Details from "./CanteenPage/components/Details";
 import Cart from "./CanteenPage/components/Cart/Cart";
 import Modal from "./CanteenPage/components/Modal";
 import Default from "./Default";
-import Login from "./Forms/loginForm";
+import Login from "./Forms/Teacher/Login/index";
+import Teacher from "./AttendancePage/Teacher/Welcome/index";
+
 import { LoginContext } from "../global/LoginContext";
-import Teacher from "./AttendancePage/Teacher/TeacherWelcomeScreen";
 
 const BaseRouter = (props) => {
   useEffect(() => {
@@ -42,7 +43,7 @@ const BaseRouter = (props) => {
         <Route path="/lostfound" component={LostFoundPage} />
         <Route path="/lost" component={Lost} />
         <Route path="/found" component={Found} />
-        <Route path="/login" component={Login} />
+        <Route path="/login/teacher" component={Login} />
         <Route path="/attendanceStudent" component={AttendancePage} />
         <Route path="/attendance" component={Attendance} />
         <Route path="/attendanceStudentSemester" component={StudentSemester} />
