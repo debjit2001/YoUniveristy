@@ -1,21 +1,21 @@
 const router = require("express").Router();
-const teacherController = require("../controller/StudentController");
+const StudentController = require("../controller/StudentController");
 
 /**
- * DESC: GET THE DETAILS OF THE TEACHER WITH GIVER USERNAME
+ * DESC: GET THE DETAILS OF THE STUDENT WITH GIVER USERNAME
  * METHOD: GET
- * CONTROLLER:teacherController.get_teacher_details
- * ENDPOINT: /teacher/
+ * CONTROLLER:StudentController.get_STUDENT_details
+ * ENDPOINT: /student/
  */
 
-router.get("/", StudentController.get_student_details);
+router.get("/", StudentController.get_all_students);
 
 /**
- * DESC: REGISTER TEACHER
+ * DESC: REGISTER STUDENT
  * METHOD: POST
- * CONTROLLER:teacherController.register_teacher
- * ENDPOINT: /teacher/register
+ * CONTROLLER:STUDENTController.register_STUDENT
+ * ENDPOINT: /STUDENT/register
  */
-//router.post("/register", teacherController.register_teacher);
+//router.post("/register", STUDENTController.register_STUDENT);
 
 module.exports = router;

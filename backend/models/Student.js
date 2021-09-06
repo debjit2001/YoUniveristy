@@ -17,16 +17,18 @@ const StudentSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  email:{
-    type:String,
-    required:true,
+  email: {
+    type: String,
+    required: true,
   },
-  passsword:{
-    type:String,
-    required:true,
+  passsword: {
+    type: String,
+    required: true,
   },
 });
 
 StudentSchema.methods.resolve_subjects = function (cd) {
   return mongoose.model("Event");
 };
+
+module.exports = mongoose.model("Student", StudentSchema);
