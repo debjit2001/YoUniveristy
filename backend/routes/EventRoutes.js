@@ -1,134 +1,15 @@
 const router = require("express").Router();
-const Events = require("../models/Event");
 const upload = require("../utils/multer");
-const cloudinary = require("../utils/cloudinary");
-
-//validation method
-const validateRequest = (title, description) => {
-  if (!title || !description) {
-    return {
-      status: 400,
-      error: {
-        message: "Invalid Request",
-        error: "Missing Field(s)",
-      },
-    };
-  } else {
-    if (!title.length || !description.length) {
-      return {
-        status: 400,
-        error: {
-          message: "Invalid Request",
-          error: "Empty value,Please provide valid input",
-        },
-      };
-    } else if (title.length > 50) {
-      return {
-        status: 400,
-        error: {
-          message: "Out of length",
-          error: "Too long title field value",
-        },
-      };
-    } else if (description.length < 10) {
-      return {
-        status: 400,
-        error: {
-          message: "Description too short ",
-          error: "Description length should be between 20 to 1000 characters",
-        },
-      };
-    } else if (description.length > 1000) {
-      return {
-        status: 400,
-        error: {
-          message: "Description too long",
-          error: "Description length should be between 20 to 1000 characters",
-        },
-      };
-    } else {
-      return null;
-    }
-  }
-};
+const eventController = require("../controller/EventController");
 
 //posting events
-router.post("/", upload.single("eventImage"), async (req, res) => {
-  const { title, desc } = req.body;
-
-  const validationResponse = validateRequest(title, desc);
-
-  if (!validationResponse) {
-    let imageUploadResponse = null;
-
-    if (req.file) {
-      imageUploadResponse = await cloudinary.uploader.upload(req.file.path);
-
-      imageUploadResponse = imageUploadResponse.secure_url;
-    }
-
-    const event = new Events({
-      title,
-      desc,
-      eventImage: imageUploadResponse,
-    });
-
-    try {
-      const newEvent = await event.save();
-      res.status(200).json({
-        message: "Event Created Successfully",
-        event: newEvent,
-      });
-    } catch (err) {
-      res.status(500).json({
-        message: "Something Went Wrong",
-        error: err.message,
-      });
-    }
-  } else {
-    res.status(validationResponse.status).json({
-      ...validationResponse.error,
-    });
-  }
-});
+router.post("/", upload.single("eventImage"), eventController.create_event);
 
 //fetch all the events
-router.get("/", (req, res) => {
-  Events.find()
-    .exec()
-    .then((events) => {
-      res.status(200).json({ events: events });
-    })
-    .catch((err) => {
-      res.status(500).json({ events: [] });
-    });
-});
+router.get("/", eventController.fetch_all_events);
 
 //desc:fetch single event by id
 //METHOD:GET
-router.get("/:id", (req, res) => {
-  const { id } = req.params;
-  Events.findOne({ _id: id })
-    .exec()
-    .then((searchedEvent) => {
-      if (searchedEvent) {
-        res.status(200).json({
-          message: `Event Found with id : ${id}`,
-          searchedEvent: searchedEvent,
-        });
-      } else {
-        res.status(404).json({
-          message: `No event Found with id : ${id}`,
-          searchedEvent: null,
-        });
-      }
-    })
-    .catch((error) => {
-      res.status(500).json({
-        message: `Error occured while searching for event with id:${id}`,
-        searchedEvent: null,
-      });
-    });
-});
+router.get("/:id", eventController.fetch_event);
 
 module.exports = router;
