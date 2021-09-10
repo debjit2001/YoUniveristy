@@ -1,7 +1,6 @@
 const _ = require("lodash");
 
 const Teacher = require("../models/Teacher");
-const { search } = require("../routes/TeacherRoute");
 
 //helper methods
 const helperMethods = require("../utils/TeacherHelper");
@@ -10,6 +9,7 @@ const helperMethods = require("../utils/TeacherHelper");
  * DESC:Controller for registration of teacher
  * ARGS: username,email,password,registration_id
  */
+
 exports.register_teacher = async (req, res) => {
   const { username, email, password, registration_id } = req.body;
 
@@ -36,6 +36,7 @@ exports.register_teacher = async (req, res) => {
         password,
         registration_id,
       });
+
       try {
         const teacherRegistrationResponse = await newTeacher.save();
         if (teacherRegistrationResponse) {
@@ -75,4 +76,45 @@ exports.get_teacher_details = async function (req, res) {
   res.status(searchResponse.status).json({
     ...searchResponse.body,
   });
+};
+
+exports.update_teacher = async function (req, res) {
+  const { id } = req.params;
+  const { updateFields } = req.body; //updateFields should be an object
+
+  const searchResponse = await helperMethods.search_teacher("", "", id);
+  console.log(
+    "🚀 ~ file: TeacherController.js ~ line 86 ~ searchResponse",
+    searchResponse
+  );
+
+  if (searchResponse.isFound) {
+    const teacherDetails = { ...searchResponse.teacher_details._doc };
+    const updateFieldKeys = Object.keys(updateFields);
+    let newAttributeObject = {};
+    updateFieldKeys.forEach((newKey) => {
+      const newAttribute = {
+        [newKey]: updateFields[newKey],
+      };
+
+      newAttributeObject = {
+        ...newAttributeObject,
+        ...newAttribute,
+      };
+    });
+
+    await Teacher.updateOne({ _id: id }, newAttributeObject);
+
+    const updatedData = await Teacher.findOne({ _id: id });
+
+    res.status(200).json({
+      info: "Successfully updated teacher data",
+      updatedData: helperMethods.sanitize_function(updatedData),
+    });
+  } else {
+    res.status(404).json({
+      info: "Teacher not found",
+      updatedData: null,
+    });
+  }
 };

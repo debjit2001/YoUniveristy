@@ -18,4 +18,12 @@ router.get("/", teacherController.get_teacher_details);
  */
 router.post("/register", teacherController.register_teacher);
 
+/**
+ * DESC: UPDATE TEACHER
+ * METHOD: PUT
+ * CONTROLLER:teacherController.update_teacher
+ * ENDPOINT: /teacher/update/:id
+ */
+router.post("/update/:id", teacherController.update_teacher);
+
 module.exports = router;
