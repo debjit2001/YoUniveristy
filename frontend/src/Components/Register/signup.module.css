@@ -1,0 +1,236 @@
+.container_signup{
+    color: #1ce1bd;
+    display: flex;
+    width: 100%;
+    font-size: 4rem;
+    justify-content: center;
+    align-items: flex-end;
+    /* height: 100vh; */
+    /* height: 84vh; */
+    background: #eae9e9;
+    height: 87vh;
+
+}
+.form_outer{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+.form_inner{
+    width: 80%;
+    color: black;
+    /* height: 94%; */
+    /* font-weight: bold; */
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    background: #e0d7d7;
+    /* justify-content: center; */
+    /* align-items: center; */
+    box-shadow: 10px 14px 8px grey;
+
+}
+form{
+    height: 68%;
+    margin-top: 0.8rem;
+}
+.formpng{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.login_png{
+    height: 100%;
+    width: 100%;
+}
+p{
+    font-size: 26px;
+}
+.fa_user,.fa_lock,.fa_envelope{
+    font-size: 40%;
+    margin: 0;
+    margin-right: 8px;
+}
+.form_row{
+    display: flex;
+    /* background: #2d2929; */
+    margin-bottom: 22px;
+    justify-content: center;
+    align-items: center;
+    height: 11%;
+}
+.email{
+    widows: 60%;
+}
+.form_inner_inner{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+/* .formpng .form_inner_inner{
+    /* margin-top: 55px; */
+/* } */ 
+
+input[type=text],input[type=number],input[type=email],input[type=password]{
+    /* background: #2d2929; */
+    font-size: 14px;
+    background: transparent;
+    outline: none;
+    border: 0;
+    height: 25px;
+}
+input[type=text]{
+    width: 100%;
+}
+.col{
+    width: 100%;
+    display: flex;
+    /* background: #c1c1c1; */
+    margin-right: 14px;
+    border-bottom: 2px solid black;
+}
+.col input{
+    color: black;
+}
+/* button{
+    background: #da1919 !important;
+    outline: none;
+    /* border: 0; */
+    /* border-radius: 19px !important;
+    color: #f1f1f1 !important;
+    font-size: 17px !important;
+    font-weight: 3000 !important;
+    border: 1px solid black !important; */
+/* }
+button:hover{
+    opacity: 0.8;
+}  */
+.form_check{
+    margin-bottom: 7px;
+    color: #d6c0c0;
+    display: flex;
+    align-items: center;
+
+}
+.btner{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 54px;
+}
+input[type=number]:focus,input[type=email]:focus,input[type=password]:focus,input[type=text]:focus{
+    background: #2d2929;
+    color: white;
+    opacity: 0.8;
+    outline: none;
+    border: 0;
+}
+.form_check_label{
+    font-size: 23px;
+}
+/* ::placeholder{
+    /* color:lightblue !important; */
+    /* opacity:1 !important; */
+/* } */ 
+i{
+    font-size: 25px;
+    margin-right: 14px;
+    color: black;
+}
+.form_control{
+    height: 100%;
+    font-size: 30%;
+    width: 100%;
+}
+.form_check_input{
+    height: 1vw;
+    width: 2vw;
+}
+.reg{
+    font-weight: bold;
+    text-align: center;
+    font-size: 3vw;
+    margin-bottom: 0.5rem;
+
+}
+.has_account{
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 7px;
+    color: #0b6310;
+    margin-left:14px;
+    margin-top: 30px;
+}
+.login{
+    width: 7vw;
+    height: 3vw;
+    font-size: 1vw;
+    font-weight: bold;
+}
+.login:hover{
+    background-position: left bottom;
+}
+@media only screen and (max-width: 750px) {
+    .form_inner{
+        width: 87%;
+    }
+    .formpng {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .formpng .form_inner_inner{
+        margin-top: 0px;
+        width: 100%;
+    }
+    /* .form_inner_inner svg:nth-child(2){
+        display: none;
+    } */
+    .login {
+        height: 37px;
+        font-size: 14px;
+        width: 98px;
+        margin-top: 14px;
+        /* width: 100%; */
+    }
+    .login_png {
+        display: none;
+    }
+    .has_account{
+        width: 100%;
+    }
+  }
+  /* Banner Effect */
+  .slide{
+    overflow: hidden;
+    /* width:33%; */
+  }
+
+  .slide .fig{
+      position: relative;
+      width:200%;
+      margin:0;
+      left:0;
+      transition:all 1s  ease-in-out;
+  }
+  .slide figure .lop{
+      width:50%;
+      float: left;
+  }
+  /* Next */
+  .move_right{
+    width: 23%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    height: 34px;
+  }
+  .move_right i{
+    font-size: 41px;
+    display: flex;
+  }

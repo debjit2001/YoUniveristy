@@ -16,10 +16,10 @@ import {Link} from "react-router-dom";
 
 const Login=()=>{
 
- const [registrationNumber,setRegistrationNumber]=useState('');
+ 
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
-  
+ 
   
 
   return(
@@ -32,16 +32,6 @@ const Login=()=>{
         <div className={`${styles.formpng}`}>
         <div className={`${styles.form_inner_inner}`}>
     <form action="login" method="POST"> 
-    <div className={`${styles.form_row}`}>
-      <i className={`fa fa-user ${styles.fa_user}`} aria-hidden="true"></i>
-    
-    <div className={`${styles.col}`}>
-      <input type="email" className={`${styles.form_control}`}
-      value={registrationNumber}
-      onChange={(e)=>setRegistrationNumber(e.target.value)}
-      placeholder="Enter your Registration Number" name="registrationNumber"/>
-    </div> 
-  </div>
   <div className={`${styles.form_row}`}>
       <i className={`fa fa-user ${styles.fa_user}`} aria-hidden="true"></i>
     
@@ -63,8 +53,8 @@ const Login=()=>{
     </div>
     <div className={`${styles.forget_password}`}>
 
-     <Link to="/">Forget Password ?</Link> 
- </div>
+<Link to="/">Forget Password ?</Link> 
+</div>
   <div className={`${styles.form_check}`}>
     <input type="checkbox" className={`${styles.form_check_input}`} id="exampleCheck1"/>
     <label className={`${styles.form_check_label}`} htmlFor="exampleCheck1">Remember Me</label>
@@ -76,7 +66,7 @@ const Login=()=>{
   </button>
  <div className={`${styles.no_account}`}>
    Don't have an account ?
-   <Link style={{    marginLeft: "14px",cursor: "pointer",color: "#1c3958",fontWeight: "bold"}} to="/register/teacher">
+   <Link style={{    marginLeft: "14px",cursor: "pointer",color: "#1c3958",fontWeight: "bold"}} to="/signup">
     Register
     </Link>
  </div>
