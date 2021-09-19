@@ -9,7 +9,7 @@ const StudentController = require("../controller/StudentController");
  */
 
 router.get("/", StudentController.get_all_students);
-
+router.get("/:roll",StudentController.get_student_details);
 /**
  * DESC: REGISTER STUDENT
  * METHOD: POST

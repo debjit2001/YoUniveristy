@@ -1,5 +1,5 @@
 const Student = require("../models/Student");
-
+const helperMethods = require("../utils/StudentHelper");
 exports.get_all_students = async (req, res) => {
   try {
     const allStudents = await Student.find();
@@ -22,4 +22,14 @@ exports.get_all_students = async (req, res) => {
       error: error,
     });
   }
+};
+
+exports.get_student_details = async function (req, res) {
+  const { roll } = req.params;
+  let searchResponse = await helperMethods.search_Student(roll);
+  const studentData = helperMethods.sanitize_function(searchResponse.body.info);
+  searchResponse.body = { ...searchResponse.body, info: studentData };
+  res.status(searchResponse.status).json({
+    ...searchResponse.body,
+  });
 };
