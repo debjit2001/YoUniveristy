@@ -161,6 +161,7 @@ input[type="checkbox"]{
     height: 100%;
     font-size: 30%;
     width: 100%;
+    margin-bottom: 0%;
 }
 .form_check_input{
     height: 1vw;
@@ -172,9 +173,9 @@ input[type="checkbox"]{
     font-size: 3vw;
 }
 .login{
-    width: 7vw;
-    height: 3vw;
+    width:5rem;
     font-size: 1vw;
+    padding: 0.25rem 0;
 }
 .no_account{
     font-size: 18px;
