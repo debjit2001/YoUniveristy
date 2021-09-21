@@ -14,6 +14,11 @@ const Attendance = () => {
   }
 
   return (
+    <div className={`${styles.outer_container}`}>
+      <div className={`${styles.login_register}`}>
+        <Link className={`${styles.button}`} to="/signin">Login</Link>
+        <Link className={`${styles.button}`} to="/signup">Register</Link>
+      </div>
     <div className={styles.container}>
       <h2 className={styles.heading}>WHO ARE YOU?</h2>
       <Link to="/attendanceStudentSemester">
@@ -31,6 +36,7 @@ const Attendance = () => {
         <br />
         <br />
       </Link>
+    </div>
     </div>
   );
 };
