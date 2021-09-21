@@ -14,7 +14,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   return (
-    <>
       <div className={`${styles.container_login}`}>
         <div className={`${styles.form_outer}`}>
           <div className={`${styles.form_inner}`}>
@@ -72,7 +71,7 @@ const Login = () => {
                         style={{
                           marginLeft: "4px",
                           cursor: "pointer",
-                          color: "#1c3958",
+                          color: "rgb(21,18,240)",
                           fontWeight: "bold",
                         }}
                         to="/signup"
@@ -94,7 +93,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 export default Login;

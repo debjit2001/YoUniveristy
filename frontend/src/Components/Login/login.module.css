@@ -4,12 +4,11 @@
   width: 100%;
   font-size: 4rem;
   justify-content: center;
-  align-items: flex-end;
-  background: #eae9e9;
+  align-items: center;
+  background: #f2f2f2;
   height: 87vh;
 }
 .form_outer {
-  height: 94%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,16 +20,12 @@
   color: black;
   /* font-weight: bold; */
   /* padding: 14px 0.5rem; */
-  /* padding: 0.5rem;
-  padding-top: 0;
-  padding-left: 1rem;
-  padding-right: 1rem; */
-
   display: flex;
   flex-direction: column;
-  background: #e0d7d7;
-  justify-content: center;
-  box-shadow: 10px 14px 8px grey;
+  background: #fff;
+  box-shadow: 4px 4px 20px grey;
+  height: 55%;
+  justify-content: space-between;
 }
 
 .inputSection {
@@ -44,6 +39,7 @@ form {
   height: 68%;
 }
 .formpng {
+  flex: 1;
   display: flex;
   justify-content: space-between;
   padding: 0 1rem;
@@ -58,19 +54,17 @@ p {
 }
 .fa_user,
 .fa_lock {
-  font-size: 40%;
-  margin-right: 8px !important;
+  font-size: 30%;
+  margin-right: 4px !important;
+  color: #642ec1e6 !important;
 }
 .form_row {
   display: flex;
   /* background: #c1c1c1; */
   margin-bottom: 22px;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   height: 16%;
-}
-.form_row i {
-  color: black;
 }
 .forget_password {
   display: flex;
@@ -101,7 +95,7 @@ input[type="number"],
 input[type="email"],
 input[type="password"] {
   /* background: #2d2929; */
-  background: transparent;
+  /*background: transparent;*/
   outline: none;
   border: 0;
 
@@ -149,11 +143,10 @@ input[type="number"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="text"]:focus {
-  background: #c1c1c1 !important;
-  color: rgb(44, 42, 42) !important;
-  opacity: 0.8;
+  background: transparent !important;
   outline: none;
   border: 0;
+  opacity: 1 !important;
 }
 input[type="checkbox"] {
   width: 18px;
@@ -185,7 +178,8 @@ input[type="checkbox"] {
 .reg {
   font-weight: bold;
   text-align: center;
-  font-size: 3vw;
+  font-size: 2rem;
+  color: #7e57c2;
 }
 .login {
   width: 5rem;
