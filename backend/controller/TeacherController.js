@@ -70,7 +70,6 @@ exports.register_teacher = async (req, res) => {
 
 exports.get_teacher_details = async function (req, res) {
   const { username } = req.body;
-  console.log(req.body);
   let searchResponse = await helperMethods.search_teacher(username);
   const teacherData = helperMethods.sanitize_function(searchResponse.body.info);
   searchResponse.body = { ...searchResponse.body, info: teacherData };
