@@ -1,0 +1,231 @@
+.container_login {
+  color: #1ce1bd;
+  display: flex;
+  width: 100%;
+  font-size: 4rem;
+  justify-content: center;
+  align-items: center;
+  background: #f2f2f2;
+  height: 87vh;
+}
+.form_outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.form_inner {
+  width: 35vw;
+  color: black;
+  /* font-weight: bold; */
+  /* padding: 14px 0.5rem; */
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: 4px 4px 20px grey;
+  height: 55%;
+  justify-content: space-between;
+}
+
+.inputSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* flex: 1 1; */
+  width: 45%;
+}
+form {
+  height: 68%;
+}
+.formpng {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  padding-bottom: 0.5rem;
+}
+.login_png {
+  height: 100%;
+  width: 90%;
+}
+p {
+  font-size: 26px;
+}
+.fa_user,
+.fa_lock {
+  font-size: 30%;
+  margin-right: 4px !important;
+  color: #642ec1e6 !important;
+}
+.form_row {
+  display: flex;
+  /* background: #c1c1c1; */
+  margin-bottom: 22px;
+  justify-content: center;
+  align-items: flex-end;
+  height: 16%;
+}
+.forget_password {
+  display: flex;
+  /* background: #c1c1c1; */
+  /* margin-bottom: 22px; */
+  justify-content: flex-start;
+  align-items: center;
+}
+.forget_password a {
+  color: #780985;
+  font-size: 14px;
+}
+.email {
+  widows: 60%;
+}
+.form_inner_inner {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* flex: 2 1; */
+  /* align-content: flex-end; */
+  align-items: flex-end;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"] {
+  /* background: #2d2929; */
+  /*background: transparent;*/
+  outline: none;
+  border: 0;
+
+  /* height: 55px ; */
+}
+input[type="text"] {
+  width: 100%;
+}
+.col {
+  width: 100%;
+  display: flex;
+  border-bottom: 2px solid black;
+}
+.col input {
+  color: black;
+}
+/* button{
+    background: #da1919 !important;
+    outline: none;
+    /* border: 0; */
+/* border-radius: 19px !important;
+    color: #f1f1f1 !important;
+    font-size: 17px !important;
+    font-weight: 3000 !important;
+    border: 1px solid black !important; */
+/* }
+button:hover{
+    opacity: 0.8;
+}  */
+.form_check {
+  margin-bottom: 7px;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+.btner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+  background: transparent !important;
+  outline: none;
+  border: 0;
+  opacity: 1 !important;
+}
+input[type="checkbox"] {
+  width: 18px;
+  margin-right: 4px;
+}
+.form_check_label {
+  font-size: 16px;
+  margin: 0;
+}
+/* ::placeholder{
+    /* color:lightblue !important; */
+/* opacity:1 !important; */
+/* } */
+.form-row i {
+  font-size: 25px;
+  /* margin-right: 14px; */
+  color: #9da4a4;
+}
+.form_control {
+  height: 100%;
+  font-size: 30%;
+  width: 100%;
+  margin-bottom: 0%;
+}
+.form_check_input {
+  height: 1vw;
+  width: 2vw;
+}
+.reg {
+  font-weight: bold;
+  text-align: center;
+  font-size: 2rem;
+  color: #7e57c2;
+}
+.login {
+  width: 5rem;
+  font-size: 1vw;
+  padding: 0.25rem 0;
+}
+.no_account {
+  font-size: 13px;
+  margin-top: 7px;
+  color: #ce0e0e;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 750px) {
+  .form_inner {
+    width: 87%;
+  }
+  .formpng {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .formpng .form_inner_inner {
+    width: 100%;
+  }
+  .form_check_input {
+    height: 14px;
+    margin-right: 14px;
+  }
+  .form_inner_inner:last-child {
+    display: none;
+  }
+  .form_check {
+    display: flex;
+    align-items: baseline;
+  }
+  .btner {
+    align-items: center;
+  }
+  .login {
+    font-size: 14px;
+    height: 31px;
+    width: 70px;
+  }
+  .login_png {
+    display: none;
+  }
+}
