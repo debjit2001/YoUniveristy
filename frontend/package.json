@@ -11,6 +11,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
+    "react-hook-form": "^7.15.4",
     "react-image": "^2.4.0",
     "react-loader-spinner": "^4.0.0",
     "react-loading-skeleton": "^2.1.1",

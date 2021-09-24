@@ -21,10 +21,10 @@ import Details from "./CanteenPage/components/Details";
 import Cart from "./CanteenPage/components/Cart/Cart";
 import Modal from "./CanteenPage/components/Modal";
 import Default from "./Default";
-import TeacherLogin from "./Forms/Teacher/Login/index";
-import TeacherRegister from "./Forms/Teacher/Register/signup"
-import StudentLogin from "./Login/signin";
-import StudentRegister from "./Register/signup";
+import TeacherLogin from "./Forms/Login/index";
+import TeacherRegister from "./Forms/Register/index";
+import StudentLogin from "./Forms/Login/index";
+import Register from "./Forms/Register/index";
 import Teacher from "./AttendancePage/Teacher/Welcome/index";
 
 import { LoginContext } from "../global/LoginContext";
@@ -47,7 +47,7 @@ const BaseRouter = (props) => {
         <Route path="/lost" component={Lost} />
         <Route path="/found" component={Found} />
         <Route path="/signin" component={StudentLogin} />
-        <Route path="/signup" component={StudentRegister} />
+        <Route path="/signup" component={Register} />
         <Route path="/login/teacher" component={TeacherLogin} />
         <Route path="/register/teacher" component={TeacherRegister} />
         <Route path="/attendanceStudent" component={AttendancePage} />
