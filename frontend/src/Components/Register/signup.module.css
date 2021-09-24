@@ -7,7 +7,7 @@
     align-items: flex-end;
     /* height: 100vh; */
     /* height: 84vh; */
-    background: #eae9e9;
+    background: #ffffff;
     height: 87vh;
 
 }
@@ -21,17 +21,17 @@
     
 }
 .form_inner{
-    width: 80%;
+    width: 50%;
     color: black;
     /* height: 94%; */
     /* font-weight: bold; */
-    padding: 14px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
-    background: #e0d7d7;
+    background: #ffffff;
     /* justify-content: center; */
     /* align-items: center; */
-    box-shadow: 10px 14px 8px grey;
+    box-shadow: 2px 4px 20px grey;
 
 }
 form{
