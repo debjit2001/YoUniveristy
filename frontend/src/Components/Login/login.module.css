@@ -62,9 +62,22 @@ p {
   display: flex;
   /* background: #c1c1c1; */
   margin-bottom: 22px;
-  justify-content: center;
-  align-items: flex-end;
+  /* justify-content: center;
+  align-items: flex-end; */
   height: 16%;
+}
+.form_name{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+.form_name div:nth-child(2){
+  height: 12px;
+  font-size: 12px;
+  color: red;
+  text-align: left;
+  font-weight: bold;
 }
 .forget_password {
   display: flex;
@@ -112,6 +125,9 @@ input[type="text"] {
 .col input {
   color: black;
 }
+.col i{
+  display: none;
+}
 /* button{
     background: #da1919 !important;
     outline: none;
@@ -145,7 +161,7 @@ input[type="password"]:focus,
 input[type="text"]:focus {
   background: transparent !important;
   outline: none;
-  border: 0;
+  /* border: 0; */
   opacity: 1 !important;
 }
 input[type="checkbox"] {
