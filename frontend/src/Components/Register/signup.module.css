@@ -58,9 +58,22 @@ p{
     display: flex;
     /* background: #2d2929; */
     margin-bottom: 22px;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
     height: 11%;
+}
+.form_name{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  
+}
+.form_name div:nth-child(2){
+    height: 12px;
+    font-size: 12px;
+    color: red;
+    text-align: left;
+    font-weight: bold;
 }
 .email{
     widows: 60%;
@@ -83,6 +96,7 @@ input[type=text],input[type=number],input[type=email],input[type=password]{
     outline: none;
     border: 0;
     height: 25px;
+    border-bottom: 2px solid black;
 }
 input[type=text]{
     width: 100%;
@@ -92,10 +106,14 @@ input[type=text]{
     display: flex;
     /* background: #c1c1c1; */
     margin-right: 14px;
-    border-bottom: 2px solid black;
+    
+  
 }
 .col input{
     color: black;
+}
+.col i{
+    display: none;
 }
 /* button{
     background: #da1919 !important;
@@ -123,12 +141,13 @@ button:hover{
     justify-content: center;
     margin-bottom: 54px;
 }
-input[type=number]:focus,input[type=email]:focus,input[type=password]:focus,input[type=text]:focus{
+.col input[type=number]:focus,input[type=email]:focus,input[type=password]:focus,input[type=text]:focus{
     background: #2d2929;
     color: white;
     opacity: 0.8;
     outline: none;
-    border: 0;
+
+    /* border: 0; */
 }
 .form_check_label{
     font-size: 23px;
@@ -221,14 +240,21 @@ i{
   .slide figure .lop{
       width:50%;
       float: left;
+      margin-bottom: 22px;
   }
   /* Next */
   .move_right{
-    width: 23%;
+    width: 100%;
     display: flex;
     /* justify-content: center; */
-    align-items: center;
-    height: 34px;
+    flex-direction: column;
+    /* align-items: center; */
+    height: 100%;
+  }
+  .move_right div:nth-child(2){
+      font-size: 14px;
+      color: red;
+      font-weight: bold;
   }
   .move_right i{
     font-size: 41px;
