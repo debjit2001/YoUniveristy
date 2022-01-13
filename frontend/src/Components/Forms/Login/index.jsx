@@ -60,24 +60,61 @@ const Login = () => {
   };
 
   return (
-    <>
-      <div className={styles.container}>
-        <div className={styles.form}>
-          <p className={styles.header}>Login</p>
-          <div className={styles.formBody}>
-            <div className={styles.form_row}>
+    <div className={styles.container}>
+      <div className={styles.form}>
+        <p className={styles.header}>Login</p>
+        <div className={styles.formBody}>
+          <div className={styles.form_row}>
+            <i
+              className={`fa fa-user ${styles.fa_user}`}
+              aria-hidden="true"
+            ></i>
+            <div className={styles.col}>
+              <input
+                type="email"
+                className={styles.form_control}
+                value={teacherLogin.registrationNumber}
+                onChange={handleInputs}
+                placeholder="Enter your Registration Number"
+                name="registrationNumber"
+              />
               <i
-                className={`fa fa-user ${styles.fa_user}`}
-                aria-hidden="true"
+                className="fas fa-exclamation-circle"
+                style={{ color: "#f60000" }}
               ></i>
+              <i
+                className="fas fa-check-circle"
+                style={{ color: "#005f00" }}
+              ></i>
+            </div>
+          </div>
+          <div className={styles.form_row}>
+            <div className={styles.form_name} id="email">
+              <i className={`fa fa-envelope ${styles.fa_user}`}></i>
+              <input
+                type="email"
+                className={styles.form_control}
+                value={teacherLogin.email}
+                onChange={handleInputs}
+                placeholder="Enter your email"
+                name="email"
+              />
+            </div>
+          </div>
+          <div className={`${styles.form_row} ${styles.passwordInput}`}>
+            <i
+              className={`fa fa-lock ${styles.fa_lock}`}
+              aria-hidden="true"
+            ></i>
+            <div className={styles.form_name} id="password">
               <div className={styles.col}>
                 <input
-                  type="email"
+                  type="password"
                   className={styles.form_control}
-                  value={teacherLogin.registrationNumber}
+                  value={teacherLogin.password}
                   onChange={handleInputs}
-                  placeholder="Enter your Registration Number"
-                  name="registrationNumber"
+                  placeholder="Enter your password"
+                  name="password"
                 />
                 <i
                   className="fas fa-exclamation-circle"
@@ -89,71 +126,32 @@ const Login = () => {
                 ></i>
               </div>
             </div>
-            <div className={styles.form_row}>
-              <div className={styles.form_name} id="email">
-                <i className={`fa fa-envelope ${styles.fa_user}`}></i>
-                <input
-                  type="email"
-                  className={styles.form_control}
-                  value={teacherLogin.email}
-                  onChange={handleInputs}
-                  placeholder="Enter your email"
-                  name="email"
-                />
-              </div>
-            </div>
-            <div className={`${styles.form_row} ${styles.passwordInput}`}>
-              <i
-                className={`fa fa-lock ${styles.fa_lock}`}
-                aria-hidden="true"
-              ></i>
-              <div className={styles.form_name} id="password">
-                <div className={styles.col}>
-                  <input
-                    type="password"
-                    className={styles.form_control}
-                    value={teacherLogin.password}
-                    onChange={handleInputs}
-                    placeholder="Enter your password"
-                    name="password"
-                  />
-                  <i
-                    className="fas fa-exclamation-circle"
-                    style={{ color: "#f60000" }}
-                  ></i>
-                  <i
-                    className="fas fa-check-circle"
-                    style={{ color: "#005f00" }}
-                  ></i>
-                </div>
-              </div>
-            </div>
-            <div className={styles.btner}>
-              <button
-                type="submit"
-                className={`btn btn-danger ${styles.loginButton}`}
+          </div>
+          <div className={styles.btner}>
+            <button
+              type="submit"
+              className={`btn btn-danger ${styles.loginButton}`}
+            >
+              Log In
+            </button>
+            <div className={styles.no_account}>
+              Don't have an account ?
+              <Link
+                style={{
+                  marginLeft: "14px",
+                  cursor: "pointer",
+                  color: "#1c3958",
+                  fontWeight: "bold",
+                }}
+                to="/register/teacher"
               >
-                Log In
-              </button>
-              <div className={styles.no_account}>
-                Don't have an account ?
-                <Link
-                  style={{
-                    marginLeft: "14px",
-                    cursor: "pointer",
-                    color: "#1c3958",
-                    fontWeight: "bold",
-                  }}
-                  to="/register/teacher"
-                >
-                  Register
-                </Link>
-              </div>
+                Register
+              </Link>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default Login;
