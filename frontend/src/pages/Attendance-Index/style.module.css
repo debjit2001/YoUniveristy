@@ -1,0 +1,65 @@
+.AttendancePage {
+  /* display: flex; */
+  flex-direction: row;
+  justify-content: start;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Lobster&display=swap");
+.outer_container {
+  height: 90vh;
+}
+.login_register {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+  width: 96px;
+  margin-right: 14px;
+  font-size: 18px;
+  border: 2px solid;
+  cursor: pointer;
+  background: #e2d8d8;
+  border-radius: 14px;
+  transition: all 2s ease-in-out;
+}
+.button:hover {
+  background: black;
+  color: #e2d8d8;
+  border: 2px #e2d8d8;
+}
+.container .heading {
+  text-align: center;
+  color: hsl(205, 86%, 17%);
+  padding: 20px;
+  font-family: "Bangers", cursive;
+  font-size: 1.5rem;
+}
+
+.container {
+  width: 300px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 65%;
+  transform: translate(-50%, -50%);
+  background: #f2f2f2;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 70%;
+    height: 65%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+  }
+}

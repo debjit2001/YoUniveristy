@@ -13,8 +13,8 @@ import EventDetails from "./EventListPage/EventDetails/index";
 import LostFoundPage from "./LostFoundPage/LostFoundPage";
 import Lost from "./LostFoundPage/LostItems/Lost";
 import Found from "./LostFoundPage/FoundItems/Found";
+import AttendanceIndex from "../pages/Attendance-Index/index.jsx";
 import AttendancePage from "./AttendancePage/AttendanceDetails/index";
-import Attendance from "./AttendancePage/IndexPage/index";
 import StudentSemester from "./AttendancePage/StudentSemester";
 import ProductList from "./CanteenPage/components/ProductList";
 import Details from "./CanteenPage/components/Details";
@@ -51,7 +51,7 @@ const BaseRouter = (props) => {
         <Route path="/login/teacher" component={TeacherLogin} />
         <Route path="/register/teacher" component={TeacherRegister} />
         <Route path="/attendanceStudent" component={AttendancePage} />
-        <Route path="/attendance" component={Attendance} />
+        <Route path="/attendance" component={AttendanceIndex} />
         <Route path="/attendanceStudentSemester" component={StudentSemester} />
         <Route path="/attendanceDetails" component={AttendancePage} />
         <PrivateRoute path="/teacherWelcome" component={Teacher} />
