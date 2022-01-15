@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { MailOutline } from "react-ionicons";
+//import { MailOutline } from "react-ionicons";
 
 import styles from "./style.module.css";
 
