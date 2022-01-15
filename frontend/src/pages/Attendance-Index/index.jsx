@@ -1,29 +1,27 @@
+//Thid party import
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+//stylesheet import
+import styles from "./style.module.css";
+//local import
+import AttendanceCharacterCard from "../../Components/AttendanceCharacterCard";
+import LinkButton from "../../Components/LinkButton";
+import { LoginContext } from "../../global/LoginContext";
 
-import styles from "./styles.module.css";
-
-import { LoginContext } from "../../../global/LoginContext";
-import AttendanceCharacterCard from "../../AttendanceCharacterCard";
-import LinkButton from "../../LinkButton";
-
-const Attendance = () => {
+const AttendanceIndex = () => {
+  /**
+   * fetching context values
+   */
   const { isTeacherAuth, setIsTeacherAuth, teacherID, pwd } =
     useContext(LoginContext);
 
-  if (teacherID && pwd) {
-    setIsTeacherAuth(true);
-  }
+  // if (teacherID && pwd) {
+  //   console.log("from pwd check-->");
+  //   setIsTeacherAuth((prev) => (prev = true));
+  // }
 
   return (
-    <div className={`${styles.outer_container}`}>
-      <div className={`${styles.login_register}`}>
-        {/* <Link className={`${styles.button}`} to="/signin">
-          Login
-        </Link>
-        <Link className={`${styles.button}`} to="/signup">
-          Register
-        </Link> */}
+    <div className={styles.outer_container}>
+      <div className={styles.login_register}>
         <LinkButton targetUrl="signin" buttonText="Login" />
         <LinkButton targetUrl="signup" buttonText="Register" />
       </div>
@@ -44,4 +42,4 @@ const Attendance = () => {
   );
 };
 
-export default Attendance;
+export default AttendanceIndex;
