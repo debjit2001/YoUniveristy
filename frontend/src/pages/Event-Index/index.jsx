@@ -6,7 +6,7 @@ import { Spinner } from "reactstrap";
 import style from "./style.module.css";
 
 //local import
-import { IP } from "../../IPDetails";
+import { IP } from "IPDetails";
 import EventCreateForm from "Components/EventListPage/EventCreateForm";
 import SuccessToast from "Components/Toast/Success";
 import EventCreateFailure from "Components/Toast/EventCreateFailure";
