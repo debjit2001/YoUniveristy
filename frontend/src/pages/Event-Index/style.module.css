@@ -1,10 +1,5 @@
 .EventContainer {
-  /* display: flex; */
-  display: table;
-  clear: both;
-  height: 90vh;
-  width: 100%;
-  margin-top: 1.2rem;
+  min-height: 89vh;
 }
 
 .createEventButton {
@@ -22,6 +17,14 @@
   box-shadow: 0px 0px 4px 4px #555658;
 }
 
+.NoEventPoster {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
 @keyframes rotatingButton {
   0% {
     transform: rotate(0deg);
@@ -34,95 +37,4 @@
 
 .createEventButton:hover img {
   animation: rotatingButton 0.5s ease-in-out;
-}
-
-.EventInfo {
-  /* display: flexbox; */
-  position: relative;
-  float: left;
-  margin: auto;
-  width: 100px;
-  height: auto;
-  padding: 30px;
-  margin: 30px;
-  box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
-}
-.EventInfo img {
-  transition: 0.5s ease;
-  opacity: 1;
-  display: block;
-  width: 100%;
-  height: 200px;
-  transition: 0.5s ease;
-  backface-visibility: hidden;
-  cursor: pointer;
-}
-
-.EventInfo img:hover {
-  padding: 40px;
-  cursor: pointer;
-}
-
-.EventInfo p {
-  transition: 0.5s ease;
-  background-color: #4caf50;
-  color: white;
-  font-size: 16px;
-  padding: 16px 32px;
-  opacity: 1;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.EventInfo p:hover {
-  opacity: 1;
-  background-color: #060621;
-  font-weight: bold;
-  border-radius: 10px;
-}
-
-.Loader {
-  position: absolute;
-  top: 25%;
-  left: 37%;
-}
-
-.NoEventPoster {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  font-weight: 600;
-  font-size: 1.25rem;
-}
-
-@media only screen and (min-device-width: 551px) and (max-device-width: 700px) {
-  .EventInfo {
-    width: 350px;
-  }
-}
-
-@media only screen and (min-device-width: 701px) and (max-device-width: 900px) {
-  .EventInfo {
-    width: 270px;
-  }
-}
-
-@media only screen and (min-device-width: 900px) {
-  .EventInfo {
-    width: 25%;
-  }
-}
-
-@media only screen and (min-device-width: 401px) and (max-device-width: 550px) {
-  .EventInfo {
-    margin-left: 13%;
-    align-content: center;
-    width: 340px;
-  }
-}
-
-@media only screen and (max-device-width: 400px) {
-  .EventInfo {
-    width: 300px;
-  }
 }

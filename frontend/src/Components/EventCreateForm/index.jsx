@@ -1,12 +1,12 @@
+//Third party import
 import React, { useState, createRef } from "react";
-
 import axios from "axios";
 import { Modal } from "react-responsive-modal";
-
+//Stylesheet import
 import styles from "./styles.module.css";
-
-import { IP } from "../../../IPDetails";
-import Loading from "../../Loading";
+//Local import
+import { IP } from "IPDetails";
+import Loading from "Components/Loading";
 
 const EventCreateForm = ({
   open,
@@ -14,37 +14,46 @@ const EventCreateForm = ({
   setEventCreationFlag,
   setIsEventCreationFailed,
 }) => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [eventImage, setEventImage] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-
+  //state declaration
+  const [title, _title] = useState("");
+  const [description, _description] = useState("");
+  const [eventImage, _eventImage] = useState({});
+  const [isLoading, _isLoading] = useState(false);
+  //ref creation for file input for event-image
   const fileInputRef = createRef();
-
-  const _onChangeHandler = (e) => {
-    const { name, value } = e.target;
+  //method declarations
+  /**
+   * @DESC: handler for change event on event create form
+   * @param {*} event
+   */
+  const _onChangeHandler = (event) => {
+    const { name, value } = event?.target;
 
     switch (name) {
       case "title":
-        setTitle(value);
+        _title((prev) => (prev = value));
         break;
       case "description":
-        setDescription(value);
+        _description((prev) => (prev = value));
         break;
       case "eventImage":
-        setEventImage(e.target.files[0]);
+        _eventImage((prev) => (prev = event?.target?.files[0]));
         break;
       default:
         break;
     }
   };
-
+  /**
+   * @DESC: click handler for file input button
+   */
   const _onClickHandler = () => {
     fileInputRef.current.click();
   };
-
+  /**
+   * @DESC: handler for submitting the form
+   */
   const submitBtnHandler = async () => {
-    setIsLoading(true);
+    _isLoading((prev) => (prev = true));
     const newEvent = new FormData();
     newEvent.append("title", title);
     newEvent.append("desc", description);
@@ -56,13 +65,13 @@ const EventCreateForm = ({
           "content-type": "multipart/form-data",
         },
       });
-      setIsLoading(false);
+      _isLoading((prev) => (prev = false));
       if (!response.hasOwnProperty("error")) {
         setEventCreationFlag(true);
         onCloseModal();
       }
     } catch (err) {
-      setIsLoading(false);
+      _isLoading(false);
       setIsEventCreationFailed({
         status: true,
         message: `${err.response.data.message}: ${err.response.data.error}`,
@@ -70,7 +79,9 @@ const EventCreateForm = ({
       onCloseModal();
     }
   };
-
+  /**
+   * @DESC: handler for closing of loading modal
+   */
   const closeEventCrateForm = () => {
     console.log("Close button Clicked");
   };

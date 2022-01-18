@@ -9,7 +9,7 @@ import {
 import NavBar from "./Navbar/Navbar";
 import HomePage from "./IndexPage/HomePage";
 import EventIndex from "../pages/Event-Index";
-import EventDetails from "./EventListPage/EventDetails/index";
+import EventDetails from "pages/Event-Details";
 import LostFoundPage from "./LostFoundPage/LostFoundPage";
 import Lost from "./LostFoundPage/LostItems/Lost";
 import Found from "./LostFoundPage/FoundItems/Found";

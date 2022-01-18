@@ -7,10 +7,10 @@ import style from "./style.module.css";
 
 //local import
 import { IP } from "IPDetails";
-import EventCreateForm from "Components/EventListPage/EventCreateForm";
+import EventCreateForm from "Components/EventCreateForm";
 import SuccessToast from "Components/Toast/Success";
 import EventCreateFailure from "Components/Toast/EventCreateFailure";
-import EventCard from "Components/EventListPage/EventCard";
+import EventCard from "Components/EventCard";
 
 const EventIndex = (props) => {
   /**
