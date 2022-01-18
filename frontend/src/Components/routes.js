@@ -8,23 +8,23 @@ import {
 
 import NavBar from "./Navbar/Navbar";
 import HomePage from "./IndexPage/HomePage";
-import EventListPage from "./EventListPage/EventListPage";
-import EventDetails from "./EventListPage/EventDetails/index";
+import EventIndex from "../pages/Event-Index";
+import EventDetails from "pages/Event-Details";
 import LostFoundPage from "./LostFoundPage/LostFoundPage";
 import Lost from "./LostFoundPage/LostItems/Lost";
 import Found from "./LostFoundPage/FoundItems/Found";
+import AttendanceIndex from "../pages/Attendance-Index/index.jsx";
 import AttendancePage from "./AttendancePage/AttendanceDetails/index";
-import Attendance from "./AttendancePage/IndexPage/index";
 import StudentSemester from "./AttendancePage/StudentSemester";
 import ProductList from "./CanteenPage/components/ProductList";
 import Details from "./CanteenPage/components/Details";
 import Cart from "./CanteenPage/components/Cart/Cart";
 import Modal from "./CanteenPage/components/Modal";
 import Default from "./Default";
-import TeacherLogin from "./Forms/Teacher/Login/index";
-import TeacherRegister from "./Forms/Teacher/Register/signup"
-import StudentLogin from "./Login/signin";
-import StudentRegister from "./Register/signup";
+import TeacherLogin from "./Forms/Login/index";
+import TeacherRegister from "./Forms/Register/index";
+import StudentLogin from "./Forms/Login/index";
+import Register from "./Forms/Register/index";
 import Teacher from "./AttendancePage/Teacher/Welcome/index";
 
 import { LoginContext } from "../global/LoginContext";
@@ -42,16 +42,16 @@ const BaseRouter = (props) => {
       <NavBar />
       <Switch>
         <Route path="/event/:id" component={EventDetails} />
-        <Route path="/event" component={EventListPage} />
+        <Route path="/event" component={EventIndex} />
         <Route path="/lostfound" component={LostFoundPage} />
         <Route path="/lost" component={Lost} />
         <Route path="/found" component={Found} />
         <Route path="/signin" component={StudentLogin} />
-        <Route path="/signup" component={StudentRegister} />
+        <Route path="/signup" component={Register} />
         <Route path="/login/teacher" component={TeacherLogin} />
         <Route path="/register/teacher" component={TeacherRegister} />
         <Route path="/attendanceStudent" component={AttendancePage} />
-        <Route path="/attendance" component={Attendance} />
+        <Route path="/attendance" component={AttendanceIndex} />
         <Route path="/attendanceStudentSemester" component={StudentSemester} />
         <Route path="/attendanceDetails" component={AttendancePage} />
         <PrivateRoute path="/teacherWelcome" component={Teacher} />
