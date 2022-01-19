@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Lobster&display=swap");
+body {
+  font-family: "Amatic SC", cursive !important;
+  /* justify-content: center; */
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.frontPageContainer {
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 80%;
+  height: auto;
+  font-family: "Lobster", cursive;
+  font-size: 0.65rem;
+  background: #cccc66;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 2px #fff inset, -1px -1px 2px #fff inset;
+  border-radius: 3px/6px;
+}
+
+.heading {
+  text-align: center;
+  color: #d2691e;
+  padding: 8px;
+  font-family: "Bangers", cursive;
+  font-size: 1.5rem;
+}
+
+.emptyList {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media only screen and (min-width: 550px) {
+  .itemList {
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 0.5rem 0px;
+  }
+}
+
+.card {
+  position: relative;
+  max-width: 80%;
+  height: 300px;
+  background: #ffffff;
+  margin: 30px 10px;
+  padding: 20px 15px;
+  display: flex;
+  font-family: "Bangers", cursive;
+  flex-direction: column;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease-in-out;
+  color: hsl(205, 86%, 17%);
+}
+.card:hover {
+  height: 360px;
+}
+.cardImageBox {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  top: -60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: 0 5px 20px rgb(0 0 0 / 20%);
+  padding-bottom: 15px;
+}
+.cardImageBox img {
+  max-width: 100%;
+  border-radius: 4px;
+  max-height: 80%;
+}
+
+.content {
+  position: relative;
+  margin-top: -140px;
+  padding: 10px 15px;
+  text-align: center;
+  color: #111;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+  color: #c59d5f;
+  max-height: 80%;
+  overflow: scroll;
+}
+.card:hover .content {
+  visibility: visible;
+  opacity: 1;
+  margin-top: -40px;
+  transition-delay: 0.3s;
+}
