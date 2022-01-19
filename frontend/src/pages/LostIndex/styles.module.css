@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Lobster&display=swap");
+body {
+  font-family: "Amatic SC", cursive !important;
+  /* justify-content: center; */
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+.heading {
+  text-align: center;
+  color: #d2691e;
+  padding: 8px;
+  font-family: "Bangers", cursive;
+  font-size: 1.5rem;
+}

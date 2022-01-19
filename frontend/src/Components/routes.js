@@ -10,7 +10,7 @@ import NavBar from "./Navbar/Navbar";
 import HomePage from "./IndexPage/HomePage";
 import EventIndex from "../pages/Event-Index";
 import EventDetails from "pages/Event-Details";
-import LostFoundPage from "./LostFoundPage/LostFoundPage";
+import LostFoundPage from "../pages/LostFoundIndex/index";
 import Lost from "./LostFoundPage/LostItems/Lost";
 import Found from "./LostFoundPage/FoundItems/Found";
 import AttendanceIndex from "../pages/Attendance-Index/index.jsx";
