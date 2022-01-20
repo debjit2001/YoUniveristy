@@ -9,7 +9,7 @@ import "tippy.js/dist/tippy.css";
 import "react-responsive-modal/styles.css";
 import styles from "./styles.module.css";
 // Import from Local
-import { IP } from "Components/IPDetails";
+import { IP } from "IPDetails";
 //Local Component import
 import Form from "Components/LostFoundPage/Form";
 import ItemCard from "Components/LostFoundPage/ItemCard";
@@ -19,9 +19,9 @@ const Lost = () => {
   /**
    *   State declarations
    */
-  const [open, setOpen] = useState(false);
-  const [formData, setFormData] = useState(null);
-  const [prevLostItems, setPrevLostItems] = useState([]);
+  const [open, _open] = useState(false);
+  const [formData, _formData] = useState(null);
+  const [prevLostItems, _prevLostItems] = useState([]);
 
   /**
    * Method Declarations
@@ -65,20 +65,20 @@ const Lost = () => {
 
   //Function to change the state of the modal from close to open
   const onOpenModal = () => {
-    setOpen((prev) => (prev = true));
+    _open((prev) => (prev = true));
   };
 
-  //Function to change the state of the modal from open to close 
+  //Function to change the state of the modal from open to close
   const onCloseModal = () => {
-    setOpen((prev) => (prev = false));
-    setFormData((prev) => (prev = null));
+    _open((prev) => (prev = false));
+    _formData((prev) => (prev = null));
   };
 
   // Method to get the details of the new lost item
   const _fetchNewLostHandler = async () => {
     try {
-      await axios.get(`${IP}/lost`);
-      setPrevLostItems((prev) => (prev = response?.data?.lostItems));
+      const response = await axios.get(`${IP}/lost`);
+      _prevLostItems((prev) => (prev = response?.data?.lostItems));
     } catch (error) {
       if (error.response.status === 400) alert("Error : Bad Request");
       if (error.response.status === 404) alert("Error : Not Found");
@@ -113,7 +113,7 @@ const Lost = () => {
           LOST FORM
         </Button>
       </Tippy>
-      <Form open={open} onCloseModal={onCloseModal} setFormData={setFormData} />
+      <Form open={open} onCloseModal={onCloseModal} setFormData={_formData} />
       <h2 style={{ textAlign: "center" }} className={styles.heading}>
         LOST ITEMS HERE...
       </h2>
