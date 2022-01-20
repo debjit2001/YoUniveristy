@@ -9,6 +9,9 @@ const ImageWrapper = ({
   isLoading,
   loader,
   className,
+  idName,
+  width,
+  height,
   onLoadHandler,
   onClickHandler,
 }) => {
