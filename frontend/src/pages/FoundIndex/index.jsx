@@ -28,25 +28,22 @@ const Found = () => {
    **/
   // Method to posts the details of the found items into the MongoDB database
   const submitHandler = async () => {
-    console.log("formData", formData);
-    debugger;
     const fd = new FormData();
     fd.append("email", formData.email);
-    fd.append("foundItemDetails", formData.foundItemDetails);
-    fd.append("foundItemImage", formData.foundItemImage);
+    fd.append("foundItemDetails", formData.ItemDetails);
+    fd.append("foundItemImage", formData.ItemImage);
     fd.append("itemName", formData.itemName);
-    fd.append("foundDate", formData.foundDate);
+    fd.append("foundDate", formData.date);
     fd.append("name", formData.name);
     try {
       if (
-        !fd.email ||
-        !fd.foundItemDetails ||
-        !fd.foundItemImage ||
-        !fd.itemName ||
-        !fd.foundDate ||
-        !fd.name
+        !formData.email ||
+        !formData.ItemDetails ||
+        !formData.ItemImage ||
+        !formData.itemName ||
+        !formData.date ||
+        !formData.name
       ) {
-        console.log(fd);
         alert("Please fill out all the necessary fields");
       } else {
         const response = await axios.post(`${IP}/found`, fd, {
@@ -54,12 +51,14 @@ const Found = () => {
             "content-type": "multipart/form-data",
           },
         });
+
         console.log(
           "🚀 ~ file: index.jsx ~ line 54 ~ submitHandler ~ response",
           response
         );
 
         alert("YOUR FORM IS SUCCESSFULLY SUBMITTED");
+        debugger;
         onCloseModal();
         _fetchNewFoundHandler();
       }
