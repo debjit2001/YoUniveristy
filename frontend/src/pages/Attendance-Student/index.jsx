@@ -10,6 +10,8 @@ export const AttendanceStudent = () => {
 //State declarations
   const [stream, setStream] = useState("CSE");
   const [semester, setSemester] = useState(null);
+  //Array of available streams declared
+  const streamsArray=["CSE","ECE","EE","ME","EEE","CSBS"];
 
   //local style declaration
   const buttonStyleOdd = {
@@ -32,15 +34,20 @@ export const AttendanceStudent = () => {
     border: "none",
   };
   //Method declarations
-  const getStream = (e) => {
-    setStream((prev)=>(prev=e.target.innerHTML));
+  /**
+   * @desc set stream state
+   * @param {*} selectedStream 
+   */
+  const getStream = (selectedStream) => {
+    setStream((prev)=>(prev=selectedStream));
   };
-
+  /**
+   * @desc set semester state 
+   * @param {*} sem 
+   */ 
   const getSemester = (sem) => {
     setSemester((prev)=>(prev=sem));
-    console.log(semester);
   };
-
   return (
     <>
       <div className={styles.container}>
@@ -61,53 +68,12 @@ export const AttendanceStudent = () => {
             aria-labelledby="dropdownMenu2"
             style={{ background: "#f2f2f2" }}
           >
+            {
+              streamsArray.map((currentStream,index)=>(
+                <AttendanceStudentSemester buttonStyle={index%2===0?"buttonStyleEven":"buttonStyleOdd"} clickHandler={(newStream)=>getStream(newStream)} buttonText={currentStream} key={index}/>
+              ))
+            }
             
-            <AttendanceStudentSemester buttonStyle="buttonStyleEven" clickHandler={(e)=>getStream(e)} buttonText="CSE"/>
-            {/* <button
-              className="dropdown-item"
-              type="button"
-              style={buttonStyleOdd}
-              onClick={(e) => getStream(e)}
-            >
-              ECE
-            </button> */}
-            <AttendanceStudentSemester buttonStyle="buttonStyleOdd" clickHandler={(e)=>getStream(e)} buttonText="ECE"/>
-            {/* <button
-              className="dropdown-item"
-              type="button"
-              style={buttonStyleEven}
-              onClick={(e) => getStream(e)}
-            >
-              EE
-            </button> */}
-            <AttendanceStudentSemester buttonStyle="buttonStyleEven" clickHandler={(e)=>getStream(e)} buttonText="EE"/>
-            {/* <button
-              className="dropdown-item"
-              type="button"
-              style={buttonStyleOdd}
-              onClick={(e) => getStream(e)}
-            >
-              ME
-            </button> */}
-            <AttendanceStudentSemester buttonStyle="buttonStyleOdd" clickHandler={(e)=>getStream(e)} buttonText="ME"/>
-            {/* <button
-              className="dropdown-item"
-              type="button"
-              style={buttonStyleEven}
-              onClick={(e) => getStream(e)}
-            >
-              EEE
-            </button> */}
-            <AttendanceStudentSemester buttonStyle="buttonStyleEven" clickHandler={(e)=>getStream(e)} buttonText="EEE"/>
-            {/* <button
-              className="dropdown-item"
-              type="button"
-              style={buttonStyleOdd}
-              onClick={(e) => getStream(e)}
-            >
-              CSBS
-            </button> */}
-            <AttendanceStudentSemester buttonStyle="buttonStyleOdd" clickHandler={(e)=>getStream(e)} buttonText="CSBS"/>
           </div>
         </div>
 

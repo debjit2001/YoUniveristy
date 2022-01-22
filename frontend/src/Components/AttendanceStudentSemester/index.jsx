@@ -6,16 +6,12 @@ const AttendanceStudentSemester = ({
   clickHandler,
   buttonText,
 }) => {
-  const _onClickHandler = (e) => {
-    clickHandler(e);
-  };
   return (
     <div>
-      {console.log(buttonStyle)}
       <button
-        className={`dropdown-item ${styles.buttonStyle}`}
+        className={`dropdown-item ${styles[buttonStyle]}`}
         type="button"
-        onClick={_onClickHandler}
+        onClick={()=>clickHandler(buttonText)}
       >
         {buttonText}
       </button>
