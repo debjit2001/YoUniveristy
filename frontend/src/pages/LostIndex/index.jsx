@@ -118,6 +118,7 @@ const Lost = () => {
         LOST ITEMS HERE...
       </h2>
       <br />
+      <div className={`${styles.lostItems}`}>
       {Object.keys(prevLostItems).length ? (
         prevLostItems.map((post, index) => (
           <ItemCard
@@ -133,6 +134,7 @@ const Lost = () => {
       ) : (
         <Spinner role="grow" />
       )}
+      </div>
     </div>
   );
 };
