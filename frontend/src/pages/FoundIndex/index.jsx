@@ -51,23 +51,19 @@ const Found = () => {
             "content-type": "multipart/form-data",
           },
         });
-
+        await onCloseModal();
+        _fetchNewFoundHandler();
         console.log(
           "🚀 ~ file: index.jsx ~ line 54 ~ submitHandler ~ response",
           response
         );
-
-        alert("YOUR FORM IS SUCCESSFULLY SUBMITTED");
-        debugger;
-        onCloseModal();
-        _fetchNewFoundHandler();
       }
     } catch (error) {
       console.log(
         "🚀 ~ file: index.jsx ~ line 64 ~ submitHandler ~ error",
         error
       );
-      debugger;
+     // debugger;
       onCloseModal();
       if (error.response.status === 400) alert("Error : Bad Request");
       if (error.response.status === 404) alert("Error : Not Found");
@@ -81,7 +77,7 @@ const Found = () => {
   };
 
   //Function to change the state of the modal from open to close
-  const onCloseModal = () => {
+  const onCloseModal = async() => {
     _open((prev) => (prev = false));
     _formData((prev) => (prev = null));
   };
@@ -89,6 +85,7 @@ const Found = () => {
   // Method to get the details of the new found item
   const _fetchNewFoundHandler = async () => {
     try {
+      alert("YOUR FORM IS SUCCESSFULLY SUBMITTED");
       const response = await axios.get(`${IP}/found`);
       _prevFoundItems((prev) => (prev = response?.data));
     } catch (error) {
