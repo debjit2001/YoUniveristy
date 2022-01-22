@@ -132,7 +132,23 @@ label{
   color:rgb(199, 114, 16);
 }
 .itemDetails p{
-  
+  text-align:right;
+  width:250px
+}
+.itemDesc{
+  flex-direction: column;
+
+}
+.itemDesc p{
+  margin: 0;
+}
+.readMore{
+  cursor: pointer;
+    color: blue !important;
+    opacity: 0.7;
+}
+.readMore:hover{
+  opacity: 1;
 }
 button:focus-visible{
   outline: none;
