@@ -1,15 +1,19 @@
+//Third party import
 import React, { useState } from "react";
-
 import Tippy from "@tippy.js/react";
 import Loader from "react-loader-spinner";
-
-import styles from "../EventListPage.module.css";
+//Stylesheet import
+import styles from "./style.module.css";
 
 const EventCard = ({ eve, index, _onEventClick }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
+  //state declaration
+  const [isLoaded, _isLoaded] = useState(false);
+  //method declaration
+  /**
+   * @DESC: set the loaded state onLoad of image
+   */
   const handleImageLoad = () => {
-    setIsLoaded(true);
+    _isLoaded((prev) => (prev = true));
   };
 
   return (

@@ -40,7 +40,7 @@ exports.create_lost_entry = async (req, res) => {
 
 exports.fetch_all_lost_entry = async (req, res) => {
   try {
-    const lostItems = Lost.find();
+    const lostItems = await Lost.find();
     if (lostItems.length) {
       res.status(200).json({ lostItems: lostItems });
     } else {

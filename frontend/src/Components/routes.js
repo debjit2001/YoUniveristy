@@ -8,11 +8,11 @@ import {
 
 import NavBar from "./Navbar/Navbar";
 import HomePage from "./IndexPage/HomePage";
-import EventListPage from "./EventListPage/EventListPage";
-import EventDetails from "./EventListPage/EventDetails/index";
-import LostFoundPage from "./LostFoundPage/LostFoundPage";
-import Lost from "./LostFoundPage/LostItems/Lost";
-import Found from "./LostFoundPage/FoundItems/Found";
+import EventIndex from "../pages/Event-Index";
+import EventDetails from "pages/Event-Details";
+import LostFoundPage from "pages/LostFoundIndex";
+import Lost from "pages/LostIndex";
+import Found from "pages/FoundIndex";
 import AttendanceIndex from "../pages/Attendance-Index/index.jsx";
 import AttendancePage from "./AttendancePage/AttendanceDetails/index";
 //import StudentSemester from "./AttendancePage/StudentSemester";
@@ -43,7 +43,7 @@ const BaseRouter = (props) => {
       <NavBar />
       <Switch>
         <Route path="/event/:id" component={EventDetails} />
-        <Route path="/event" component={EventListPage} />
+        <Route path="/event" component={EventIndex} />
         <Route path="/lostfound" component={LostFoundPage} />
         <Route path="/lost" component={Lost} />
         <Route path="/found" component={Found} />
