@@ -1,0 +1,54 @@
+import React from "react";
+import { Modal } from "react-responsive-modal";
+import styles from "./LostFoundPage.module.css";
+const ItemDetailCard = ({
+  open,
+  onCloseModal,
+  imgURL,
+  itemName,
+  date,
+  itemDetails,
+  authorName,
+  authorEmail,
+}) => {
+  return (
+    <Modal open={open} onClose={onCloseModal} center >
+        <div style={{width:"450px" ,cursor:"initial"}}>
+      <div className={styles.cardImageBox} style={{ textAlign: "center" ,cursor:"initial"}}>
+        <img
+          src={`http://localhost:5000/${imgURL}`}
+          alt="lost item"
+          style={{ marginTop: "28px", maxWidth: "500px" ,marginBottom:"25px",cursor:"initial"}}
+        />
+        <p style={{ color: "#000" ,fontSize: "26px",fontWeight:"bold"}}>Item Info</p>
+        <div>
+          <label>Item Name : </label>
+          <h6>{itemName}</h6>
+        </div>
+        <div>
+          <label>Date : </label>
+          <p>{date}</p>
+        </div>
+      </div>
+      <div className={styles.content} style={{ textAlign: "center" }}>
+        <div className={`${styles.itemDetails}`}>
+          <label>Item Details : </label>
+          <p>{itemDetails}</p>
+        </div>
+
+        <p style={{ color: "#000" ,fontSize: "26px",fontWeight:"bold"}}>Contact Info</p>
+        <div>
+          <label>Author Name : </label>
+          <p>{authorName}</p>
+        </div>
+        <div>
+          <label>Author Email : </label>
+          <p>{authorEmail}</p>
+        </div>
+        </div>
+      </div>
+    </Modal>
+  );
+};
+
+export default ItemDetailCard;

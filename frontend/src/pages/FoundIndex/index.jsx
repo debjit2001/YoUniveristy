@@ -52,6 +52,7 @@ const Found = () => {
       ) {
         alert("Please fill out all the necessary fields");
       } else {
+        console.log("Found")
         const response = await axios.post(`${IP}/found`, fd, {
           headers: {
             "content-type": "multipart/form-data",
