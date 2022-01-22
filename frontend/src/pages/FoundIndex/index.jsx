@@ -29,14 +29,27 @@ const Found = () => {
   // Method to posts the details of the found items into the MongoDB database
   const submitHandler = async () => {
     console.log("formData", formData);
-    debugger;
+    // debugger;
+    // const fd2={};
     const fd = new FormData();
-    fd.append("email", formData.email);
-    fd.append("foundItemDetails", formData.foundItemDetails);
-    fd.append("foundItemImage", formData.foundItemImage);
-    fd.append("itemName", formData.itemName);
-    fd.append("foundDate", formData.foundDate);
-    fd.append("name", formData.name);
+    // fd2["email"]=formData.email
+    // fd2["foundItemDetails"] =formData.ItemDetails
+    // fd2["foundItemImage"]=formData.ItemImage
+    // fd2["itemName"]=formData.itemName
+    // fd2["foundDate"] =formData.date
+    // fd2["name"] =formData.name
+    // fd.append("email", formData.email);
+    // fd.append("foundItemDetails", formData.ItemDetails);
+    // fd.append("foundItemImage", formData.ItemImage);
+    // fd.append("itemName", formData.itemName);
+    // fd.append("foundDate", formData.date);
+    // fd.append("name", formData.name);
+    fd.append("email", "formData.email");
+    fd.append("foundItemDetails", "formData.ItemDetails");
+    fd.append("foundItemImage", "formData.ItemImage");
+    fd.append("itemName", "formData.itemName");
+    fd.append("foundDate", "formData.date");
+    fd.append("name", "formData.name");
     try {
       if (
         !fd.email ||
@@ -49,6 +62,7 @@ const Found = () => {
         console.log(fd);
         alert("Please fill out all the necessary fields");
       } else {
+        console.log("Found")
         const response = await axios.post(`${IP}/found`, fd, {
           headers: {
             "content-type": "multipart/form-data",
