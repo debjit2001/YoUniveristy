@@ -1,5 +1,6 @@
 const Lost = require("../models/Lost");
 const cloudinary = require("../utils/cloudinary");
+const helperMethods = require("../utils/LostHelper");
 
 exports.create_lost_entry = async (req, res) => {
   const { name, email, itemName, lostDate, lostItemDetails } = req.body;
