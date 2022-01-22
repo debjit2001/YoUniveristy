@@ -1,5 +1,6 @@
 const Found = require("../models/Found");
 const cloudinary = require("../utils/cloudinary");
+const helperMethods = require("../utils/FoundHelper");
 
 exports.create_found_entry = async (req, res) => {
   const { name, email, itemName, foundDate, foundItemDetails } = req.body;
@@ -8,7 +9,8 @@ exports.create_found_entry = async (req, res) => {
     email,
     itemName,
     foundDate,
-    foundItemDetails
+    foundItemDetails,
+    req
   );
   if (!validationResponse) {
     res.status(400).json({ newFoundEntry: null });
@@ -27,7 +29,7 @@ exports.create_found_entry = async (req, res) => {
         foundItemDetails: foundItemDetails,
       });
       try {
-        const newEntry = await newFoundItem().save();
+        const newEntry = await newFoundItem.save();
         res.status(200).json({ newFoundEntry: newEntry });
       } catch (saveError) {
         res.status(500).json({ newFoundEntry: null });

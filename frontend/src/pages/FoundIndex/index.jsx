@@ -20,14 +20,20 @@ const Found = () => {
    * State declaration
    **/
   const [open, _open] = useState(false);
-  const [formData, _formData] = useState(null);
   const [prevFoundItems, _prevFoundItems] = useState([]);
+  /**
+   * UseEffects
+   */
+  // UseEffects to fetch the new found items from the database
+  useEffect(() => {
+    _fetchNewFoundHandler();
+  }, []);
 
   /**
    *  Method Declaration
    **/
   // Method to posts the details of the found items into the MongoDB database
-  const submitHandler = async () => {
+  const submitHandler = async (formData) => {
     const fd = new FormData();
     fd.append("email", formData.email);
     fd.append("foundItemDetails", formData.ItemDetails);
@@ -51,19 +57,11 @@ const Found = () => {
             "content-type": "multipart/form-data",
           },
         });
-        await onCloseModal();
+        console.log("form submit response:>>", response);
+        onCloseModal();
         _fetchNewFoundHandler();
-        console.log(
-          "🚀 ~ file: index.jsx ~ line 54 ~ submitHandler ~ response",
-          response
-        );
       }
     } catch (error) {
-      console.log(
-        "🚀 ~ file: index.jsx ~ line 64 ~ submitHandler ~ error",
-        error
-      );
-     // debugger;
       onCloseModal();
       if (error.response.status === 400) alert("Error : Bad Request");
       if (error.response.status === 404) alert("Error : Not Found");
@@ -77,17 +75,15 @@ const Found = () => {
   };
 
   //Function to change the state of the modal from open to close
-  const onCloseModal = async() => {
+  const onCloseModal = async () => {
     _open((prev) => (prev = false));
-    _formData((prev) => (prev = null));
   };
 
   // Method to get the details of the new found item
   const _fetchNewFoundHandler = async () => {
     try {
-      alert("YOUR FORM IS SUCCESSFULLY SUBMITTED");
       const response = await axios.get(`${IP}/found`);
-      _prevFoundItems((prev) => (prev = response?.data));
+      _prevFoundItems((prev) => (prev = response?.data?.foundItems));
     } catch (error) {
       if (error.response.status === 400) alert("Error : Bad Request");
       if (error.response.status === 404) alert("Error : Not Found");
@@ -96,19 +92,12 @@ const Found = () => {
   };
 
   /**
-   * UseEffects
+   * Method to be called on submit button click
    */
-  // UseEffects to fetch the new found items from the database
-  useEffect(() => {
-    _fetchNewFoundHandler();
-  }, []);
-
-  useEffect(() => {
-    if (formData !== null && Object.keys(formData).length) {
-      submitHandler();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formData]);
+  const _onSubmitButtonClick = (formEntry) => {
+    console.log("inside _onSubmitButtonClick", formEntry);
+    submitHandler(formEntry);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -122,7 +111,11 @@ const Found = () => {
           FOUND FORM
         </Button>
       </Tippy>
-      <Form open={open} onCloseModal={onCloseModal} setFormData={_formData} />
+      <Form
+        open={open}
+        onCloseModal={onCloseModal}
+        onSubmitButtonHandler={_onSubmitButtonClick}
+      />
       <h2 style={{ textAlign: "center" }} className={styles.heading}>
         {Object.keys(prevFoundItems).length
           ? "LIST OF FOUND ITEMS"
@@ -136,7 +129,7 @@ const Found = () => {
         }
       >
         {Object.keys(prevFoundItems).length ? (
-          prevFoundItems.map((post, index) => (
+          prevFoundItems?.map((post, index) => (
             <ItemCard
               key={index}
               imgURL={post.foundItemImage}
