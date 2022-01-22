@@ -2,9 +2,11 @@ import React from 'react'
 
 import styles from "./style.module.css";
 const AttendanceStudentSemester = (buttonStyle,clickHandler,buttonText) => {
+    const _onClickHandler=e=>clickHandler(e)
     return (
         <div>
-            <button className="dropdown-item" type="button" style={styles.buttonStyle} onClick={clickHandler}>
+            {console.log(buttonStyle)}
+            <button className= {`dropdown-item ${styles.buttonStyle}`} type="button" onClick={_onClickHandler}>
                 {buttonText}
             </button>
         </div>

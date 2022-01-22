@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AttendanceStudentSemester from "../../Components/AttendanceStudentSemester";
 //stylesheet import
-import styles from "./IndexPage/styles.module.css";
+import styles from "./style.module.css";
 
 
 export const AttendanceStudent = () => {
@@ -62,7 +62,7 @@ export const AttendanceStudent = () => {
             style={{ background: "#f2f2f2" }}
           >
             
-            <AttendanceStudentSemester buttonStyle="buttonStyleEven" clickHandler={getStream} buttonText="CSE"/>
+            <AttendanceStudentSemester buttonStyle="buttonStyleEven" clickHandler={(e)=>getStream(e)} buttonText="CSE"/>
             {/* <button
               className="dropdown-item"
               type="button"
@@ -71,7 +71,7 @@ export const AttendanceStudent = () => {
             >
               ECE
             </button> */}
-            <AttendanceStudentSemester buttonStyle="buttonStyleOdd" clickHandler={getStream} buttonText="ECE"/>
+            <AttendanceStudentSemester buttonStyle="buttonStyleOdd" clickHandler={(e)=>getStream(e)} buttonText="ECE"/>
             {/* <button
               className="dropdown-item"
               type="button"
@@ -80,7 +80,7 @@ export const AttendanceStudent = () => {
             >
               EE
             </button> */}
-            <AttendanceStudentSemester buttonStyle="buttonStyleEven" clickHandler={getStream} buttonText="EE"/>
+            <AttendanceStudentSemester buttonStyle="buttonStyleEven" clickHandler={(e)=>getStream(e)} buttonText="EE"/>
             {/* <button
               className="dropdown-item"
               type="button"
@@ -89,7 +89,7 @@ export const AttendanceStudent = () => {
             >
               ME
             </button> */}
-            <AttendanceStudentSemester buttonStyle="buttonStyleOdd" clickHandler={getStream} buttonText="ME"/>
+            <AttendanceStudentSemester buttonStyle="buttonStyleOdd" clickHandler={(e)=>getStream(e)} buttonText="ME"/>
             {/* <button
               className="dropdown-item"
               type="button"
@@ -98,7 +98,7 @@ export const AttendanceStudent = () => {
             >
               EEE
             </button> */}
-            <AttendanceStudentSemester buttonStyle="buttonStyleEven" clickHandler={getStream} buttonText="EEE"/>
+            <AttendanceStudentSemester buttonStyle="buttonStyleEven" clickHandler={(e)=>getStream(e)} buttonText="EEE"/>
             {/* <button
               className="dropdown-item"
               type="button"
@@ -107,7 +107,7 @@ export const AttendanceStudent = () => {
             >
               CSBS
             </button> */}
-            <AttendanceStudentSemester buttonStyle="buttonStyleOdd" clickHandler={getStream} buttonText="CSBS"/>
+            <AttendanceStudentSemester buttonStyle="buttonStyleOdd" clickHandler={(e)=>getStream(e)} buttonText="CSBS"/>
           </div>
         </div>
 
