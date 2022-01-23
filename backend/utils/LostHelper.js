@@ -3,7 +3,8 @@ exports.validateRequest = (
   email,
   itemName,
   lostDate,
-  lostItemDetails
+  lostItemDetails,
+  req
 ) => {
   if (
     !name ||

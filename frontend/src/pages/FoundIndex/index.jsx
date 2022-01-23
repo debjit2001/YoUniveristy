@@ -52,7 +52,7 @@ const Found = () => {
       ) {
         alert("Please fill out all the necessary fields");
       } else {
-        console.log("Found")
+        console.log("Found");
         const response = await axios.post(`${IP}/found`, fd, {
           headers: {
             "content-type": "multipart/form-data",
@@ -86,9 +86,9 @@ const Found = () => {
       const response = await axios.get(`${IP}/found`);
       _prevFoundItems((prev) => (prev = response?.data?.foundItems));
     } catch (error) {
-      if (error.response.status === 400) alert("Error : Bad Request");
-      if (error.response.status === 404) alert("Error : Not Found");
-      if (error.response.status === 500) alert("Error : Internal Server Error");
+      if (error?.response?.status === 400) alert("Error : Bad Request");
+      if (error?.response?.status === 404) alert("Error : Not Found");
+      if (error?.response?.status === 500) alert("Error : Internal Server Error");
     }
   };
 
@@ -96,7 +96,6 @@ const Found = () => {
    * Method to be called on submit button click
    */
   const _onSubmitButtonClick = (formEntry) => {
-    console.log("inside _onSubmitButtonClick", formEntry);
     submitHandler(formEntry);
   };
 
