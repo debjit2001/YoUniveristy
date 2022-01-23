@@ -4,7 +4,7 @@ import moment from "moment";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Form = ({ open, onCloseModal, setFormData }) => {
+const Form = ({ open, onCloseModal, onSubmitButtonHandler }) => {
   const [entry, setEntry] = useState({
     name: "",
     email: "",
@@ -24,9 +24,14 @@ const Form = ({ open, onCloseModal, setFormData }) => {
     setEntry({ ...entry, ItemImage: e.target.files[0] });
   };
 
+  const _onSubmit = (e) => {
+    e.preventDefault();
+    onSubmitButtonHandler(entry);
+  };
+
   return (
     <Modal open={open} onClose={onCloseModal} center>
-      <form onSubmit={() => setFormData(entry)}>
+      <form onSubmit={_onSubmit}>
         <h2 style={{ textAlign: "center", color: "#D2691E" }}> </h2>
 
         <div className="name" style={{ padding: "4px" }}>

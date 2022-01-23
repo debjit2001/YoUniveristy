@@ -22,12 +22,18 @@ const Lost = () => {
   const [open, _open] = useState(false);
   const [formData, _formData] = useState(null);
   const [prevLostItems, _prevLostItems] = useState([]);
-
+  /**
+   * UseEffects
+   */
+  // UseEffects to fetch the new lost items from the database
+  useEffect(() => {
+    _fetchNewLostHandler();
+  }, []);
   /**
    * Method Declarations
    */
   // Method to posts the details of the lost items into the MongoDB database
-  const submitHandler = async () => {
+  const submitHandler = async (formData) => {
     const fd = new FormData();
     fd.append("email", formData.email);
     fd.append("lostItemDetails", formData.ItemDetails);
@@ -42,12 +48,12 @@ const Lost = () => {
         },
       });
       if (
-        !fd.email ||
-        !fd.lostItemDetails ||
-        !fd.lostItemImage ||
-        !fd.itemName ||
-        !fd.lostDate ||
-        !fd.name
+        !formData.email ||
+        !formData.ItemDetails ||
+        !formData.ItemImage ||
+        !formData.itemName ||
+        !formData.date ||
+        !formData.name
       ) {
         alert("Please fill out all the necessary fields");
       } else {
@@ -80,26 +86,18 @@ const Lost = () => {
       const response = await axios.get(`${IP}/lost`);
       _prevLostItems((prev) => (prev = response?.data?.lostItems));
     } catch (error) {
-      if (error.response.status === 400) alert("Error : Bad Request");
-      if (error.response.status === 404) alert("Error : Not Found");
-      if (error.response.status === 500) alert("Error : Internal Server Error");
+      if (error?.response?.status === 400) alert("Error : Bad Request");
+      if (error?.response?.status === 404) alert("Error : Not Found");
+      if (error?.response?.status === 500)
+        alert("Error : Internal Server Error");
     }
   };
-
   /**
-   * UseEffects
+   * Method to be called on submit button click
    */
-  // UseEffects to fetch the new lost items from the database
-  useEffect(() => {
-    _fetchNewLostHandler();
-  }, []);
-
-  useEffect(() => {
-    if (formData !== null && Object.keys(formData).length) {
-      submitHandler();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formData]);
+  const _onSubmitButtonClick = (formEntry) => {
+    submitHandler(formEntry);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -113,26 +111,32 @@ const Lost = () => {
           LOST FORM
         </Button>
       </Tippy>
-      <Form open={open} onCloseModal={onCloseModal} setFormData={_formData} />
+      <Form
+        open={open}
+        onCloseModal={onCloseModal}
+        onSubmitButtonHandler={_onSubmitButtonClick}
+      />
       <h2 style={{ textAlign: "center" }} className={styles.heading}>
         LOST ITEMS HERE...
       </h2>
       <br />
-      {Object.keys(prevLostItems).length ? (
-        prevLostItems.map((post, index) => (
-          <ItemCard
-            key={index}
-            imgURL={post.lostItemImage}
-            itemName={post.itemName}
-            date={post.lostDate}
-            itemDetails={post.lostIemDetails}
-            authorName={post.name}
-            authorEmail={post.email}
-          />
-        ))
-      ) : (
-        <Spinner role="grow" />
-      )}
+      <div className={`${styles.lostItems}`}>
+        {Object.keys(prevLostItems).length ? (
+          prevLostItems.map((post, index) => (
+            <ItemCard
+              key={index}
+              imgURL={post?.lostItemImage}
+              itemName={post?.itemName}
+              date={post?.lostDate}
+              itemDetails={post?.lostItemDetails}
+              authorName={post?.name}
+              authorEmail={post?.email}
+            />
+          ))
+        ) : (
+          <Spinner role="grow" />
+        )}
+      </div>
     </div>
   );
 };

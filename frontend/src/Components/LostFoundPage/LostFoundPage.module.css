@@ -63,54 +63,93 @@ body {
 
 .card {
   position: relative;
-  max-width: 80%;
-  height: 300px;
-  background: #ffffff;
-  margin: 30px 10px;
-  padding: 20px 15px;
-  display: flex;
-  font-family: "Bangers", cursive;
-  flex-direction: column;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-  transition: 0.3s ease-in-out;
-  color: hsl(205, 86%, 17%);
+    float: left;
+    margin: auto;
+    width: 30%;
+    /* height: 100%; */
+    height: auto;
+    padding: 30px;
+    margin: 30px;
+    box-shadow: 0 4px 8px 0 #00000033, 0 6px 10px 0 #00000030;
+    
+    transition: height 2s;
+    cursor: pointer;
 }
-.card:hover {
-  height: 360px;
+.card:hover{
+  box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
+
 }
 .cardImageBox {
-  position: relative;
-  width: 260px;
-  height: 260px;
-  top: -60px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  box-shadow: 0 5px 20px rgb(0 0 0 / 20%);
-  padding-bottom: 15px;
-}
-.cardImageBox img {
-  max-width: 100%;
-  border-radius: 4px;
-  max-height: 80%;
+ 
+  transition: 0.5s ease;
+  opacity: 1;
+  display: block;
+  width: 100%;
+  /* height: 200px; */
+  
+  backface-visibility: hidden;
+  cursor: pointer;
 }
 
-.content {
-  position: relative;
-  margin-top: -140px;
-  padding: 10px 15px;
-  text-align: center;
-  color: #111;
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.3s ease-in-out;
-  color: #c59d5f;
-  max-height: 80%;
-  overflow: scroll;
-}
-.card:hover .content {
-  visibility: visible;
+.cardImageBox img {
+ 
+  transition: 0.5s ease;
   opacity: 1;
-  margin-top: -40px;
-  transition-delay: 0.3s;
+  display: block;
+  width: 100%;
+  /* height: 200px; */
+  height: 50%;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+  cursor: pointer;
+  margin-bottom: 10px;
+  height:240px;
+}
+.cardImageBox h6{
+  color: green;
+  font-weight: bold;
+}
+.card:hover .cardImageBox img{
+  transform: scale(1.1);
+}
+
+.content{
+  height: 50%;
+  /* display: none; */
+  
+}
+
+.cardImageBox div ,.content div{
+  display: flex;
+    justify-content: space-between
+}
+label{
+  font-size: 18px;
+    font-weight: bold;
+}
+.cardImageBox div p,.content div p{
+  font-size: 16px;
+  color:rgb(199, 114, 16);
+}
+.itemDetails p{
+  text-align:right;
+  width:250px
+}
+.itemDesc{
+  flex-direction: column;
+
+}
+.itemDesc p{
+  margin: 0;
+}
+.readMore{
+  cursor: pointer;
+    color: blue !important;
+    opacity: 0.7;
+}
+.readMore:hover{
+  opacity: 1;
+}
+button:focus-visible{
+  outline: none;
 }

@@ -2,16 +2,16 @@ exports.validateRequest = (
   name,
   email,
   itemName,
-  lostDate,
-  lostItemDetails,
+  foundDate,
+  foundItemDetails,
   req
 ) => {
   if (
     !name ||
     !email ||
     !itemName ||
-    !lostDate ||
-    !lostItemDetails ||
+    !foundDate ||
+    !foundItemDetails ||
     req.file === undefined
   )
     return false;
