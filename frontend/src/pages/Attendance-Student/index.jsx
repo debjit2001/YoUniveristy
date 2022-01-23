@@ -1,10 +1,10 @@
-//3rd party imports
+//Third party imports
+import AttendanceStudentSemester from "Components/AttendanceStudentSemester";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import AttendanceStudentSemester from "../../Components/AttendanceStudentSemester";
+import AttendanceStudentStream from "../../Components/AttendanceStudentStream"
 //stylesheet import
 import styles from "./style.module.css";
-
 
 export const AttendanceStudent = () => {
 //State declarations
@@ -12,27 +12,8 @@ export const AttendanceStudent = () => {
   const [semester, setSemester] = useState(null);
   //Array of available streams declared
   const streamsArray=["CSE","ECE","EE","ME","EEE","CSBS"];
-
-  //local style declaration
-  const buttonStyleOdd = {
-    backgroundColor: "#9ddcdc",
-    borderRadius: "5rem",
-    fontWeight: "bolder",
-    border: "none",
-  };
-  const buttonStyleEven = {
-    backgroundColor: " hsl(205, 86%, 17%)",
-    borderRadius: "5rem",
-    fontWeight: "bolder",
-    color: "#c59d5f",
-    border: "none",
-  };
-
-  let buttonStyleNext = {
-    display: semester ? "" : "none",
-    outline: "none",
-    border: "none",
-  };
+  // Array of available semesters declared
+  const semesterArray=["1st","3rd","5th","7th"];
   //Method declarations
   /**
    * @desc set stream state
@@ -70,50 +51,19 @@ export const AttendanceStudent = () => {
           >
             {
               streamsArray.map((currentStream,index)=>(
-                <AttendanceStudentSemester buttonStyle={index%2===0?"buttonStyleEven":"buttonStyleOdd"} clickHandler={(newStream)=>getStream(newStream)} buttonText={currentStream} key={index}/>
+                <AttendanceStudentStream buttonStyle={index%2===0?"buttonStyleEven":"buttonStyleOdd"} clickHandler={(newStream)=>getStream(newStream)} buttonText={currentStream} key={index}/>
               ))
-            }
-            
+            } 
           </div>
         </div>
-
         <h2 className={styles.heading}>SEMESTER</h2>
-        <button
-          type="button"
-          className="btn btn-primary btn-lg btn-block"
-          style={buttonStyleOdd}
-          onClick={() => getSemester(1)}
-        >
-          1st
-        </button>
-
-        <button
-          type="button"
-          className="btn btn-primary btn-lg btn-block"
-          style={buttonStyleEven}
-          onClick={() => getSemester(3)}
-        >
-          3rd
-        </button>
-
-        <button
-          type="button"
-          className="btn btn-primary btn-lg btn-block"
-          style={buttonStyleOdd}
-          onClick={() => getSemester(5)}
-        >
-          5th
-        </button>
-        <button
-          type="button"
-          className="btn btn-primary btn-lg btn-block"
-          style={buttonStyleEven}
-          onClick={() => getSemester(7)}
-        >
-          7th
-        </button>
+        {
+          semesterArray.map((currentSemester,index)=>(
+            <AttendanceStudentSemester buttonStyle={index%2===0?"buttonStyleEven":"buttonStyleOdd"} buttonText={currentSemester} clickHandler={(selectedSemester)=>getSemester(selectedSemester)} key={index}/>
+          ))
+        }
         <Link to="/attendanceDetails">
-          <button style={buttonStyleNext}>
+          <button className={`${styles.nextButton} ${!semester && styles.nextButtonHidden}`}>
             <img src="/assets/icons/next-page-64.png" alt="continue" />
           </button>
         </Link>
@@ -121,5 +71,4 @@ export const AttendanceStudent = () => {
     </>
   );
 };
-
 export default AttendanceStudent;

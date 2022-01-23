@@ -1,15 +1,15 @@
 import React from "react";
 
 import styles from "./style.module.css";
-const AttendanceStudentSemester = ({
+const AttendanceStudentStream = ({
   buttonStyle,
   clickHandler,
-  buttonText
+  buttonText,
 }) => {
   return (
     <div>
       <button
-        className={`btn btn-primary btn-lg btn-block ${styles[buttonStyle]}`}
+        className={`dropdown-item ${styles[buttonStyle]}`}
         type="button"
         onClick={()=>clickHandler(buttonText)}
       >
@@ -19,4 +19,4 @@ const AttendanceStudentSemester = ({
   );
 };
 
-export default AttendanceStudentSemester;
+export default AttendanceStudentStream;

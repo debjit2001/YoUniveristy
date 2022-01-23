@@ -1,0 +1,7 @@
+.nextButton{
+    outline: none;
+    border: none;
+}
+.nextButtonHidden{
+    display:none;
+}
