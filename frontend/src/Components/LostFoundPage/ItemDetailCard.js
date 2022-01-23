@@ -12,14 +12,31 @@ const ItemDetailCard = ({
   authorName,
   authorEmail,
 }) => {
-    
+  /** 
+   * State Declarations
+  */
   const [readMore, setReadMore] = useState(false);
+  /**
+   * Function to activate readMore state
+   */
   const onReadMore=()=>{
-      setReadMore(true)
+      setReadMore((prev)=>prev=true)
   }
+  /**
+   * Function to deactivate readMore state
+   */
   const onReadLess=()=>{
-      setReadMore(false);
+      setReadMore((prev)=>prev=false);
   }
+  /**
+   * @desc method to get the correct imgURL to support both multer and cloudinary configuration
+   * @returns modified imgURL
+   */
+  const _getImageSource = () => {
+    if (imgURL.indexOf("dboyols2t") !== -1) {
+      return imgURL;
+    } else return `http://localhost:5000/${imgURL}`;
+  };
   return (
     <Modal open={open} onClose={onCloseModal} center>
       <div style={{ width: "450px", cursor: "initial" }}>
@@ -28,7 +45,7 @@ const ItemDetailCard = ({
           style={{ textAlign: "center", cursor: "initial" }}
         >
           <img
-            src={`http://localhost:5000/${imgURL}`}
+            src={_getImageSource()}
             alt="lost item"
             style={{
               marginTop: "28px",
