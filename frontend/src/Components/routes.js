@@ -15,7 +15,7 @@ import Lost from "pages/LostIndex";
 import Found from "pages/FoundIndex";
 import AttendanceIndex from "../pages/Attendance-Index/index.jsx";
 import AttendancePage from "./AttendancePage/AttendanceDetails/index";
-import StudentSemester from "./AttendancePage/StudentSemester";
+//import StudentSemester from "./AttendancePage/StudentSemester";
 import ProductList from "./CanteenPage/components/ProductList";
 import Details from "./CanteenPage/components/Details";
 import Cart from "./CanteenPage/components/Cart/Cart";
@@ -28,6 +28,7 @@ import Register from "./Forms/Register/index";
 import Teacher from "./AttendancePage/Teacher/Welcome/index";
 
 import { LoginContext } from "../global/LoginContext";
+import AttendanceStudent from "../pages/Attendance-Student";
 
 const BaseRouter = (props) => {
   useEffect(() => {
@@ -52,7 +53,7 @@ const BaseRouter = (props) => {
         <Route path="/register/teacher" component={TeacherRegister} />
         <Route path="/attendanceStudent" component={AttendancePage} />
         <Route path="/attendance" component={AttendanceIndex} />
-        <Route path="/attendanceStudentSemester" component={StudentSemester} />
+        <Route path="/attendanceStudentSemester" component={AttendanceStudent} />
         <Route path="/attendanceDetails" component={AttendancePage} />
         <PrivateRoute path="/teacherWelcome" component={Teacher} />
         <Route path="/canteen" component={ProductList} />
