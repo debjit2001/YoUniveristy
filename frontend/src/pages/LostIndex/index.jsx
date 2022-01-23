@@ -84,7 +84,7 @@ const Lost = () => {
   const _fetchNewLostHandler = async () => {
     try {
       const response = await axios.get(`${IP}/lost`);
-      _prevLostItems((prev) => (prev = response?.data?.lostItems));
+      _prevLostItems((prev) => (prev = response?.data?.lostItems.reverse()));
     } catch (error) {
       if (error?.response?.status === 400) alert("Error : Bad Request");
       if (error?.response?.status === 404) alert("Error : Not Found");
