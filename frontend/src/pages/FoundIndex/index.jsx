@@ -84,7 +84,7 @@ const Found = () => {
   const _fetchNewFoundHandler = async () => {
     try {
       const response = await axios.get(`${IP}/found`);
-      _prevFoundItems((prev) => (prev = response?.data?.foundItems));
+      _prevFoundItems((prev) => (prev = response?.data?.foundItems.reverse()));
     } catch (error) {
       if (error?.response?.status === 400) alert("Error : Bad Request");
       if (error?.response?.status === 404) alert("Error : Not Found");
