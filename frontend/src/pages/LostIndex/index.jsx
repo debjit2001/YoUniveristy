@@ -126,7 +126,7 @@ const Lost = () => {
             imgURL={post.lostItemImage}
             itemName={post.itemName}
             date={post.lostDate}
-            itemDetails={post.lostIemDetails}
+            itemDetails={post.lostItemDetails}
             authorName={post.name}
             authorEmail={post.email}
           />
