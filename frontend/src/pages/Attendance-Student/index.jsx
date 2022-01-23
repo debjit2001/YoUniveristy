@@ -1,10 +1,10 @@
 //Third party imports
-import AttendanceStudentSemester from "Components/AttendanceStudentSemester";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import AttendanceStudentStream from "Components/AttendanceStudentStream"
 //stylesheet import
 import styles from "./style.module.css";
+//Local import
+import SelectionOption from "Components/SelectionOption";
 
 export const AttendanceStudent = () => {
 //State declarations
@@ -51,7 +51,7 @@ export const AttendanceStudent = () => {
           >
             {
               streamsArray.map((currentStream,index)=>(
-                <AttendanceStudentStream buttonStyle={index%2===0?"buttonStyleEven":"buttonStyleOdd"} clickHandler={(newStream)=>getStream(newStream)} buttonText={currentStream} key={index}/>
+                <SelectionOption baseClass="dropdown-item" buttonStyle={index%2===0?"buttonStyleEven":"buttonStyleOdd"} clickHandler={(newStream)=>getStream(newStream)} buttonText={currentStream} key={index}/>
               ))
             } 
           </div>
@@ -59,7 +59,7 @@ export const AttendanceStudent = () => {
         <h2 className={styles.heading}>SEMESTER</h2>
         {
           semesterArray.map((currentSemester,index)=>(
-            <AttendanceStudentSemester buttonStyle={index%2===0?"buttonStyleEven":"buttonStyleOdd"} buttonText={currentSemester} clickHandler={(selectedSemester)=>getSemester(selectedSemester)} key={index}/>
+            <SelectionOption baseClass="btn btn-primary btn-lg btn-block" buttonStyle={index%2===0?"buttonStyleEven":"buttonStyleOdd"} buttonText={currentSemester} clickHandler={(selectedSemester)=>getSemester(selectedSemester)} key={index}/>
           ))
         }
         <Link to="/attendanceDetails">

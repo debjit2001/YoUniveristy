@@ -2,7 +2,8 @@
 import React from "react";
 //StyleSheet Import
 import styles from "./style.module.css";
-const AttendanceStudentSemester = ({
+const SelectionOption = ({
+  baseClass,
   buttonStyle,
   clickHandler,
   buttonText
@@ -10,7 +11,7 @@ const AttendanceStudentSemester = ({
   return (
     <div>
       <button
-        className={`btn btn-primary btn-lg btn-block ${styles[buttonStyle]}`}
+        className={`${baseClass} ${styles[buttonStyle]}`}
         type="button"
         onClick={()=>clickHandler(buttonText)}
       >
@@ -20,4 +21,4 @@ const AttendanceStudentSemester = ({
   );
 };
 
-export default AttendanceStudentSemester;
+export default SelectionOption;
