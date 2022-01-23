@@ -1,5 +1,6 @@
+//Third Party Import
 import React from "react";
-
+//StyleSheet Import
 import styles from "./style.module.css";
 const AttendanceStudentSemester = ({
   buttonStyle,

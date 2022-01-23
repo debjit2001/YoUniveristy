@@ -2,7 +2,7 @@
 import AttendanceStudentSemester from "Components/AttendanceStudentSemester";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import AttendanceStudentStream from "../../Components/AttendanceStudentStream"
+import AttendanceStudentStream from "Components/AttendanceStudentStream"
 //stylesheet import
 import styles from "./style.module.css";
 
