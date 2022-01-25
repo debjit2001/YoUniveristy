@@ -6,14 +6,14 @@ const SelectionOption = ({
   baseClass,
   buttonStyle,
   clickHandler,
-  buttonText
+  buttonText,
 }) => {
   return (
     <div>
       <button
-        className={`${baseClass} ${styles[buttonStyle]}`}
+        className={`${baseClass} ${styles.button} ${styles[buttonStyle]}`}
         type="button"
-        onClick={()=>clickHandler(buttonText)}
+        onClick={() => clickHandler(buttonText)}
       >
         {buttonText}
       </button>
