@@ -41,16 +41,18 @@ export const AttendanceStudent = () => {
     <>
       <div className={styles.container}>
         <h2 className={styles.heading}>Stream</h2>
-        <div className="dropdown">
+        <div className="dropdown btn-group">
+        <button type="button" class="btn btn-primary">
+        {stream}
+        </button>
           <button
-            className="btn btn-secondary dropdown-toggle"
+            className="btn btn-primary dropdown-toggle dropdown-toggle-split"
             type="button"
             id="dropdownMenu2"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
           >
-            {stream}
           </button>
           <div
             className="dropdown-menu"
