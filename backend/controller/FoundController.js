@@ -1,32 +1,14 @@
+//Third party impoprt
 const cloudinary = require("../utils/cloudinary");
-const nodemailer = require("nodemailer");
+//local import
 const Found = require("../models/Found");
 const helperMethods = require("../utils/FoundHelper");
-const mailerConfig = require("../config/mailerConfig");
-
-//function to send email whenever a item found is registered
-const mailHandler = async (email, itemName, name) => {
-  let mailOptions = {
-    from: "Youniversity.official.2022@gmail.com",
-    to: email,
-    subject: `Found Item registered`,
-    html: `
-    <p>Hey <b>${name}</b>,</p>
-    <p>Your entry for item <b>${itemName}</b> has been registered successfully.</p>
-    <p>Thanks and Regards</p>
-    <p><b>Team YOUniversity</b></p>
-    `,
-  };
-
-  mailerConfig.transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Email sent: " + info.response);
-    }
-  });
-};
-
+const mailhelper = require("../utils/MailHelper");
+/**
+ * @param {*} req
+ * @param {*} res
+ * @description function to send email whenever a item found is registered
+ */
 exports.create_found_entry = async (req, res) => {
   const { name, email, itemName, foundDate, foundItemDetails } = req.body;
   const validationResponse = helperMethods.validateRequest(
@@ -56,7 +38,7 @@ exports.create_found_entry = async (req, res) => {
       try {
         const newEntry = await newFoundItem.save();
         res.status(200).json({ newFoundEntry: newEntry });
-        mailHandler(email, itemName, name);
+        mailhelper.mailHandler(email, itemName, name);
       } catch (saveError) {
         res.status(500).json({ newFoundEntry: null });
       }
@@ -65,7 +47,12 @@ exports.create_found_entry = async (req, res) => {
     }
   }
 };
-
+/**
+ *
+ * @param {*} req
+ * @param {*} res
+ * @description function to fetch all the found entry
+ */
 exports.fetch_all_found_entry = async (req, res) => {
   try {
     const foundItems = await Found.find();
@@ -78,10 +65,14 @@ exports.fetch_all_found_entry = async (req, res) => {
     res.status(500).json({ foundItems: [] });
   }
 };
-
+/**
+ *
+ * @param {*} req
+ * @param {*} res
+ * @description fetch a single found item
+ */
 exports.fetch_found_item = async (req, res) => {
   const { id } = req.params;
-
   try {
     const searchEntry = Found.findOne({ _id: id });
     if (searchEntry) {
