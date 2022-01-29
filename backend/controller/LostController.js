@@ -1,6 +1,7 @@
 const Lost = require("../models/Lost");
 const cloudinary = require("../utils/cloudinary");
 const helperMethods = require("../utils/LostHelper");
+const mailhelper = require("../utils/MailHelper");
 
 exports.create_lost_entry = async (req, res) => {
   const { name, email, itemName, lostDate, lostItemDetails } = req.body;
@@ -31,6 +32,7 @@ exports.create_lost_entry = async (req, res) => {
       try {
         const newEntry = await newLostItem.save();
         res.status(200).json({ newLostEntry: newEntry });
+        mailhelper.mailHandler(email, itemName, name, `Lost Item registered`);
       } catch (saveError) {
         res.status(500).json({ newLostEntry: null });
       }
