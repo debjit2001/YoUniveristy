@@ -1,7 +1,29 @@
 const Lost = require("../models/Lost");
 const cloudinary = require("../utils/cloudinary");
 const helperMethods = require("../utils/LostHelper");
+const mailerConfig = require("../config/mailerConfig");
+//function to send email whenever a item lost is registered
+const mailHandler = async (email, itemName, name) => {
+  let mailOptions = {
+    from: "Youniversity.official.2022@gmail.com",
+    to: email,
+    subject: `Lost Item registered`,
+    html: `
+    <p>Hey <b>${name}</b>,</p>
+    <p>Your entry for item <b>${itemName}</b> has been registered successfully.</p>
+    <p>Thanks and Regards ,</p>
+    <h2>Team YOUniversity</h2>
+    `,
+  };
 
+  mailerConfig.transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+};
 exports.create_lost_entry = async (req, res) => {
   const { name, email, itemName, lostDate, lostItemDetails } = req.body;
   const validationResponse = helperMethods.validateRequest(
@@ -31,6 +53,7 @@ exports.create_lost_entry = async (req, res) => {
       try {
         const newEntry = await newLostItem.save();
         res.status(200).json({ newLostEntry: newEntry });
+        mailHandler(email, itemName, name);
       } catch (saveError) {
         res.status(500).json({ newLostEntry: null });
       }

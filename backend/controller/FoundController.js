@@ -1,5 +1,4 @@
 const cloudinary = require("../utils/cloudinary");
-const nodemailer = require("nodemailer");
 const Found = require("../models/Found");
 const helperMethods = require("../utils/FoundHelper");
 const mailerConfig = require("../config/mailerConfig");
@@ -13,8 +12,8 @@ const mailHandler = async (email, itemName, name) => {
     html: `
     <p>Hey <b>${name}</b>,</p>
     <p>Your entry for item <b>${itemName}</b> has been registered successfully.</p>
-    <p>Thanks and Regards</p>
-    <p><b>Team YOUniversity</b></p>
+    <p>Thanks and Regards ,</p>
+    <h2>Team YOUniversity</h2>
     `,
   };
 
