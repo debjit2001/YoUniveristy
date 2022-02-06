@@ -5,12 +5,12 @@
   margin: 5rem 2rem;
   border: 2px solid #f0ffff;
   background-color: #fff;
-  position:absolute;
+  position: absolute;
   left: 32%;
   top: 15%;
-  box-shadow: 7px 10px 11px -2px rgba(107,100,100,0.33);
-  -webkit-box-shadow: 7px 10px 11px -2px rgba(107,100,100,0.33);
-  -moz-box-shadow: 7px 10px 11px -2px rgba(107,100,100,0.33);
+  box-shadow: 7px 10px 11px -2px rgba(107, 100, 100, 0.33);
+  -webkit-box-shadow: 7px 10px 11px -2px rgba(107, 100, 100, 0.33);
+  -moz-box-shadow: 7px 10px 11px -2px rgba(107, 100, 100, 0.33);
 }
 
 .LoginForm {
@@ -55,6 +55,11 @@
   border-bottom: 1px solid #000;
   transition: border-bottom ease-in 0.25s;
 }
+
+.passwordInputContainer {
+  position: relative;
+}
+
 .passwordPlaceholderText {
   position: absolute;
   top: 0;

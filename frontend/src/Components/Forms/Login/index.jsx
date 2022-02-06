@@ -22,9 +22,7 @@ const LoginForm = ({ emailError, passwordError, loginFormSubmitHandler }) => {
     if (name === "email") {
       const enteredEmail = value.trimLeft();
       if (enteredEmail) {
-        enteredEmail.length
-          ? setEmail(enteredEmail)
-          : setEmail("");
+        enteredEmail.length ? setEmail(enteredEmail) : setEmail("");
       } else {
         setEmail("");
       }
@@ -81,7 +79,9 @@ const LoginForm = ({ emailError, passwordError, loginFormSubmitHandler }) => {
               style={emailError ? errorInputStyle : null}
             />
           </div>
-          <div className={styles.inputDiv}>
+          <div
+            className={`${styles.inputDiv} ${styles.passwordInputContainer}`}
+          >
             <span
               className={
                 passwordFocus || password.length
@@ -110,8 +110,8 @@ const LoginForm = ({ emailError, passwordError, loginFormSubmitHandler }) => {
               <img
                 src={
                   isHidden
-                    ? "/assets/images/icons/LoginForm/eye.svg"
-                    : "/assets/images/icons/LoginForm/visibility_off_black_24dp.svg"
+                    ? "/assets/icons/LoginForm/eye.svg"
+                    : "/assets/icons/LoginForm/visibility_off_black_24dp.svg"
                 }
                 alt="show-password"
                 className={styles.showHidePassword}
