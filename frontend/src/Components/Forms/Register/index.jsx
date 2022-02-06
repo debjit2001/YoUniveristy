@@ -13,6 +13,7 @@ import {
 
 import styles from "./styles.module.css";
 import registerSvg from "./register.png";
+import ImageWrapper from "Components/Image-Wrapper";
 
 const Register = () => {
   //Creating states
@@ -377,11 +378,14 @@ const Register = () => {
                 </div>
               </div>
               <div className={`${styles.form_inner_inner}`}>
-                <img
+                {/* <img
                   className={`${styles.login_png}`}
                   src={registerSvg}
                   alt="login_photo"
-                />
+                /> */}
+                <ImageWrapper className={`${styles.login_png}`}
+                  imgSrc={registerSvg}
+                  imgAlt="login_photo"/>
               </div>
             </div>
           </div>

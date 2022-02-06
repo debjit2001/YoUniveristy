@@ -11,7 +11,9 @@ class App extends Component {
         <footer className={styles.Footer}>
           <a href="mailto:debjit80659@gmail.com">D</a>
           <a href="mailto:pronayrocksguha@gmail.com">P</a>
-          <a href="mailto:sagun.jaiswal@aot.edu.in">S</a>@2020
+          <a href="mailto:sagun.jaiswal@aot.edu.in">S</a>
+          <a href="mailto:avishake.maji@aot.edu.in">A</a>
+          @2020
         </footer>
       </div>
     );

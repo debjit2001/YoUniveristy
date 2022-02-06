@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { ProductContext } from "../../../global/CanteenContext";
 import { ButtonContainer } from "./Button";
+import ImageWrapper from "Components/Image-Wrapper";
 import { Link } from "react-router-dom";
 
 const Modal = () => {
@@ -18,11 +19,17 @@ const Modal = () => {
               className="col-8 mx-auto col-md-6 col-lg-4 text-center text-capitalize p-5"
             >
               <h5>food item added to cart</h5>
-              <img
+              {/* <img
                 src={`http://localhost:5000/${modalProduct.imgUrl}`}
                 className="img-fluid"
                 alt="product"
-              />
+              /> */}
+               <ImageWrapper
+                imgSrc={`http://localhost:5000/${modalProduct.imgUrl}`}
+                imgAlt="product"
+                className="img-fluid"
+               
+                />
               <h5>{modalProduct.title}</h5>
               <h5 className="text-muted">price : ₹ {modalProduct.price}</h5>
               <Link to="/canteen">

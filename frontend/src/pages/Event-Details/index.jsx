@@ -7,6 +7,7 @@ import Skeleton from "react-loading-skeleton";
 import styles from "./styles.module.css";
 //Local import
 import { IP } from "IPDetails";
+import ImageWrapper from "Components/Image-Wrapper";
 
 const EventDetails = (props) => {
   /**
@@ -48,9 +49,9 @@ const EventDetails = (props) => {
   /**
    * @DESC: set state when the event image is loaded
    */
-  const handleImageLoaded = () => {
-    _isLoading((prev) => (prev = false));
-  };
+  // const handleImageLoaded = () => {
+  //   _isLoading((prev) => (prev = false));
+  // };
   //store the value of the render spinner
   const spinner = renderSpinner();
 
@@ -60,12 +61,14 @@ const EventDetails = (props) => {
     return (
       <div className={styles.EventCardContainer}>
         <div className={styles.imgContainer}>
-          {spinner}
-          <img
+          {/* {spinner} */}
+          {/* <img
             src={event?.eventImage || "/assets/icons/no-image.svg"}
             alt={`${event?.title}`}
             onLoad={() => handleImageLoaded()}
-          />
+          /> */}
+          <ImageWrapper  imgSrc={event?.eventImage || "/assets/icons/no-image.svg"}
+            imgAlt={`${event?.title}`} />
         </div>
         <div className={styles.detailsContainer}>
           <h2 className={styles.eventTitle}>{event?.title}</h2>

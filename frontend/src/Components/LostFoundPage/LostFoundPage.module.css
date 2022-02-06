@@ -91,7 +91,7 @@ body {
   cursor: pointer;
 }
 
-.cardImageBox img {
+.cardImageBox .img,.img2 {
  
   transition: 0.5s ease;
   opacity: 1;
@@ -109,10 +109,16 @@ body {
   color: green;
   font-weight: bold;
 }
-.card:hover .cardImageBox img{
+.card:hover .cardImageBox .img,.img2{
   transform: scale(1.1);
 }
-
+.img2{
+  margin-top:28px;
+  max-width: 500px;
+  margin-bottom: 25px;
+  cursor: "initial";
+  padding:14px;
+}
 .content{
   height: 50%;
   /* display: none; */

@@ -6,6 +6,7 @@ import styles from "./style.module.css";
 //Local import
 import SelectionOption from "Components/SelectionOption";
 import { useEffect } from "react";
+import ImageWrapper from "Components/Image-Wrapper";
 
 export const AttendanceStudent = () => {
   //State declarations
@@ -88,7 +89,8 @@ export const AttendanceStudent = () => {
               !semester && styles.nextButtonHidden
             }`}
           >
-            <img src="/assets/icons/next-page-64.png" alt="continue" />
+            {/* <img src="/assets/icons/next-page-64.png" alt="continue" /> */}
+            <ImageWrapper imgSrc="/assets/icons/next-page-64.png" imgAlt="continue" />
           </button>
         </Link>
       </div>
