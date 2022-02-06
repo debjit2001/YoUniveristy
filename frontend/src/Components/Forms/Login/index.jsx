@@ -60,7 +60,7 @@ const LoginForm = ({ emailError, passwordError, loginFormSubmitHandler }) => {
               style={emailError ? errorPlaceHolderStyle : null}
               onClick={() => setEmailFocus(true)}
             >
-              <p> Email</p>
+              <p className={styles.InputHeading}> Email</p>
             </span>
             <input
               type="email"
@@ -91,7 +91,7 @@ const LoginForm = ({ emailError, passwordError, loginFormSubmitHandler }) => {
               style={passwordError ? errorPlaceHolderStyle : null}
               onClick={() => setPasswordFocus(true)}
             >
-              <p> Password</p>
+              <p className={styles.InputHeading}> Password</p>
             </span>
             <input
               type={isHidden ? "password" : "text"}
