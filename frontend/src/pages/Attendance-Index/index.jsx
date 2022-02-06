@@ -6,6 +6,7 @@ import styles from "./style.module.css";
 import AttendanceCharacterCard from "../../Components/AttendanceCharacterCard";
 import LinkButton from "../../Components/LinkButton";
 import { LoginContext } from "../../global/LoginContext";
+import AvatarCard from "Components/AvatarCard";
 
 const AttendanceIndex = () => {
   /**
@@ -26,7 +27,7 @@ const AttendanceIndex = () => {
         <LinkButton targetUrl="signup" buttonText="Register" />
       </div>
       <div className={styles.container}>
-        <h2 className={styles.heading}>WHO ARE YOU?</h2>
+        {/* <h2 className={styles.heading}>WHO ARE YOU?</h2>
         <AttendanceCharacterCard
           targetUrl="attendanceStudentSemester"
           buttonText="I'm a student"
@@ -36,7 +37,8 @@ const AttendanceIndex = () => {
         <AttendanceCharacterCard
           targetUrl={isTeacherAuth ? "/teacherWelcome" : "/login/teacher"}
           buttonText="I'm a teacher"
-        />
+        /> */}
+        <AvatarCard/>
       </div>
     </div>
   );
