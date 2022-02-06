@@ -1,157 +1,133 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-//import { MailOutline } from "react-ionicons";
-
+//import { changePasswordView } from "../../../helperMethods";
 import styles from "./style.module.css";
 
-import {
-  validateEmail,
-  validatePassword,
-  validateRegistrationNumber,
-} from "../../Validators/validate";
+const LoginForm = ({ emailError, passwordError, loginFormSubmitHandler }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isHidden, setIsHidden] = useState(true);
+  const [emailFocus, setEmailFocus] = useState(false);
+  const [passwordFocus, setPasswordFocus] = useState(false);
 
-const Login = () => {
-  const [teacherLogin, setTeacherLogin] = useState({
-    registrationNumber: "",
-    email: "",
-    password: "",
-  });
-  let name, value;
-  var error = false;
+  const errorPlaceHolderStyle = {
+    color: "red",
+  };
+  const errorInputStyle = {
+    borderBottom: "2px solid red",
+    color: "red",
+  };
 
-  const handleInputs = (e) => {
-    name = e.target.name;
-    value = e.target.value;
-    var nameField = document.querySelector(`#${name} input`);
-    var errorMessage = document.querySelector(`#${name} .errorMessage`);
-    var warningIcon = document.querySelector(`#${name} .fa-exclamation-circle`);
-    var correctIcon = document.querySelector(`#${name} .fa-check-circle`);
-    error = false;
-    var setErrorMessage = "";
-    var isValid;
-    setTeacherLogin({ ...teacherLogin, [name]: value });
-    if (name === "registrationNumber") {
-      isValid = validateRegistrationNumber(value);
-    } else if (name === "email") {
-      isValid = validateEmail(value);
+  const _onChangeHandler = (e) => {
+    const { name, value } = e.target;
+    if (name === "email") {
+      const enteredEmail = value.trimLeft();
+      if (enteredEmail) {
+        enteredEmail.length
+          ? setEmail(enteredEmail)
+          : setEmail("");
+      } else {
+        setEmail("");
+      }
     } else {
-      isValid = validatePassword(value);
-    }
-    if (isValid[0] === false) {
-      error = true;
-      setErrorMessage = isValid[1];
-    }
-    console.log(isValid);
-    // warningIcon.style.display = "none";
-    // correctIcon.style.display = "none";
-
-    if (value.length === 0) {
-      nameField.style.borderBottom = "2px solid black";
-      errorMessage.innerHTML = "";
-    } else if (error === true && setErrorMessage.length > 0) {
-      nameField.style.borderBottom = "2px solid red";
-      warningIcon.style.display = "block";
-      errorMessage.innerHTML = setErrorMessage;
-    } else {
-      nameField.style.borderBottom = "2px solid green";
-      correctIcon.style.display = "block";
-      errorMessage.innerHTML = "";
+      setPassword(value.trim());
     }
   };
 
+  //formDataHandler() method for sending form data from LoginForm.jsx to Auth.jsx
+  const formDataHandler = (e) => {
+    e.preventDefault();
+    const formData = {
+      email: email,
+      password: password,
+    };
+    loginFormSubmitHandler(formData);
+  };
+
+  //password view change handler
+  const changePasswordView = (isHidden, setIsHidden) => {
+    const currentViewState = isHidden;
+    setIsHidden(!currentViewState);
+  };
   return (
-    <div className={styles.container}>
-      <div className={styles.form}>
-        <p className={styles.header}>Login</p>
-        <div className={styles.formBody}>
-          <div className={styles.form_row}>
-            <i
-              className={`fa fa-user ${styles.fa_user}`}
-              aria-hidden="true"
-            ></i>
-            <div className={styles.col}>
-              <input
-                type="email"
-                className={styles.form_control}
-                value={teacherLogin.registrationNumber}
-                onChange={handleInputs}
-                placeholder="Enter your Registration Number"
-                name="registrationNumber"
-              />
-              <i
-                className="fas fa-exclamation-circle"
-                style={{ color: "#f60000" }}
-              ></i>
-              <i
-                className="fas fa-check-circle"
-                style={{ color: "#005f00" }}
-              ></i>
-            </div>
-          </div>
-          <div className={styles.form_row}>
-            <div className={styles.form_name} id="email">
-              <i className={`fa fa-envelope ${styles.fa_user}`}></i>
-              <input
-                type="email"
-                className={styles.form_control}
-                value={teacherLogin.email}
-                onChange={handleInputs}
-                placeholder="Enter your email"
-                name="email"
-              />
-            </div>
-          </div>
-          <div className={`${styles.form_row} ${styles.passwordInput}`}>
-            <i
-              className={`fa fa-lock ${styles.fa_lock}`}
-              aria-hidden="true"
-            ></i>
-            <div className={styles.form_name} id="password">
-              <div className={styles.col}>
-                <input
-                  type="password"
-                  className={styles.form_control}
-                  value={teacherLogin.password}
-                  onChange={handleInputs}
-                  placeholder="Enter your password"
-                  name="password"
-                />
-                <i
-                  className="fas fa-exclamation-circle"
-                  style={{ color: "#f60000" }}
-                ></i>
-                <i
-                  className="fas fa-check-circle"
-                  style={{ color: "#005f00" }}
-                ></i>
-              </div>
-            </div>
-          </div>
-          <div className={styles.btner}>
-            <button
-              type="submit"
-              className={`btn btn-danger ${styles.loginButton}`}
+    <div className={styles.LoginFormContainer}>
+      <form className={styles.LoginForm} onSubmit={(e) => formDataHandler(e)}>
+        <div className={styles.inputSection}>
+          <div className={styles.inputDiv}>
+            <span
+              className={
+                email || email.length || emailFocus
+                  ? styles.smallEmailPlaceholderText
+                  : styles.emailPlaceholderText
+              }
+              style={emailError ? errorPlaceHolderStyle : null}
+              onClick={() => setEmailFocus(true)}
             >
-              Log In
-            </button>
-            <div className={styles.no_account}>
-              Don't have an account ?
-              <Link
-                style={{
-                  marginLeft: "14px",
-                  cursor: "pointer",
-                  color: "#1c3958",
-                  fontWeight: "bold",
-                }}
-                to="/register/teacher"
-              >
-                Register
-              </Link>
-            </div>
+              <p> Email</p>
+            </span>
+            <input
+              type="email"
+              className={styles.EmailInput}
+              name="email"
+              value={email}
+              placeholder={emailFocus ? "Enter your Email" : ""}
+              onChange={(e) => _onChangeHandler(e)}
+              onFocus={() => {
+                setEmailFocus(true);
+              }}
+              onBlur={() => {
+                setEmailFocus(false);
+              }}
+              required
+              style={emailError ? errorInputStyle : null}
+            />
+          </div>
+          <div className={styles.inputDiv}>
+            <span
+              className={
+                passwordFocus || password.length
+                  ? styles.smallPasswordPlaceholderText
+                  : styles.passwordPlaceholderText
+              }
+              style={passwordError ? errorPlaceHolderStyle : null}
+              onClick={() => setPasswordFocus(true)}
+            >
+              <p> Password</p>
+            </span>
+            <input
+              type={isHidden ? "password" : "text"}
+              className={styles.PasswordInput}
+              id="inputPassword3"
+              value={password}
+              name="password"
+              placeholder={passwordFocus ? "Enter Password" : ""}
+              onChange={(e) => _onChangeHandler(e)}
+              onFocus={() => setPasswordFocus(true)}
+              onBlur={() => setPasswordFocus(false)}
+              required
+              style={passwordError ? errorInputStyle : null}
+            />
+            {password.length ? (
+              <img
+                src={
+                  isHidden
+                    ? "/assets/images/icons/LoginForm/eye.svg"
+                    : "/assets/images/icons/LoginForm/visibility_off_black_24dp.svg"
+                }
+                alt="show-password"
+                className={styles.showHidePassword}
+                onClick={() => changePasswordView(isHidden, setIsHidden)}
+              />
+            ) : null}
           </div>
         </div>
-      </div>
+        <div className={styles.SignInButtonContainer}>
+          <button type="submit" className="btn btn-success">
+            Sign in
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
-export default Login;
+
+export default LoginForm;
