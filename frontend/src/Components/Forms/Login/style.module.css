@@ -13,7 +13,7 @@
   -moz-box-shadow: 7px 10px 11px -2px rgba(107, 100, 100, 0.33);
 }
 
-.InputHeading{
+.InputHeading {
   font-size: 17px;
 }
 .LoginForm {
@@ -80,6 +80,7 @@
   border: none;
   border-bottom: 2px solid #000;
   width: 100%;
+  color: #000 !important;
   background: none !important;
 }
 .PasswordInput:focus {
@@ -90,10 +91,8 @@
 
 .showHidePassword {
   position: absolute;
-  top: 45vh;
-  left: 1170px;
+  right: 0;
   cursor: pointer;
-  height: 1.9rem;
   z-index: 200;
 }
 
