@@ -13,6 +13,9 @@
   -moz-box-shadow: 7px 10px 11px -2px rgba(107,100,100,0.33);
 }
 
+.InputHeading{
+  font-size: 17px;
+}
 .LoginForm {
   display: flex;
   flex-direction: column;
@@ -48,6 +51,7 @@
   border: none;
   border-bottom: 2px solid #000;
   width: 100%;
+  background: none !important;
 }
 
 .RollNumberInput:focus {
@@ -71,6 +75,7 @@
   border: none;
   border-bottom: 2px solid #000;
   width: 100%;
+  background: none !important;
 }
 .PasswordInput:focus {
   outline: none;
