@@ -41,16 +41,13 @@
 }
 
 .container {
-  width: 300px;
-  padding: 40px;
+  width: 100%;
   position: absolute;
-  top: 55%;
-  left: 50%;
-  width: 65%;
-  transform: translate(-50%, -50%);
-  background: #ffffff;
-  border-radius: 5px;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
 }
 
 @media screen and (max-width: 600px) {

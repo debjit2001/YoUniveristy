@@ -21,24 +21,14 @@ const AttendanceIndex = () => {
   // }
 
   return (
-    <div className={styles.outer_container}>
+    <div>
       <div className={styles.login_register}>
         <LinkButton targetUrl="signin" buttonText="Login" />
         <LinkButton targetUrl="signup" buttonText="Register" />
       </div>
       <div className={styles.container}>
-        {/* <h2 className={styles.heading}>WHO ARE YOU?</h2>
-        <AttendanceCharacterCard
-          targetUrl="attendanceStudentSemester"
-          buttonText="I'm a student"
-        />
-        <br />
-        <br />
-        <AttendanceCharacterCard
-          targetUrl={isTeacherAuth ? "/teacherWelcome" : "/login/teacher"}
-          buttonText="I'm a teacher"
-        /> */}
-        <AvatarCard/>
+        <AvatarCard userRole="student" />
+        <AvatarCard userRole="teacher" />
       </div>
     </div>
   );

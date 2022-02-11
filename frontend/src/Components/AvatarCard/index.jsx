@@ -1,25 +1,35 @@
-import React from 'react';
-import { Card, CardImg, CardText, CardBody,CardTitle, CardSubtitle, Button, Row, Col } from 'reactstrap';
+import React from "react";
+import { Card, CardImg, CardText, Col } from "reactstrap";
 import styles from "./style.module.css";
 
-const AvatarCard = (props) => {
+const AvatarCard = ({ userRole = "student" }) => {
+  /**
+   * Generate Avatar image for AvatarCard Component
+   */
+  const _generateCardAvatar = () => {
+    let avatarImageSrc = null;
+    if (userRole === "student ") {
+      avatarImageSrc = "assets/img/graduate-student-svgrepo-com.svg";
+    } else {
+      avatarImageSrc = "assets/img/teacher-svgrepo-com.svg";
+    }
+
+    return avatarImageSrc;
+  };
+
   return (
-    <Row>
-      <Col sm="6">
-        <Card body className={styles.cardView}>
-          <CardImg top width="100%" src="assets/img/graduate-student-svgrepo-com.svg" alt="Card image cap" className={styles.cardImage} />  
-          <CardText>STUDENT</CardText>
-          {/* <Button className='btn btn-success'>VISIT</Button> */}
-        </Card>
-      </Col>
-      <Col sm="6">
-        <Card body className={styles.cardView}>
-          <CardImg top width="100%" src="assets/img/teacher-svgrepo-com.svg" alt="Card image cap" className={styles.cardImage} />
-          <CardText>TEACHER</CardText>
-          {/* <Button className='btn btn-success'>VISIT</Button> */}
-        </Card>
-      </Col>
-    </Row>
+    <Col sm="6">
+      <Card body className={styles.cardView}>
+        <CardImg
+          top
+          width="100%"
+          src={_generateCardAvatar()}
+          alt={userRole}
+          className={styles.cardImage}
+        />
+        <CardText>{userRole.toUpperCase()}</CardText>
+      </Card>
+    </Col>
   );
 };
 
