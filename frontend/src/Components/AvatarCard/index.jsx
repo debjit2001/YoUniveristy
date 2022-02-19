@@ -8,7 +8,7 @@ const AvatarCard = ({ userRole = "student" }) => {
    */
   const _generateCardAvatar = () => {
     let avatarImageSrc = null;
-    if (userRole === "student ") {
+    if (userRole === "student") {
       avatarImageSrc = "assets/img/graduate-student-svgrepo-com.svg";
     } else {
       avatarImageSrc = "assets/img/teacher-svgrepo-com.svg";
@@ -18,18 +18,16 @@ const AvatarCard = ({ userRole = "student" }) => {
   };
 
   return (
-    <Col sm="6">
-      <Card body className={styles.cardView}>
-        <CardImg
-          top
-          width="100%"
-          src={_generateCardAvatar()}
-          alt={userRole}
-          className={styles.cardImage}
-        />
-        <CardText>{userRole.toUpperCase()}</CardText>
-      </Card>
-    </Col>
+    <Card className={styles.avatarCard}>
+      <CardImg
+        top
+        width="100%"
+        src={_generateCardAvatar()}
+        alt={userRole}
+        className={styles.cardImage}
+      />
+      <CardText className={styles.cardText}>{userRole.toUpperCase()}</CardText>
+    </Card>
   );
 };
 

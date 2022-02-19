@@ -21,11 +21,11 @@ const AttendanceIndex = () => {
   // }
 
   return (
-    <div>
-      <div className={styles.login_register}>
+    <div className={styles.outer_container}>
+      {/* <div className={styles.login_register}>
         <LinkButton targetUrl="signin" buttonText="Login" />
         <LinkButton targetUrl="signup" buttonText="Register" />
-      </div>
+      </div> */}
       <div className={styles.container}>
         <AvatarCard userRole="student" />
         <AvatarCard userRole="teacher" />

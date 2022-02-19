@@ -6,7 +6,10 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Bangers&family=Lobster&display=swap");
 .outer_container {
-  height: 90vh;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .login_register {
   margin-top: 14px;
@@ -45,7 +48,7 @@
   position: absolute;
   text-align: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   background: #ffffff;
 }
