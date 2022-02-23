@@ -16,18 +16,41 @@ const AvatarCard = ({ userRole = "student" }) => {
 
     return avatarImageSrc;
   };
+  /**
+   * Generate Avatar name for AvatarCard Component
+   */
+  const _generateCardName = () => {
+    return userRole.toUpperCase();
+  };
 
   return (
-    <Card className={styles.avatarCard}>
+    <div className={styles.cardContainer}>
+      <div className={styles.card}>
+        <div className={`${styles.cardSide} ${styles.frontFace}`}>
+          <div className={styles.cardContent}>
+            <img src={_generateCardAvatar()} />
+            <h3>{_generateCardName()}</h3>
+          </div>
+        </div>
+        <div className={`${styles.cardSide} ${styles.backFace}`}>
+          <div className={styles.cardContent}>
+            <button className={styles.buttonStyle}>Log in</button>
+            <br />
+            <button className={styles.buttonStyle}>Sign up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    /* <Card className={styles.avatarCard}>
       <CardImg
-        top
-        width="100%"
-        src={_generateCardAvatar()}
-        alt={userRole}
-        className={styles.cardImage}
-      />
-      <CardText className={styles.cardText}>{userRole.toUpperCase()}</CardText>
-    </Card>
+         top
+         width="100%"
+         src={_generateCardAvatar()}
+         alt={userRole}
+         className={styles.cardImage}
+       />
+       <CardText className={styles.cardText}>{userRole.toUpperCase()}</CardText>
+  </Card>*/
   );
 };
 
