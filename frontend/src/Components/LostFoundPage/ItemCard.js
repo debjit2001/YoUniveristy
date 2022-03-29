@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./LostFoundPage.module.css";
 import ItemDetailCard from "./ItemDetailCard";
+import ImageWrapper from "Components/Image-Wrapper";
 const ItemCard = ({
   imgURL,
   itemName,
@@ -40,7 +41,13 @@ const ItemCard = ({
         size="lg"
       >
         <div className={styles.cardImageBox}>
-          <img src={_getImageSource()} alt="lost item" />
+          {/* <img src={_getImageSource()} alt="lost item" /> */}
+         
+          <ImageWrapper
+       imgSrc={_getImageSource()}
+       imgAlt="lost item"
+       className={styles.img}
+       />
           <div>
             <label>Item Name : </label>
             <h6>{itemName}</h6>

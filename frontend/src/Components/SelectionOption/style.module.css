@@ -1,13 +1,18 @@
-.buttonStyleOdd{
-    background-color: #9ddcdc;
-    border-radius: 5rem;
-    font-weight: bolder;
-    border: "none"
-  };
-.buttonStyleEven{
-    background-color:  hsl(205, 86%, 17%);
-    border-radius: 5rem;
-    font-weight: bolder;
-    color: #c59d5f;
-    border: "none"
-  };
+.button {
+  margin: 4px 0;
+}
+
+.buttonStyleOdd {
+  background-color: #9ddcdc;
+  border-radius: 5rem;
+  font-weight: bolder;
+  border: none;
+}
+
+.buttonStyleEven {
+  background-color: #063251;
+  border-radius: 5rem;
+  font-weight: bolder;
+  color: #c59d5f;
+  border: none;
+}

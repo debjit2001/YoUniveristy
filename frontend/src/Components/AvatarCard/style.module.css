@@ -1,0 +1,104 @@
+.cardContainer {
+  display: flex;
+  margin-left: 15%;
+  justify-content: space-between;
+  width: 900px;
+  position: relative;
+}
+.cardContainer .card {
+  position: relative;
+}
+.cardContainer .card .cardSide {
+  width: 290px;
+  height: 190px;
+  transition: 0.8s;
+}
+.cardContainer .card .cardSide.frontFace {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: #ffcbcb;
+  z-index: 1;
+  transform: translateY(80px);
+}
+.cardContainer .card:hover .cardSide.frontFace {
+  background: #a2a8d3;
+  transform: translateY(0);
+}
+.cardContainer .card .cardSide.frontFace .cardContent {
+  opacity: 0.8;
+  transition: 0.8s;
+}
+.cardContainer .card:hover .cardSide.frontFace .cardContent {
+  opacity: 1;
+}
+.cardContainer .card .cardSide.frontFace .cardContent img {
+  max-width: 100px;
+}
+.cardContainer .card .cardSide.frontFace .cardContent h3 {
+  text-align: center;
+  font-size: 1.8em;
+  margin: 9px 0 0;
+  padding: 0;
+  color: rgb(111, 120, 158);
+}
+.cardContainer .card:hover .cardSide.frontFace .cardContent h3 {
+  color: #fff;
+}
+.cardContainer .card .cardSide.backFace {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  background: #fff;
+  padding: 18px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  transform: translateY(-100px);
+}
+.cardContainer .card:hover .cardSide.backFace {
+  transform: translateY(0);
+}
+.cardContainer .card .cardSide.backFace .cardContent p {
+  margin: 0;
+  padding: 0;
+}
+.cardContainer .card .cardSide.backFace .cardContent a {
+  color: #333;
+  padding: 5px;
+  margin: 15px 0 0;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 1000;
+  border: 1px solid #333;
+}
+.cardContainer .card .face.backFace .cardContent a:hover {
+  background: #333;
+  color: #fff;
+}
+.buttonStyle {
+  background-color: #ea4c89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  margin: 18px;
+  text-align: center;
+  text-decoration: none;
+}

@@ -1,18 +1,24 @@
 import React, { useContext } from "react";
 import { ProductContext } from "../../../../global//CanteenContext";
-
+import ImageWrapper from "Components/Image-Wrapper";
 export default function CartItem({ item, value }) {
   const { _id, title, imgUrl, price, total, count } = item;
   const { increment, decrement, removeItem } = useContext(ProductContext);
   return (
     <div className="row my-2 text-capitalize text-center">
       <div className="col-10 mx-auto col-lg-2">
-        <img
+        {/* <img
           src={`http://localhost:5000/${imgUrl}`}
           style={{ width: "5rem", height: "5rem" }}
           className="img-fluid"
           alt="product"
-        />
+        /> */}
+         <ImageWrapper
+       imgSrc={`http://localhost:5000/${imgUrl}`}
+       imgAlt="product"
+       className="img-fluid2"
+       style={{ width: "5rem", height: "5rem" }}
+      />
       </div>
       <div className="col-10 mx-auto col-lg-2">
         <span className="d-lg-none">product: </span>

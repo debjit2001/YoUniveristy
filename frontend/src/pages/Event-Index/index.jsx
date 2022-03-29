@@ -11,6 +11,7 @@ import EventCreateForm from "Components/EventCreateForm";
 import SuccessToast from "Components/Toast/Success";
 import EventCreateFailure from "Components/Toast/EventCreateFailure";
 import EventCard from "Components/EventCard";
+import ImageWrapper from "Components/Image-Wrapper";
 
 const EventIndex = (props) => {
   /**
@@ -101,10 +102,12 @@ const EventIndex = (props) => {
         </span>
       )}
       <button className={style.createEventButton} onClick={modalClickHandler}>
-        <img
+        {/* <img
           src={`/assets/icons/${isModalOpen ? "close" : "plus"}.svg`}
           alt="create"
-        />
+        /> */}
+        <ImageWrapper  imgSrc={`/assets/icons/${isModalOpen ? "close" : "plus"}.svg`}
+          imgAlt="create"/>
       </button>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Modal } from "react-responsive-modal";
+import ImageWrapper from "Components/Image-Wrapper";
 import styles from "./LostFoundPage.module.css";
 const ItemDetailCard = ({
   open,
@@ -44,16 +45,13 @@ const ItemDetailCard = ({
           className={styles.cardImageBox}
           style={{ textAlign: "center", cursor: "initial" }}
         >
-          <img
-            src={_getImageSource()}
-            alt="lost item"
-            style={{
-              marginTop: "28px",
-              maxWidth: "500px",
-              marginBottom: "25px",
-              cursor: "initial",
-            }}
-          />
+         
+          <ImageWrapper
+       imgSrc={_getImageSource()}
+       imgAlt="lost item"
+       className={styles.img2}
+     
+       />
           <p style={{ color: "#000", fontSize: "26px", fontWeight: "bold" }}>
             Item Info
           </p>

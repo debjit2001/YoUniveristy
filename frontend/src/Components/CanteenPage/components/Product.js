@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
+import Tippy from "@tippy.js/react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../../global/CanteenContext";
-import Tippy from "@tippy.js/react";
+import ImageWrapper from "Components/Image-Wrapper";
 import PropTypes from "prop-types";
 
 const Product = ({ product }) => {
@@ -25,13 +26,15 @@ const Product = ({ product }) => {
               placement="right-start"
               theme="honeybee"
             >
-              <img
-                src={`http://localhost:5000/${imgUrl}`}
-                alt="product"
-                className="card-img-top"
-                width="70%"
-                height="100px"
-              />
+              <span>
+                <ImageWrapper
+                  imgSrc={`http://localhost:5000/${imgUrl}`}
+                  imgAlt="product"
+                  // className="card-img-top"
+                  width="70"
+                  height="100"
+                />
+              </span>
             </Tippy>
           </Link>
           <button
