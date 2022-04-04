@@ -1,7 +1,7 @@
 import ImageWrapper from "Components/Image-Wrapper";
 import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
-import styles from "./HomePage.module.css";
+
 // import DarkMode from "./DarkMode";
 
 const HomePage = () => {

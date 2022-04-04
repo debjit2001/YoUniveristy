@@ -27,6 +27,11 @@ import StudentLogin from "./Forms/Login/index";
 import Register from "./Forms/Register/index";
 import Teacher from "./AttendancePage/Teacher/Welcome/index";
 
+
+//test routes
+import TestRegister from "./Forms/Register/Register";
+import TestLogin from "./Forms/Login/Login";
+
 import { LoginContext } from "../global/LoginContext";
 import AttendanceStudent from "../pages/Attendance-Student";
 
@@ -59,7 +64,15 @@ const BaseRouter = (props) => {
         <Route path="/canteen" component={ProductList} />
         <Route path="/canteenItemDetails" component={Details} />
         <PrivateCanteenRoute path="/canteenCart" component={Cart} />
+
+        {/*test routes*/}
+        <Route path="/testRegister" component={TestRegister}/>
+        <Route path="/testLogin" component={TestLogin}/>
+
+        
         <Route path="/" exact component={HomePage} />
+
+        
         <Route component={Default} />
       </Switch>
       <Modal />
