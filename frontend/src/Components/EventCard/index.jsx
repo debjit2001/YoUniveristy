@@ -1,5 +1,5 @@
 //Third party import
-import React, { useState } from "react";
+import React from "react";
 import Tippy from "@tippy.js/react";
 import Loader from "react-loader-spinner";
 //Stylesheet import

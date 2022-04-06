@@ -1,7 +1,6 @@
 //Third party import
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Spinner } from "react-bootstrap";
 import Skeleton from "react-loading-skeleton";
 //Stylesheet import
 import styles from "./styles.module.css";
@@ -13,7 +12,6 @@ const EventDetails = (props) => {
   /**
    * state declarations
    */
-  const [isLoading, _isLoading] = useState(true);
   const [event, _event] = useState(null);
   const [eventLoaded, _eventLoaded] = useState(false);
   /**
@@ -25,7 +23,7 @@ const EventDetails = (props) => {
     axios.get(`${IP}/event/${_id}`).then((res) => {
       _event((prev) => (prev = res?.data?.searchedEvent));
     });
-  }, [props?.match?.params?.id]);
+  }, [props.match.params.id]);
   //set the document title
   useEffect(() => {
     if (event?.title) document.title = `Event - ${event?.title}`;
@@ -40,12 +38,6 @@ const EventDetails = (props) => {
    * @DESC : method to render spinner
    * @returns Spinner | null
    */
-  const renderSpinner = () => {
-    if (isLoading) {
-      return <Spinner animation="grow" role="status" />;
-    }
-    return null;
-  };
   /**
    * @DESC: set state when the event image is loaded
    */
@@ -53,7 +45,7 @@ const EventDetails = (props) => {
   //   _isLoading((prev) => (prev = false));
   // };
   //store the value of the render spinner
-  const spinner = renderSpinner();
+  //const spinner = renderSpinner();
 
   if (!eventLoaded || !event) {
     return <Skeleton count={5} width={1000} />;

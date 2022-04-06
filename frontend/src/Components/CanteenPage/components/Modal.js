@@ -6,7 +6,7 @@ import ImageWrapper from "Components/Image-Wrapper";
 import { Link } from "react-router-dom";
 
 const Modal = () => {
-  const { modalOpen, openModal, closeModal, modalProduct } =
+  const { modalOpen, closeModal, modalProduct } =
     useContext(ProductContext);
   if (!modalOpen) {
     return null;

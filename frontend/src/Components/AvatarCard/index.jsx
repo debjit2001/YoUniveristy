@@ -1,5 +1,4 @@
 import React from "react";
-import { Card, CardImg, CardText, Col } from "reactstrap";
 import styles from "./style.module.css";
 
 const AvatarCard = ({ userRole = "student" }) => {
@@ -28,7 +27,7 @@ const AvatarCard = ({ userRole = "student" }) => {
       <div className={styles.card}>
         <div className={`${styles.cardSide} ${styles.frontFace}`}>
           <div className={styles.cardContent}>
-            <img src={_generateCardAvatar()} />
+            <img src={_generateCardAvatar()} alt="Not Found" />
             <h3>{_generateCardName()}</h3>
           </div>
         </div>
