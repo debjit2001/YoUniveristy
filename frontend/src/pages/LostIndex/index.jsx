@@ -20,7 +20,6 @@ const Lost = () => {
    *   State declarations
    */
   const [open, _open] = useState(false);
-  const [formData, _formData] = useState(null);
   const [prevLostItems, _prevLostItems] = useState([]);
   /**
    * UseEffects
@@ -77,7 +76,6 @@ const Lost = () => {
   //Function to change the state of the modal from open to close
   const onCloseModal = () => {
     _open((prev) => (prev = false));
-    _formData((prev) => (prev = null));
   };
 
   // Method to get the details of the new lost item

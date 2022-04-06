@@ -21,7 +21,7 @@ export const AttendanceStudent = () => {
     if (semester) {
       getSemester(null);
     }
-  }, [stream]);
+  });
   //Method declarations
   /**
    * @desc set stream state

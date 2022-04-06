@@ -44,9 +44,9 @@ const ImageWrapper = ({
   const _getHeight = () => {
     return height || "1920";
   };
-  const _getOnLoadHandler = () => {
-    return onLoadHandler || console.log("Your image is loading...");
-  };
+  // const _getOnLoadHandler = () => {
+  //   return onLoadHandler || console.log("Your image is loading...");
+  // };
   const _getOnClickHandler = () => {
     return onClickHandler;
   };

@@ -1,19 +1,16 @@
 //Thid party import
-import React, { useContext } from "react";
+import React from "react";
 //stylesheet import
 import styles from "./style.module.css";
 //local import
-import AttendanceCharacterCard from "../../Components/AttendanceCharacterCard";
-import LinkButton from "../../Components/LinkButton";
-import { LoginContext } from "../../global/LoginContext";
 import AvatarCard from "Components/AvatarCard";
 
 const AttendanceIndex = () => {
   /**
    * fetching context values
    */
-  const { isTeacherAuth, setIsTeacherAuth, teacherID, pwd } =
-    useContext(LoginContext);
+  // const { isTeacherAuth, setIsTeacherAuth, teacherID, pwd } =
+  //   useContext(LoginContext);
 
   // if (teacherID && pwd) {
   //   console.log("from pwd check-->");
