@@ -139,8 +139,7 @@ const EventCreateForm = ({
             disabled={isLoading}
           >
             <p>Attach Image</p>
-            {/* <img src="/assets/icons/attachment.svg" alt="attach file" /> */}
-            <ImageWrapper imgSrc="/assets/icons/attachment.svg" imgAlt="attach file"/>
+            <ImageWrapper className={styles.image} imgSrc="/assets/icons/attachment.svg" imgAlt="attach file" />
           </button>
           <p className={styles.fileName}>{eventImage?.name}</p>
           <input

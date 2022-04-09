@@ -3,7 +3,7 @@ import React from "react";
 //local import
 import Loading from "Components/Loading";
 import { useState } from "react";
-
+import style from './style.module.css';
 const ImageWrapper = ({
   imgSrc,
   imgAlt,
@@ -33,16 +33,16 @@ const ImageWrapper = ({
     return imgAlt || "image";
   };
   const _getClassName = () => {
-    return className || "imageClass";
+    return className || `${style.imageClass}`;
   };
   const _getIdName = () => {
     return idName || "imageId";
   };
   const _getWidth = () => {
-    return width || "1080";
+    return width || "100%";
   };
   const _getHeight = () => {
-    return height || "1920";
+    return height || "100%";
   };
   // const _getOnLoadHandler = () => {
   //   return onLoadHandler || console.log("Your image is loading...");
