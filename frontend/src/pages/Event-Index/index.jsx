@@ -102,10 +102,6 @@ const EventIndex = (props) => {
         </span>
       )}
       <button className={style.createEventButton} onClick={modalClickHandler}>
-        {/* <img
-          src={`/assets/icons/${isModalOpen ? "close" : "plus"}.svg`}
-          alt="create"
-        /> */}
         <ImageWrapper  imgSrc={`/assets/icons/${isModalOpen ? "close" : "plus"}.svg`}
           imgAlt="create"/>
       </button>
