@@ -31,7 +31,7 @@ const EventIndex = (props) => {
    */
   useEffect(() => {
     fetchAllEvents();
-  }, []);
+  }, [isEventCreated]);
 
   //Method declarations
   /**

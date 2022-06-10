@@ -32,7 +32,7 @@ exports.create_lost_entry = async (req, res) => {
       try {
         const newEntry = await newLostItem.save();
         res.status(200).json({ newLostEntry: newEntry });
-        mailhelper.mailHandler(email, itemName, name, `Lost Item registered`);
+        // mailhelper.mailHandler(email, itemName, name, `Lost Item registered`);
       } catch (saveError) {
         res.status(500).json({ newLostEntry: null });
       }
