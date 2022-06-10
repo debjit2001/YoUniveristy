@@ -5,7 +5,7 @@
 .createEventButton {
   height: 48px;
   width: 48px;
-  position: sticky;
+  position: fixed;
   top: 90%;
   bottom: 0;
   left: 95%;
