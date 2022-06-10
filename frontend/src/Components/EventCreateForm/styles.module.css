@@ -8,6 +8,9 @@
   width: 100vw;
   height: 60%;
 }
+.inputBox:focus{
+  background-color: aliceblue;
+}
 
 .formContainer {
   width: 100%;
@@ -41,7 +44,7 @@
 }
 
 .inputDiv input:focus {
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid ;
 }
 
 .fileInputButton {
