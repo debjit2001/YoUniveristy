@@ -38,7 +38,7 @@ exports.create_found_entry = async (req, res) => {
       try {
         const newEntry = await newFoundItem.save();
         res.status(200).json({ newFoundEntry: newEntry });
-        mailhelper.mailHandler(email, itemName, name, `Found Item registered`);
+        // mailhelper.mailHandler(email, itemName, name, `Found Item registered`);
       } catch (saveError) {
         res.status(500).json({ newFoundEntry: null });
       }

@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import Tippy from "@tippy.js/react";
 import axios from "axios";
 import { Spinner } from "reactstrap";
+import emailjs from "@emailjs/browser";
 //StyleSheet import
 import "tippy.js/dist/tippy.css";
 import "react-responsive-modal/styles.css";
@@ -57,6 +58,12 @@ const Lost = () => {
         alert("Please fill out all the necessary fields");
       } else {
         alert("YOUR FORM IS SUCCESSFULLY SUBMITTED");
+        let params = {
+          name: formData?.name,
+          itemName: formData?.itemName,
+          to_email: formData?.email,
+        };
+        const mailResponse = await sendMail(params);
         onCloseModal();
         _fetchNewLostHandler();
       }
@@ -95,6 +102,17 @@ const Lost = () => {
    */
   const _onSubmitButtonClick = (formEntry) => {
     submitHandler(formEntry);
+  };
+
+  const sendMail = async (params) => {
+    const response = await emailjs.send(
+      "service_elr8jpd",
+      "template_l8jby9w",
+      {
+        ...params,
+      },
+      "boo1cQ9RBdrZhl0Zj"
+    );
   };
 
   return (

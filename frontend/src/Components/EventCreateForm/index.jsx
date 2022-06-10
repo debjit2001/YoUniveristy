@@ -28,7 +28,7 @@ const EventCreateForm = ({
    * @param {*} event
    */
   const _onChangeHandler = (event) => {
-    const { name, value } = event?.target;
+    const { name, value, files } = event?.target;
 
     switch (name) {
       case "title":
@@ -38,7 +38,7 @@ const EventCreateForm = ({
         _description((prev) => (prev = value));
         break;
       case "eventImage":
-        _eventImage((prev) => (prev = event?.target?.files[0]));
+        _eventImage((prev) => (prev = files[0]));
         break;
       default:
         break;

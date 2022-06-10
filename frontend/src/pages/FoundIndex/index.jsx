@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import Tippy from "@tippy.js/react";
 import axios from "axios";
 import { Spinner } from "reactstrap";
+import emailjs from "@emailjs/browser";
 //StyleSheet import
 import "tippy.js/dist/tippy.css";
 import "react-responsive-modal/styles.css";
@@ -59,10 +60,20 @@ const Found = () => {
           },
         });
         console.log("form submit response:>>", response);
+        let params = {
+          name: formData?.name,
+          itemName: formData?.itemName,
+          to_email: formData?.email,
+        };
+        const mailResponse = await sendMail(params);
         onCloseModal();
         _fetchNewFoundHandler();
       }
     } catch (error) {
+      console.log(
+        "🚀 ~ file: index.jsx ~ line 73 ~ submitHandler ~ error",
+        error
+      );
       onCloseModal();
       if (error.response.status === 400) alert("Error : Bad Request");
       if (error.response.status === 404) alert("Error : Not Found");
@@ -88,7 +99,8 @@ const Found = () => {
     } catch (error) {
       if (error?.response?.status === 400) alert("Error : Bad Request");
       if (error?.response?.status === 404) alert("Error : Not Found");
-      if (error?.response?.status === 500) alert("Error : Internal Server Error");
+      if (error?.response?.status === 500)
+        alert("Error : Internal Server Error");
     }
   };
 
@@ -97,6 +109,17 @@ const Found = () => {
    */
   const _onSubmitButtonClick = (formEntry) => {
     submitHandler(formEntry);
+  };
+
+  const sendMail = async (params) => {
+    const response = await emailjs.send(
+      "service_elr8jpd",
+      "template_l8jby9w",
+      {
+        ...params,
+      },
+      "boo1cQ9RBdrZhl0Zj"
+    );
   };
 
   return (
