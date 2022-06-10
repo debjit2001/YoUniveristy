@@ -177,9 +177,10 @@ export const ProductProvider = ({ children }) => {
   };
 
   const clearCart = () => {
-    cart.forEach((cartProduct, index) => {
-      removeItem(cartProduct._id);
-    });
+    // cart.forEach((cartProduct, index) => {
+    //   removeItem(cartProduct._id);
+    // });
+    setCart([]);
   };
 
   const addTotals = () => {
