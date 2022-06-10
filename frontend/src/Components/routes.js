@@ -58,7 +58,7 @@ const BaseRouter = (props) => {
         <PrivateRoute path="/teacherWelcome" component={Teacher} />
         <Route path="/canteen" component={ProductList} />
         <Route path="/canteenItemDetails" component={Details} />
-        <PrivateCanteenRoute path="/canteenCart" component={Cart} />
+        <Route path="/canteenCart" component={Cart} />
         <Route path="/" exact component={HomePage} />
         <Route component={Default} />
       </Switch>
