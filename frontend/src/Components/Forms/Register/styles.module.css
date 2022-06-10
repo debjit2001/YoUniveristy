@@ -1,4 +1,4 @@
-.container_signup{
+.container_signup {
     color: #1ce1bd;
     display: flex;
     width: 100%;
@@ -11,16 +11,18 @@
     height: 87vh;
 
 }
-.form_outer{
+
+.form_outer {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    
+
 }
-.form_inner{
+
+.form_inner {
     width: 50%;
     color: black;
     /* height: 94%; */
@@ -34,27 +36,35 @@
     box-shadow: 2px 4px 20px grey;
 
 }
-form{
+
+form {
     height: 68%;
     margin-top: 0.8rem;
 }
-.formpng{
+
+.formpng {
     display: flex;
     flex-direction: row-reverse;
 }
-.login_png{
+
+.login_png {
     height: 100%;
     width: 100%;
 }
-p{
+
+p {
     font-size: 26px;
 }
-.fa_user,.fa_lock,.fa_envelope{
+
+.fa_user,
+.fa_lock,
+.fa_envelope {
     font-size: 40%;
     margin: 0;
     margin-right: 8px;
 }
-.form_row{
+
+.form_row {
     display: flex;
     /* background: #2d2929; */
     margin-bottom: 22px;
@@ -62,34 +72,42 @@ p{
     align-items: center; */
     height: 11%;
 }
-.form_name{
+
+.form_name {
     width: 100%;
     display: flex;
     flex-direction: column;
-  
+
 }
-.form_name div:nth-child(2){
+
+.form_name div:nth-child(2) {
     height: 12px;
     font-size: 12px;
     color: red;
     text-align: left;
     font-weight: bold;
 }
-.email{
+
+.email {
     widows: 60%;
 }
-.form_inner_inner{
+
+.form_inner_inner {
     width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
 }
+
 /* .formpng .form_inner_inner{
     /* margin-top: 55px; */
-/* } */ 
+/* } */
 
-input[type=text],input[type=number],input[type=email],input[type=password]{
+input[type=text],
+input[type=number],
+input[type=email],
+input[type=password] {
     /* background: #2d2929; */
     font-size: 14px;
     background: transparent;
@@ -98,28 +116,33 @@ input[type=text],input[type=number],input[type=email],input[type=password]{
     height: 25px;
     border-bottom: 2px solid black;
 }
-input[type=text]{
+
+input[type=text] {
     width: 100%;
 }
-.col{
+
+.col {
     width: 100%;
     display: flex;
     /* background: #c1c1c1; */
     margin-right: 14px;
-    
-  
+
+
 }
-.col input{
+
+.col input {
     color: black;
 }
-.col i{
+
+.col i {
     display: none;
 }
+
 /* button{
     background: #da1919 !important;
     outline: none;
     /* border: 0; */
-    /* border-radius: 19px !important;
+/* border-radius: 19px !important;
     color: #f1f1f1 !important;
     font-size: 17px !important;
     font-weight: 3000 !important;
@@ -128,85 +151,102 @@ input[type=text]{
 button:hover{
     opacity: 0.8;
 }  */
-.form_check{
+.form_check {
     margin-bottom: 7px;
     color: #d6c0c0;
     display: flex;
     align-items: center;
 
 }
-.btner{
+
+.btner {
     width: 50%;
     display: flex;
     justify-content: center;
     margin-bottom: 54px;
 }
-.col input[type=number]:focus,input[type=email]:focus,input[type=password]:focus,input[type=text]:focus{
-    background: #2d2929;
-    color: white;
+
+.col input[type=number]:focus,
+input[type=email]:focus,
+input[type=password]:focus,
+input[type=text]:focus {
+    /* background: #2d2929; */
+    color: #000;
     opacity: 0.8;
     outline: none;
 
-    /* border: 0; */
+    border-bottom: 1px solid #000;
 }
-.form_check_label{
+
+.form_check_label {
     font-size: 23px;
 }
+
 /* ::placeholder{
     /* color:lightblue !important; */
-    /* opacity:1 !important; */
-/* } */ 
-i{
+/* opacity:1 !important; */
+/* } */
+i {
     font-size: 25px;
     margin-right: 14px;
     color: black;
 }
-.form_control{
+
+.form_control {
     height: 100%;
     font-size: 30%;
     width: 100%;
 }
-.form_check_input{
+
+.form_check_input {
     height: 1vw;
     width: 2vw;
 }
-.reg{
+
+.reg {
     font-weight: bold;
     text-align: center;
     font-size: 3vw;
     margin-bottom: 0.5rem;
 
 }
-.has_account{
+
+.has_account {
     font-size: 18px;
     font-weight: bold;
     margin-top: 7px;
     color: #0b6310;
-    margin-left:14px;
+    margin-left: 14px;
     margin-top: 30px;
 }
-.login{
+
+.login {
     width: 7vw;
     height: 3vw;
     font-size: 1vw;
     font-weight: bold;
 }
-.login:hover{
+
+.login:hover {
     background-position: left bottom;
 }
+
 @media only screen and (max-width: 750px) {
-    .form_inner{
+    .form_inner {
         width: 87%;
     }
+
     .formpng {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    .formpng .form_inner_inner{
+
+    .formpng .form_inner_inner {
         margin-top: 0px;
         width: 100%;
     }
+
     /* .form_inner_inner svg:nth-child(2){
         display: none;
     } */
@@ -217,46 +257,53 @@ i{
         margin-top: 14px;
         /* width: 100%; */
     }
+
     .login_png {
         display: none;
     }
-    .has_account{
+
+    .has_account {
         width: 100%;
     }
-  }
-  /* Banner Effect */
-  .slide{
+}
+
+/* Banner Effect */
+.slide {
     overflow: hidden;
     /* width:33%; */
-  }
+}
 
-  .slide .fig{
-      position: relative;
-      width:200%;
-      margin:0;
-      left:0;
-      transition:all 1s  ease-in-out;
-  }
-  .slide figure .lop{
-      width:50%;
-      float: left;
-      margin-bottom: 22px;
-  }
-  /* Next */
-  .move_right{
+.slide .fig {
+    position: relative;
+    width: 200%;
+    margin: 0;
+    left: 0;
+    transition: all 1s ease-in-out;
+}
+
+.slide figure .lop {
+    width: 50%;
+    float: left;
+    margin-bottom: 22px;
+}
+
+/* Next */
+.move_right {
     width: 100%;
     display: flex;
     /* justify-content: center; */
     flex-direction: column;
     /* align-items: center; */
     height: 100%;
-  }
-  .move_right div:nth-child(2){
-      font-size: 14px;
-      color: red;
-      font-weight: bold;
-  }
-  .move_right i{
+}
+
+.move_right div:nth-child(2) {
+    font-size: 14px;
+    color: red;
+    font-weight: bold;
+}
+
+.move_right i {
     font-size: 41px;
     display: flex;
-  }
+}
