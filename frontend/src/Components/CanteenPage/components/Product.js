@@ -3,7 +3,6 @@ import Tippy from "@tippy.js/react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../../../global/CanteenContext";
-import ImageWrapper from "Components/Image-Wrapper";
 import PropTypes from "prop-types";
 
 const Product = ({ product }) => {
@@ -27,10 +26,9 @@ const Product = ({ product }) => {
               theme="honeybee"
             >
               <span>
-                <ImageWrapper
-                  imgSrc={`http://localhost:5000/${imgUrl}`}
-                  imgAlt="product"
-                  // className="card-img-top"
+                <img
+                  src={`http://localhost:5000/${imgUrl}`}
+                  alt="product"
                   width="70"
                   height="100"
                 />
@@ -72,7 +70,7 @@ const Product = ({ product }) => {
 
         {/*cart footer*/}
         <div className="card-footer d-flex justify-content-between">
-          <p className="align-self-center mb-0">{title}</p>
+          <p className="align-self-center mb-0" style={{fontSize:"0.8rem"}}>{title}</p>
           <h5 className="text-blue font-italic mb-0">
             <span className="mr-1">₹</span>
             {price}
@@ -101,6 +99,7 @@ const ProductWrapper = styled.div`
     transition: all 0.75s linear;
     width: 250px;
     height: auto;
+    
     // display: flex;
 }
 .card-footer{
@@ -112,24 +111,25 @@ const ProductWrapper = styled.div`
     transition: all 0.75s linear;
     color: var(--mainWhite);
     // position: absolute;
+    font-size: small;
 }
 
 .card-footer{
-    font-size:0.6rem;
+    font-size:0.2rem;
 }
 
 &:hover{
     .card{
         border:0.04 rem sol_id rgba(0,0,0,0.2);
         box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.2);
-
+        
     }
     .card-footer{
         // background:hsl(210, 22%, 49%);
         // background:  #1E90FF;
         background: #388E8E;
         color:black;
-        
+           
     }
 }
     .img-container{
