@@ -33,14 +33,10 @@ const NavigationBar = () => {
     <>
       <Navbar color="white" light className={styles.navbar}>
         <NavbarBrand href="/" className="mr-auto">
-          {/* <img
+          <img
             src="/assets/img/makaut-logo-1024x256_final.png"
             className={styles.headerImg}
             alt="uniLogo"
-          /> */}
-          <ImageWrapper imgSrc="/assets/img/makaut-logo-1024x256_final.png"
-            className={styles.headerImg}
-            imgAlt="uniLogo"
           />
         </NavbarBrand>
         {viewPortWidth < 768 ? (

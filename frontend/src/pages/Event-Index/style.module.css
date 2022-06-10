@@ -5,7 +5,7 @@
 .createEventButton {
   height: 48px;
   width: 48px;
-  position: sticky;
+  position: fixed;
   top: 90%;
   bottom: 0;
   left: 95%;
@@ -18,7 +18,7 @@
 }
 
 .NoEventPoster {
-  position: relative;
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
   font-weight: 600;
